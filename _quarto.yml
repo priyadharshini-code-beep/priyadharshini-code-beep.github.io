@@ -5,11 +5,12 @@ project:
 website:
   title: "Priyadharshini Balaji"
   description: "ePortfolio — MSc Business Analytics, Dublin City University"
-  favicon: images/profile.jpg
+  favicon: images/favicon.png
   site-url: https://priyadharshini-code-beep.github.io
   repo-url: https://github.com/priyadharshini-code-beep/priyadharshini-code-beep.github.io
 
   navbar:
+    logo: images/logo.png
     background: primary
     search: true
     left:
