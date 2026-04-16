@@ -1,0 +1,53 @@
+---
+title: "Priyadharshini Balaji — CV"
+format:
+  html:
+    embed-resources: true
+    theme: cosmo
+    css: styles.css
+    toc: false
+---
+
+::: {.text-center}
+# Priyadharshini Balaji
+
+**MSc Business Analytics Candidate | Dublin City University**
+
+Dublin, Ireland · [priyadharshiniblj25@gmail.com](mailto:priyadharshiniblj25@gmail.com)
+
+[LinkedIn](https://www.linkedin.com/in/priyadharshini-balaji-66a361224/) · [GitHub](https://github.com/priyadharshini-code-beep) · [Portfolio](https://priyadharshini-code-beep.github.io)
+:::
+
+---
+
+## Profile
+
+Full-time MSc Business Analytics student at Dublin City University with a BTech in Information Technology from Rajalakshmi Engineering College. Combines engineering fundamentals with analytics training — SQL, Python, machine learning, and data visualisation. Currently working on an industry analytics project with Safefood (Seafood Ireland) as part of the MSc practicum.
+
+## Education
+
+**MSc Business Analytics** · *2025 – 2026*  
+Dublin City University, Ireland  
+*Relevant modules:* SQL & Databases, Programming for Analytics, Data Mining & Machine Learning, Data Visualisation
+
+**BTech, Information Technology** · *2021 – 2025*  
+Rajalakshmi Engineering College, Chennai, India
+
+## Experience
+
+**Business Analyst — Applied Data & Software Engineering (Industry Project)** · *Jan 2026 – Present*  
+*Safefood, Dublin (Hybrid)*
+
+- Working on a real-world university-industry project in collaboration with Seafood Ireland, as part of the MSc Business Analytics practicum at DCU.
+- Designing and developing data-processing workflows using programming fundamentals (loops, conditionals, functions, data structures) to clean, transform, and analyse structured datasets.
+- Writing optimised SQL queries (joins, aggregations, subqueries) to analyse relational data and support business decision-making.
+- Applying software engineering principles to build reusable, maintainable code for analytics and reporting.
+- Translating business requirements into technical solutions and communicating findings to academic and industry stakeholders.
+
+**Industrial Android Application Development with IoT (Internship)** · *Jul 2023*  
+*NSIC, India*
+
+- Contributed to the development of an industrial Android application integrated with IoT sensors, bridging hardware inputs with a mobile interface.
+- Gained exposure to end-to-end IoT-to-mobile workflows — hardware signals, data capture, and application-layer handling.
+
+## P
