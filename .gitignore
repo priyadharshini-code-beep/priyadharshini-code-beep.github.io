@@ -31,3 +31,5 @@ _freeze/
 
 # OS files
 Thumbs.db
+/.quarto/
+**/*.quarto_ipynb
