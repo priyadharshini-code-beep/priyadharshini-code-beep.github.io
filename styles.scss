@@ -1,0 +1,224 @@
+/*-- scss:defaults --*/
+
+// Google Font
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// Brand colour palette
+$primary: #6a4c93;          // Deep purple - main brand colour
+$secondary: #1982c4;        // Bright blue - accent
+$success: #8ac926;          // Green - positive
+$info: #1982c4;             // Blue - informational
+$warning: #ffca3a;          // Yellow - caution
+$danger: #ff595e;           // Coral red - alerts
+
+// Light theme colours
+$body-bg: #fdfcff;
+$body-color: #2b2d42;
+$link-color: $primary;
+$link-hover-color: darken($primary, 15%);
+
+// Typography
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-family-monospace: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+$headings-font-weight: 600;
+$headings-color: $primary;
+
+// Navbar
+$navbar-bg: $primary;
+$navbar-fg: #ffffff;
+$navbar-hl: #ffca3a;        // Yellow highlight on hover
+
+// Code blocks
+$code-bg: #f5f2fa;
+$code-color: #6a4c93;
+
+// Callouts
+$callout-color-note: $secondary;
+$callout-color-tip: $success;
+$callout-color-warning: $warning;
+$callout-color-important: $danger;
+
+
+/*-- scss:rules --*/
+
+// Smooth font rendering
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+}
+
+// Headings with a subtle accent
+h1, h2, h3, h4 {
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  border-bottom: 2px solid lighten($primary, 40%);
+  padding-bottom: 0.3em;
+  margin-top: 2em;
+}
+
+h3 {
+  color: darken($secondary, 10%);
+}
+
+// Navbar polish
+.navbar {
+  box-shadow: 0 2px 8px rgba(106, 76, 147, 0.15);
+
+  .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+}
+
+// Make the About template buttons pop
+.about-links .about-link {
+  border: 1px solid $primary !important;
+  color: $primary !important;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $primary !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(106, 76, 147, 0.2);
+  }
+}
+
+// Project listing cards
+.quarto-listing .quarto-post {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(106, 76, 147, 0.12);
+  }
+
+  .listing-image img {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .listing-title {
+    color: $primary;
+    font-weight: 600;
+  }
+
+  .listing-categories .listing-category {
+    background-color: lighten($primary, 45%);
+    color: $primary;
+    border-radius: 4px;
+    padding: 0.2em 0.6em;
+    font-size: 0.8em;
+    font-weight: 500;
+  }
+}
+
+// Code block styling
+pre.sourceCode {
+  border-left: 3px solid $primary;
+  border-radius: 4px;
+  background-color: $code-bg;
+}
+
+// Inline code
+code:not(.sourceCode) {
+  background-color: lighten($primary, 48%);
+  color: $primary;
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+// Callout blocks - softer, more modern
+.callout {
+  border-radius: 6px;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+// Table of contents
+#TOC, .sidebar nav[role="doc-toc"] {
+  a {
+    color: lighten($body-color, 20%);
+    border-left: 2px solid transparent;
+    transition: all 0.15s ease;
+
+    &:hover {
+      color: $primary;
+      border-left-color: $primary;
+      background-color: lighten($primary, 48%);
+    }
+
+    &.active {
+      color: $primary;
+      font-weight: 600;
+      border-left-color: $primary;
+    }
+  }
+}
+
+// Footer polish
+.page-footer, .nav-footer {
+  background-color: lighten($primary, 48%) !important;
+  color: $body-color !important;
+  padding: 1.5em 0;
+  border-top: 1px solid lighten($primary, 35%);
+
+  a {
+    color: $primary;
+    font-weight: 500;
+
+    &:hover {
+      color: darken($primary, 15%);
+    }
+  }
+}
+
+// Links - underline on hover
+a {
+  text-decoration: none;
+
+  &:hover:not(.nav-link):not(.about-link):not(.btn):not(.quarto-post) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+// Buttons
+.btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+
+  &:hover {
+    background-color: darken($primary, 10%);
+    border-color: darken($primary, 10%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(106, 76, 147, 0.3);
+  }
+}
+
+// Block quotes
+blockquote {
+  border-left: 4px solid $primary;
+  background-color: lighten($primary, 48%);
+  padding: 1em 1.2em;
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: darken($body-color, 5%);
+}
+
+// Selection colour
+::selection {
+  background-color: $warning;
+  color: $body-color;
+}
