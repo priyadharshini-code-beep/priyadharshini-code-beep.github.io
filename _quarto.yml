@@ -1,0 +1,60 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Priyadharshini Balaji"
+  description: "ePortfolio — MSc Business Analytics, Dublin City University"
+  favicon: images/profile.jpg
+  site-url: https://priyadharshini-code-beep.github.io
+  repo-url: https://github.com/priyadharshini-code-beep/priyadharshini-code-beep.github.io
+
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Projects"
+        href: projects/index.qmd
+      - text: "Reflection"
+        href: reflection.qmd
+      - text: "Contact"
+        href: contact.qmd
+      - text: "CV"
+        href: cv/cv.pdf
+        target: _blank
+    right:
+      - icon: github
+        href: https://github.com/priyadharshini-code-beep
+        target: _blank
+      - icon: linkedin
+        href: https://www.linkedin.com/in/priyadharshini-balaji-66a361224/
+        target: _blank
+      - icon: envelope
+        href: "mailto:priyadharshiniblj25@gmail.com"
+
+  page-footer:
+    background: light
+    left: "© 2026 Priyadharshini Balaji"
+    center: "Built with [Quarto](https://quarto.org)"
+    right:
+      - icon: github
+        href: https://github.com/priyadharshini-code-beep
+      - icon: linkedin
+        href: https://www.linkedin.com/in/priyadharshini-balaji-66a361224/
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles.scss]
+    css: styles.css
+    toc: true
+    toc-location: right
+    code-fold: true
+    code-tools: true
+    highlight-style: github
+    fig-cap-location: bottom
+    page-layout: full

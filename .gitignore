@@ -1,0 +1,33 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+venv/
+.venv/
+env/
+.env
+
+# Quarto rendered outputs (we keep docs/ only for deployment, not temp files)
+.quarto/
+_freeze/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
+
+# OS files
+Thumbs.db
