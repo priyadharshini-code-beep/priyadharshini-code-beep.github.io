@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Priyadharshini Balaji">
+<meta name="dcterms.date" content="2026-04-15">
+<meta name="description" content="Segmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.">
+
+<title>Customer Segmentation with RFM Analysis – Priyadharshini Balaji</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/profile.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-292b36e5c5d2524ec2e0343e24a9e9a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Priyadharshini Balaji</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../reflection.qmd"> 
+<span class="menu-text">Reflection</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../contact.qmd"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv/cv.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/priyadharshini-code-beep" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/priyadharshini-balaji-66a361224/" target="_blank"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:priyadharshiniblj25@gmail.com"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-question" id="toc-the-question" class="nav-link active" data-scroll-target="#the-question">The Question</a></li>
+  <li><a href="#the-approach" id="toc-the-approach" class="nav-link" data-scroll-target="#the-approach">The Approach</a></li>
+  <li><a href="#step-1-generate-the-data" id="toc-step-1-generate-the-data" class="nav-link" data-scroll-target="#step-1-generate-the-data">Step 1 — Generate the data</a></li>
+  <li><a href="#step-2-explore-the-distribution" id="toc-step-2-explore-the-distribution" class="nav-link" data-scroll-target="#step-2-explore-the-distribution">Step 2 — Explore the distribution</a></li>
+  <li><a href="#step-3-cluster-with-k-means" id="toc-step-3-cluster-with-k-means" class="nav-link" data-scroll-target="#step-3-cluster-with-k-means">Step 3 — Cluster with K-Means</a></li>
+  <li><a href="#step-4-name-the-segments" id="toc-step-4-name-the-segments" class="nav-link" data-scroll-target="#step-4-name-the-segments">Step 4 — Name the segments</a></li>
+  <li><a href="#step-5-visualise-the-segments-interactively" id="toc-step-5-visualise-the-segments-interactively" class="nav-link" data-scroll-target="#step-5-visualise-the-segments-interactively">Step 5 — Visualise the segments interactively</a></li>
+  <li><a href="#step-6-segment-economics" id="toc-step-6-segment-economics" class="nav-link" data-scroll-target="#step-6-segment-economics">Step 6 — Segment economics</a></li>
+  <li><a href="#what-this-tells-the-business" id="toc-what-this-tells-the-business" class="nav-link" data-scroll-target="#what-this-tells-the-business">What this tells the business</a></li>
+  <li><a href="#what-i-learned" id="toc-what-i-learned" class="nav-link" data-scroll-target="#what-i-learned">What I learned</a></li>
+  <li><a href="#code-data" id="toc-code-data" class="nav-link" data-scroll-target="#code-data">Code &amp; data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Customer Segmentation with RFM Analysis</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">python</div>
+    <div class="quarto-category">clustering</div>
+    <div class="quarto-category">marketing-analytics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Segmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Priyadharshini Balaji </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 15, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-question" class="level2">
+<h2 class="anchored" data-anchor-id="the-question">The Question</h2>
+<p><em>Not every customer is equally valuable — and not every customer should get the same marketing treatment.</em> How can we segment a customer base into meaningful groups using only three simple signals: <strong>Recency</strong>, <strong>Frequency</strong>, and <strong>Monetary value</strong>?</p>
+</section>
+<section id="the-approach" class="level2">
+<h2 class="anchored" data-anchor-id="the-approach">The Approach</h2>
+<p>RFM (Recency, Frequency, Monetary) is a classic marketing framework. I combine it with <strong>K-Means clustering</strong> to identify natural customer segments without hand-picking thresholds.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Data in this project is <strong>synthetic</strong> — generated to simulate realistic retail patterns. The methodology is what matters; the same pipeline runs on real transaction data without changes.</p>
+</div>
+</div>
+</section>
+<section id="step-1-generate-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-generate-the-data">Step 1 — Generate the data</h2>
+<div id="cell-data-generation" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n_customers <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>today <span class="op">=</span> datetime(<span class="dv">2026</span>, <span class="dv">4</span>, <span class="dv">15</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate customer behaviour with three archetypes mixed in</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>customer_ids <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, n_customers <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>recency <span class="op">=</span> np.concatenate([</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">1</span>, <span class="dv">30</span>, <span class="dv">300</span>),     <span class="co"># active</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">30</span>, <span class="dv">120</span>, <span class="dv">500</span>),   <span class="co"># moderate</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">120</span>, <span class="dv">365</span>, <span class="dv">200</span>)   <span class="co"># lapsed</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>frequency <span class="op">=</span> np.concatenate([</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">300</span>),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">500</span>),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">200</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>monetary <span class="op">=</span> np.concatenate([</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    np.random.uniform(<span class="dv">500</span>, <span class="dv">5000</span>, <span class="dv">300</span>),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    np.random.uniform(<span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">500</span>),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    np.random.uniform(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">200</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>]).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>rfm <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CustomerID'</span>: customer_ids,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Recency'</span>: recency,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Frequency'</span>: frequency,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Monetary'</span>: monetary</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>rfm.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="data-generation" class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CustomerID</th>
+<th data-quarto-table-cell-role="th">Recency</th>
+<th data-quarto-table-cell-role="th">Frequency</th>
+<th data-quarto-table-cell-role="th">Monetary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>7</td>
+<td>22</td>
+<td>2449.61</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>20</td>
+<td>29</td>
+<td>4929.58</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>29</td>
+<td>34</td>
+<td>1173.11</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>15</td>
+<td>13</td>
+<td>2590.69</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5</td>
+<td>11</td>
+<td>19</td>
+<td>3562.05</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>6</td>
+<td>8</td>
+<td>12</td>
+<td>2279.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>7</td>
+<td>29</td>
+<td>27</td>
+<td>4886.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>8</td>
+<td>21</td>
+<td>45</td>
+<td>3748.49</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>9</td>
+<td>7</td>
+<td>31</td>
+<td>3456.43</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>10</td>
+<td>26</td>
+<td>43</td>
+<td>3906.77</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>Synthetic retail transaction data preview</p>
+</div>
+</div>
+</section>
+<section id="step-2-explore-the-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-explore-the-distribution">Step 2 — Explore the distribution</h2>
+<div id="cell-fig-rfm-dist" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotly.subplots <span class="im">import</span> make_subplots</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> make_subplots(rows<span class="op">=</span><span class="dv">1</span>, cols<span class="op">=</span><span class="dv">3</span>, subplot_titles<span class="op">=</span>(<span class="st">'Recency (days)'</span>, <span class="st">'Frequency (orders)'</span>, <span class="st">'Monetary (€)'</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Histogram(x<span class="op">=</span>rfm[<span class="st">'Recency'</span>], marker_color<span class="op">=</span><span class="st">'#6a4c93'</span>, nbinsx<span class="op">=</span><span class="dv">30</span>), row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Histogram(x<span class="op">=</span>rfm[<span class="st">'Frequency'</span>], marker_color<span class="op">=</span><span class="st">'#1982c4'</span>, nbinsx<span class="op">=</span><span class="dv">30</span>), row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Histogram(x<span class="op">=</span>rfm[<span class="st">'Monetary'</span>], marker_color<span class="op">=</span><span class="st">'#ff595e'</span>, nbinsx<span class="op">=</span><span class="dv">30</span>), row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>fig.update_layout(showlegend<span class="op">=</span><span class="va">False</span>, height<span class="op">=</span><span class="dv">350</span>, template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                  title_text<span class="op">=</span><span class="st">"RFM Feature Distributions"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="fig-rfm-dist" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rfm-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>                            <div id="5bf4718a-07d4-400c-b42d-b831aeb995a0" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5bf4718a-07d4-400c-b42d-b831aeb995a0")) {                    Plotly.newPlot(                        "5bf4718a-07d4-400c-b42d-b831aeb995a0",                        [{"marker":{"color":"#6a4c93"},"nbinsx":30,"x":[7,20,29,15,11,8,29,21,7,26,19,23,11,11,24,21,4,8,24,3,22,21,2,24,12,6,2,28,21,1,12,26,22,29,12,25,17,27,27,10,28,28,16,15,15,19,12,23,20,25,3,5,19,7,21,9,7,18,4,25,28,14,18,26,9,26,21,2,20,28,15,28,7,12,29,8,15,3,14,17,4,18,8,4,2,6,22,10,4,22,29,18,26,12,2,10,4,14,16,15,8,14,23,28,25,8,21,16,13,18,15,21,24,26,25,28,28,28,13,9,29,15,13,1,25,7,9,24,1,12,8,24,11,19,17,8,3,3,1,27,5,10,7,26,9,28,7,9,8,12,2,1,16,23,23,24,5,3,12,8,22,27,3,1,3,5,15,14,3,1,5,26,23,14,7,27,9,15,15,26,10,28,13,19,7,17,20,29,4,5,23,7,13,15,11,29,4,13,7,27,19,22,28,2,10,13,25,21,6,28,28,12,12,20,11,26,23,28,25,7,1,1,25,27,25,20,13,9,3,7,6,8,27,9,5,1,19,10,12,24,15,27,22,24,9,20,17,17,26,20,12,7,2,3,17,5,17,24,17,27,17,2,2,28,22,23,5,1,1,19,2,21,12,26,6,23,4,23,11,24,27,17,6,24,5,20,2,6,22,11,16,16,1,9,28,27,6,16,29,3,49,88,65,48,119,96,48,49,100,81,62,69,68,111,30,40,86,118,79,52,60,71,36,45,119,89,31,30,77,41,98,66,61,38,48,77,109,32,49,53,83,62,53,104,101,65,67,113,118,54,47,111,95,83,64,109,90,70,62,97,62,43,50,77,49,37,36,96,46,62,77,105,88,115,51,59,67,80,83,37,56,56,50,59,57,93,98,90,77,48,33,64,93,78,46,73,59,75,35,66,53,75,82,89,92,114,61,116,62,96,47,54,83,87,96,75,53,61,76,115,52,95,56,31,119,46,62,38,72,77,68,71,55,79,54,53,42,89,36,86,65,74,49,94,37,45,43,105,116,44,95,61,116,92,115,80,54,87,92,91,51,87,87,115,78,81,71,99,44,83,89,37,82,89,34,97,35,76,84,69,81,45,42,59,48,46,92,48,87,84,119,119,91,52,38,41,30,87,30,63,77,118,30,45,90,93,92,98,51,96,105,55,45,80,115,86,58,107,98,76,91,98,105,45,119,119,77,114,68,62,52,39,98,63,81,39,48,87,30,98,33,45,53,109,31,61,113,53,41,79,64,62,62,90,80,72,41,96,94,62,69,103,72,73,58,42,41,75,31,64,116,110,119,37,55,103,119,63,36,97,87,104,58,65,118,50,65,39,102,53,93,78,65,111,53,52,91,66,41,84,42,52,118,59,46,91,113,118,115,42,88,48,78,41,90,48,105,38,100,57,107,81,112,45,98,41,54,81,114,82,52,45,86,68,82,71,87,68,43,34,64,116,104,47,105,38,103,87,46,36,75,42,69,71,38,79,56,95,34,58,66,67,112,37,94,115,46,100,118,74,33,65,99,60,48,90,83,68,103,119,48,68,96,74,42,87,49,101,90,68,30,32,106,91,92,54,85,62,67,35,87,73,74,61,74,90,76,50,109,114,104,65,48,49,86,47,76,78,43,44,60,30,83,32,45,116,86,104,41,103,45,101,105,53,57,37,65,119,37,87,89,79,57,70,93,56,92,46,102,62,113,106,58,42,75,64,35,111,98,76,54,95,39,85,59,34,62,94,47,78,40,114,55,92,118,115,88,56,78,106,62,30,50,84,35,110,98,34,32,82,52,82,66,103,103,112,46,114,107,102,229,120,170,292,324,123,309,312,232,351,151,153,211,214,191,158,273,281,301,237,122,242,169,131,312,173,355,252,341,341,176,264,231,166,270,326,348,204,261,185,194,298,222,285,311,345,157,169,217,201,149,198,210,298,310,345,171,285,344,335,198,149,225,170,200,252,148,251,257,303,264,193,136,203,335,188,153,125,172,313,324,245,354,162,359,322,234,230,270,302,199,214,322,237,263,127,251,223,251,303,144,314,215,314,274,212,279,297,180,241,170,266,140,124,329,211,289,180,141,268,189,120,252,352,131,209,165,153,296,197,337,164,274,192,145,166,240,333,358,175,213,226,182,167,180,200,145,155,120,127,232,218,299,326,166,246,175,333,133,337,147,334,197,335,249,228,273,133,306,175,234,126,122,230,270,357,226,358,356,137,157,346,234,134,311,336,238,348,147,321,158,304,136,350,205,337,245,163,144,264],"type":"histogram","xaxis":"x","yaxis":"y"},{"marker":{"color":"#1982c4"},"nbinsx":30,"x":[22,29,34,13,19,12,27,45,31,43,17,49,28,46,15,35,43,15,46,42,31,30,15,15,13,39,20,39,40,33,18,12,40,49,46,45,33,40,15,11,29,37,20,13,24,15,39,47,11,24,20,17,35,14,15,35,13,28,29,42,29,21,10,35,23,47,46,20,45,22,12,42,15,19,14,32,19,11,22,49,11,29,10,46,18,26,18,20,24,33,47,44,39,40,14,23,20,18,43,21,44,44,10,49,31,38,17,20,46,23,39,44,30,46,14,28,23,35,13,34,34,27,49,17,48,49,23,41,47,42,32,24,42,34,26,42,11,23,49,49,48,15,15,12,16,17,24,38,42,39,48,36,45,38,47,42,46,36,42,13,31,11,19,14,19,42,47,22,40,45,33,24,38,17,14,38,13,21,11,36,40,45,45,35,36,14,29,20,19,49,47,15,17,32,35,21,35,22,49,27,34,42,49,21,45,13,14,46,17,37,40,18,38,23,49,31,20,32,10,46,30,35,45,32,10,49,24,30,18,18,19,35,44,34,35,20,47,11,16,27,36,43,36,26,33,34,16,15,33,42,38,31,35,37,30,16,26,29,29,31,37,49,16,10,41,22,39,32,28,41,39,38,38,39,25,49,28,27,10,23,11,37,39,47,13,10,17,38,48,12,41,19,19,28,43,42,32,37,41,16,7,3,3,9,5,9,5,9,7,8,3,9,7,5,5,3,6,9,4,5,8,8,5,6,6,7,8,7,8,9,9,4,9,4,9,3,9,7,5,7,5,6,7,6,4,4,3,9,7,6,5,4,9,4,5,9,9,6,6,7,7,8,8,3,4,7,6,5,6,4,8,6,3,4,8,5,8,9,3,4,5,3,8,3,4,7,3,9,3,8,8,5,8,6,4,4,7,7,4,9,7,5,8,4,7,4,6,3,8,4,3,7,3,8,4,6,9,7,4,8,7,5,3,9,8,5,4,6,7,3,7,9,4,7,3,4,7,6,8,4,8,4,6,8,5,3,5,7,6,5,4,7,7,5,5,6,3,5,9,5,8,4,9,9,8,8,7,3,4,6,9,6,5,5,6,5,3,8,5,7,5,4,3,4,4,7,3,3,3,3,3,7,5,4,3,9,5,5,4,7,6,6,5,8,8,4,6,5,7,6,5,5,3,7,3,4,3,9,3,9,6,8,5,9,7,3,9,7,8,8,3,4,3,6,9,5,4,3,7,4,9,4,9,3,9,4,7,8,4,9,8,9,7,9,3,5,4,5,9,7,4,9,8,6,9,5,4,5,4,9,3,8,9,5,6,6,7,4,5,7,5,4,9,9,6,9,9,3,6,7,8,3,7,4,3,7,4,6,8,4,9,5,4,4,8,5,9,7,7,4,5,5,9,8,6,7,8,3,7,8,7,6,3,6,9,3,4,8,3,9,9,6,7,3,8,3,5,7,8,8,4,6,4,8,7,3,3,7,8,9,3,9,3,3,6,6,5,4,7,7,7,5,6,8,9,9,8,5,8,7,4,3,9,6,6,5,6,7,9,8,7,5,7,8,4,5,4,3,4,3,3,4,5,8,7,7,8,9,9,3,3,5,6,4,3,7,5,4,5,4,4,8,3,5,5,8,7,7,9,3,3,6,8,7,4,5,3,5,5,6,7,3,5,3,4,6,4,3,9,3,7,5,5,4,6,9,8,5,7,4,4,8,7,6,7,6,7,7,3,4,7,8,7,5,4,5,4,5,7,7,3,8,5,6,3,5,5,3,7,5,7,3,7,4,6,9,5,8,6,9,7,5,7,4,3,5,9,9,4,4,2,1,1,2,1,1,2,2,2,2,1,1,2,1,2,2,1,2,1,1,1,1,2,1,2,2,2,2,1,1,2,2,1,2,1,2,1,2,2,1,2,2,1,2,1,1,2,2,2,2,2,2,2,1,2,1,2,2,1,2,2,1,2,2,2,1,2,2,2,2,1,1,2,2,1,1,2,1,2,1,1,1,1,2,1,1,2,1,1,2,1,2,2,2,2,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,2,2,2,1,1,1,1,2,2,2,2,1,1,1,2,1,1,2,2,1,1,1,1,1,1,2,2,2,1,2,1,1,2,1,1,2,2,2,1,2,2,1,2,2,2,1,1,1,1,2,1,1,2,2,2,1,1,1,2,2,1,2,2,2,1,2,2,1,1,2,2,1,1,2,2,2,2,1,2,2,1,2,1,2,2,1,1,2,2],"type":"histogram","xaxis":"x2","yaxis":"y2"},{"marker":{"color":"#ff595e"},"nbinsx":30,"x":[2449.61,4929.58,1173.11,2590.69,3562.05,2279.95,4886.15,3748.49,3456.43,3906.77,4786.92,4585.18,3759.28,3871.23,1156.65,962.57,3069.07,582.65,2670.6,1446.57,2057.07,3991.12,4735.57,825.87,2904.09,4471.4,871.29,4210.31,2110.11,1949.43,4898.6,1403.87,3619.37,4196.48,685.33,3516.73,4781.97,1058.99,4533.0,3176.49,3274.72,3258.25,1844.76,4708.41,4763.08,3313.87,4025.4,3255.16,2679.79,3473.69,2988.51,3188.64,4027.25,2664.07,683.39,1238.0,2473.73,3761.72,3169.75,3426.32,2656.76,3270.84,1980.58,2615.82,3849.26,4423.25,2451.45,696.48,1227.53,593.88,3439.68,1995.42,2941.15,2719.75,866.87,2314.68,1492.53,2382.8,1416.1,4282.04,1283.87,4823.51,2371.58,4308.1,3329.44,3809.08,3954.76,2771.8,2944.85,2812.98,3146.26,632.28,2279.82,3227.85,3189.76,4068.3,3447.54,4964.6,1777.35,2116.18,2227.31,2596.16,4261.99,1561.06,3992.0,2323.9,3208.35,3346.43,2177.82,2806.77,2358.64,811.1,2467.24,938.27,2322.59,3168.13,3107.37,3481.8,928.68,3434.55,1904.67,2295.71,4360.94,540.64,3147.86,3194.21,2284.97,1566.63,1556.03,4476.69,2489.11,1989.0,2519.5,3512.26,1155.9,2522.45,3145.48,4768.63,1636.38,2116.63,2207.11,3224.92,2105.29,2900.8,4018.06,3674.24,2508.66,4388.97,3011.63,2929.58,653.84,4940.12,1053.37,1540.09,732.64,3380.01,1511.16,1310.05,898.5,964.89,3131.02,3596.94,2288.21,2659.54,3586.85,578.21,1954.09,4878.94,3110.51,1644.01,2847.79,2041.94,2895.1,1065.84,1097.22,1145.94,4729.19,3798.05,1230.72,1347.57,3788.73,1202.74,1555.53,4835.06,1648.88,3477.35,4903.84,2184.34,578.82,1598.66,4238.95,4390.74,3958.34,1008.99,4079.8,4634.05,3202.74,4733.94,4220.77,3501.37,3097.33,2068.58,1216.79,3222.29,1931.5,4398.97,4970.02,3885.92,907.17,1799.09,990.99,3427.3,3943.36,4665.54,2471.78,4556.19,4450.51,1927.38,4410.05,2190.53,1835.91,3420.84,1977.72,3335.94,3244.24,3035.48,2211.89,2968.25,3184.18,2955.59,2499.89,566.0,3141.78,1258.0,3391.59,3917.05,2752.0,2940.64,4781.65,4312.25,4614.06,4161.95,990.13,1170.46,2869.81,1607.31,2645.13,2274.64,2972.36,3860.94,3719.71,2845.55,4200.77,2438.88,4535.21,820.76,4795.97,3446.12,2210.34,1387.19,2656.32,1375.51,1248.49,3278.08,2853.88,3515.43,4683.23,2895.17,3114.19,903.32,3729.36,2299.57,4895.26,4204.28,2851.16,1054.5,4367.37,4099.01,1330.63,1828.75,4070.33,1333.53,4629.89,2410.37,891.68,4170.87,2180.79,2869.25,1005.37,511.63,3370.93,2818.29,3170.92,4071.85,3409.73,1286.48,2123.48,4576.51,3964.75,3004.87,202.26,220.82,392.78,440.47,368.57,423.81,406.66,159.88,269.58,161.19,194.09,447.7,289.16,314.14,171.38,224.91,192.1,182.47,355.18,202.75,352.81,123.38,156.71,209.82,338.82,370.34,277.09,278.32,389.81,106.33,236.44,427.48,341.29,234.89,462.21,409.05,205.96,358.12,338.3,260.48,246.78,237.42,346.86,276.96,432.75,367.84,127.97,356.07,208.46,337.12,372.05,192.33,282.74,176.13,120.94,251.39,245.18,498.19,278.54,233.43,332.19,135.51,484.67,353.98,401.94,168.19,263.79,269.08,428.72,100.49,220.34,492.49,289.95,253.01,147.93,489.67,108.01,394.87,407.44,197.46,368.62,137.17,202.82,415.16,445.87,343.39,302.74,163.72,125.24,147.06,190.94,236.67,252.36,238.53,195.62,303.89,430.11,211.88,476.95,449.33,164.71,414.51,329.83,326.63,256.42,300.46,258.87,315.89,351.18,369.72,312.99,388.57,156.51,184.79,427.49,229.01,109.16,161.52,189.45,482.93,329.22,473.09,330.07,291.74,225.49,342.55,155.68,459.3,431.73,227.01,481.12,430.08,366.52,148.7,291.29,302.44,193.02,131.99,410.69,148.81,337.72,474.58,450.44,211.1,440.58,100.13,107.08,341.02,245.92,254.58,325.78,176.71,184.7,293.84,401.7,347.8,218.94,272.13,168.27,129.85,413.08,206.15,171.11,376.65,347.22,353.28,191.56,193.06,188.32,169.5,362.29,439.21,389.73,416.84,261.92,361.63,241.69,310.2,292.65,170.75,254.83,485.53,199.43,153.52,267.43,416.14,332.86,372.39,175.88,347.58,229.4,433.72,351.72,179.54,125.85,117.05,248.56,206.34,358.44,299.73,206.41,159.7,150.88,445.86,197.39,360.68,424.27,345.63,443.83,256.96,482.49,153.26,140.86,363.48,477.13,423.55,130.57,211.75,472.13,201.22,412.47,430.05,298.18,254.54,280.05,190.79,455.76,280.25,452.98,142.28,495.31,277.31,119.13,115.21,398.48,363.61,420.85,142.15,114.23,303.43,255.04,284.78,496.64,488.3,476.93,413.54,241.94,264.85,319.85,432.21,127.49,269.72,133.05,305.86,459.56,412.99,191.14,490.4,366.94,104.17,202.17,204.29,127.7,483.93,291.3,458.33,228.89,150.09,289.73,145.58,294.41,468.12,308.31,346.6,162.66,117.49,144.32,339.41,138.0,250.4,320.04,255.46,165.47,209.52,471.33,370.39,298.42,105.09,496.97,368.58,226.77,451.71,203.37,317.61,354.43,188.43,491.36,399.28,323.13,172.24,121.54,228.02,401.27,207.73,315.82,391.18,143.18,374.12,136.75,486.05,295.36,160.27,236.95,265.37,403.27,397.37,344.78,142.37,160.63,137.5,330.87,450.86,273.52,164.34,323.22,424.7,396.68,452.58,211.16,177.58,451.93,363.02,224.37,396.94,426.05,345.99,375.15,250.1,315.48,309.66,439.22,435.99,433.07,104.41,399.82,403.47,371.35,402.51,436.79,288.13,300.82,149.89,254.15,357.35,412.16,186.88,155.13,365.22,100.75,171.35,111.63,166.75,172.53,255.07,260.93,449.7,304.04,389.36,141.65,190.18,381.18,121.12,294.64,339.75,340.86,109.17,228.84,354.6,159.6,378.17,398.37,492.79,183.94,430.05,308.12,249.39,148.95,394.2,194.34,248.57,125.02,420.55,406.64,393.45,219.78,169.39,355.02,298.47,171.3,374.36,496.45,398.89,395.99,480.13,181.17,326.22,491.86,166.12,380.1,334.32,334.59,379.07,471.85,413.03,122.45,441.09,190.22,250.77,284.69,292.36,274.07,474.94,382.41,352.47,119.94,461.57,463.76,412.09,102.81,122.91,190.09,152.54,259.53,469.05,288.82,105.36,213.1,117.84,114.52,210.29,210.24,414.85,489.93,248.48,271.55,437.92,207.26,162.55,441.24,118.6,347.88,324.8,238.37,226.08,408.74,134.57,194.71,392.98,319.33,151.2,452.85,257.38,431.15,415.09,349.77,297.79,491.82,157.99,390.06,176.48,235.31,223.48,478.81,486.94,173.21,108.81,388.0,267.2,135.54,373.5,318.04,492.21,190.96,261.59,317.02,416.68,319.54,345.16,190.46,438.77,271.45,156.38,365.68,186.44,139.03,444.79,284.06,399.71,216.24,414.79,20.07,42.04,98.03,81.46,54.75,40.58,88.49,59.04,78.26,77.87,11.62,21.36,69.37,24.55,32.99,95.2,60.42,77.57,60.22,59.73,18.47,40.93,35.42,45.17,81.85,43.47,50.65,45.76,18.41,49.7,27.6,26.81,18.46,42.1,78.17,34.88,38.11,67.84,27.63,90.73,56.82,50.28,60.2,24.94,65.21,42.68,90.75,25.2,55.63,63.83,13.0,42.73,75.94,83.83,38.18,81.87,97.1,87.12,20.59,76.58,38.77,98.96,53.68,21.02,75.27,39.07,99.74,98.18,69.05,21.68,71.82,18.37,12.64,84.07,28.88,44.11,97.61,40.32,36.68,92.64,19.97,78.36,98.93,91.12,68.65,38.27,32.89,83.73,89.18,57.29,31.99,20.16,17.85,74.72,47.81,91.48,76.57,27.21,65.24,49.2,61.95,76.43,82.56,85.94,32.86,12.8,76.54,19.57,38.34,10.34,71.35,25.04,68.98,99.26,16.54,16.94,40.63,87.97,29.4,42.43,16.17,78.68,46.75,78.33,91.32,30.95,82.67,15.32,90.9,68.57,88.68,10.02,25.22,45.08,44.16,30.41,44.35,21.6,47.15,82.21,53.12,11.62,47.93,12.45,96.96,21.47,73.69,97.55,84.34,72.94,85.55,98.36,65.92,60.33,66.54,57.94,67.16,50.49,29.66,20.82,16.15,33.7,14.15,61.05,35.54,84.21,16.68,30.37,75.72,63.89,15.8,88.95,88.95,39.74,40.64,99.01,66.36,57.82,85.43,35.68,48.63,34.1,81.02,61.6,69.29,32.71,29.82,53.95,76.38,57.27,12.94,88.17,15.82,96.02,12.26,72.5,17.4,91.96,51.8,22.38],"type":"histogram","xaxis":"x3","yaxis":"y3"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.2888888888888889]},"yaxis":{"anchor":"x","domain":[0.0,1.0]},"xaxis2":{"anchor":"y2","domain":[0.35555555555555557,0.6444444444444445]},"yaxis2":{"anchor":"x2","domain":[0.0,1.0]},"xaxis3":{"anchor":"y3","domain":[0.7111111111111111,1.0]},"yaxis3":{"anchor":"x3","domain":[0.0,1.0]},"annotations":[{"font":{"size":16},"showarrow":false,"text":"Recency (days)","x":0.14444444444444446,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Frequency (orders)","x":0.5,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Monetary (\u20ac)","x":0.8555555555555556,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"title":{"text":"RFM Feature Distributions"},"showlegend":false,"height":350},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('5bf4718a-07d4-400c-b42d-b831aeb995a0');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rfm-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Distribution of Recency, Frequency, and Monetary values
+</figcaption>
+</figure>
+</div>
+</div>
+<p>The three features are heavily <strong>right-skewed</strong> — a handful of customers dominate frequency and spend. This is exactly what we’d expect in retail and motivates scaling before clustering.</p>
+</section>
+<section id="step-3-cluster-with-k-means" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-cluster-with-k-means">Step 3 — Cluster with K-Means</h2>
+<div id="cell-clustering" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale features (K-Means is distance-based, so scale matters)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>rfm_scaled <span class="op">=</span> scaler.fit_transform(rfm[[<span class="st">'Recency'</span>, <span class="st">'Frequency'</span>, <span class="st">'Monetary'</span>]])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit K-Means with 4 clusters</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_init<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>rfm[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans.fit_predict(rfm_scaled)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Profile each cluster</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>cluster_profile <span class="op">=</span> rfm.groupby(<span class="st">'Cluster'</span>).agg(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    Count<span class="op">=</span>(<span class="st">'CustomerID'</span>, <span class="st">'count'</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    AvgRecency<span class="op">=</span>(<span class="st">'Recency'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    AvgFrequency<span class="op">=</span>(<span class="st">'Frequency'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    AvgMonetary<span class="op">=</span>(<span class="st">'Monetary'</span>, <span class="st">'mean'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>).<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>cluster_profile</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="clustering" class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Count</th>
+<th data-quarto-table-cell-role="th">AvgRecency</th>
+<th data-quarto-table-cell-role="th">AvgFrequency</th>
+<th data-quarto-table-cell-role="th">AvgMonetary</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Cluster</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>566</td>
+<td>74.8</td>
+<td>6.0</td>
+<td>307.2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>143</td>
+<td>16.6</td>
+<td>40.4</td>
+<td>2423.4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>132</td>
+<td>14.0</td>
+<td>21.5</td>
+<td>3581.7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>159</td>
+<td>258.6</td>
+<td>1.5</td>
+<td>52.8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>Assigning each customer to a segment</p>
+</div>
+</div>
+</section>
+<section id="step-4-name-the-segments" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-name-the-segments">Step 4 — Name the segments</h2>
+<p>Based on the cluster profile, I can assign meaningful labels:</p>
+<div id="cell-segment-labels" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>segment_names <span class="op">=</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    rfm.groupby(<span class="st">'Cluster'</span>)[<span class="st">'Monetary'</span>].mean().idxmax(): <span class="st">'🌟 Champions'</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    rfm.groupby(<span class="st">'Cluster'</span>)[<span class="st">'Recency'</span>].mean().idxmax(): <span class="st">'💤 At Risk'</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    rfm.groupby(<span class="st">'Cluster'</span>)[<span class="st">'Frequency'</span>].mean().idxmin(): <span class="st">'🆕 New / Occasional'</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill in the remaining cluster</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>remaining <span class="op">=</span> <span class="bu">set</span>(rfm[<span class="st">'Cluster'</span>].unique()) <span class="op">-</span> <span class="bu">set</span>(segment_names.keys())</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> remaining:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    segment_names[c] <span class="op">=</span> <span class="st">'👥 Loyal Regulars'</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>rfm[<span class="st">'Segment'</span>] <span class="op">=</span> rfm[<span class="st">'Cluster'</span>].<span class="bu">map</span>(segment_names)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>rfm[<span class="st">'Segment'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="segment-labels" class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>Segment
+👥 Loyal Regulars      709
+🆕 New / Occasional    159
+🌟 Champions           132
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="step-5-visualise-the-segments-interactively" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-visualise-the-segments-interactively">Step 5 — Visualise the segments interactively</h2>
+<div id="cell-fig-segments-3d" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter_3d(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    rfm, x<span class="op">=</span><span class="st">'Recency'</span>, y<span class="op">=</span><span class="st">'Frequency'</span>, z<span class="op">=</span><span class="st">'Monetary'</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'Segment'</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    hover_data<span class="op">=</span>[<span class="st">'CustomerID'</span>],</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="fl">0.7</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#ff595e'</span>, <span class="st">'#ffca3a'</span>, <span class="st">'#8ac926'</span>, <span class="st">'#6a4c93'</span>]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>fig.update_traces(marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">5</span>))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">600</span>, template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                  title<span class="op">=</span><span class="st">'Customer Segments in RFM Space'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="fig-segments-3d" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-segments-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>                            <div id="50c9e2cb-346f-43f7-b581-57a4ca8508e2" class="plotly-graph-div" style="height:600px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("50c9e2cb-346f-43f7-b581-57a4ca8508e2")) {                    Plotly.newPlot(                        "50c9e2cb-346f-43f7-b581-57a4ca8508e2",                        [{"customdata":[[1],[2],[4],[5],[6],[7],[9],[11],[13],[22],[23],[25],[26],[31],[37],[39],[40],[41],[43],[44],[45],[46],[49],[50],[51],[52],[53],[54],[57],[58],[59],[62],[65],[71],[73],[74],[78],[82],[83],[85],[86],[87],[88],[89],[95],[96],[97],[98],[100],[103],[105],[107],[108],[110],[115],[116],[117],[127],[132],[137],[138],[142],[143],[144],[145],[146],[147],[148],[152],[161],[162],[163],[164],[165],[168],[172],[177],[178],[184],[186],[187],[188],[192],[193],[195],[196],[198],[200],[204],[206],[207],[212],[214],[216],[217],[219],[224],[225],[227],[228],[229],[230],[231],[236],[238],[239],[240],[241],[247],[248],[253],[255],[257],[258],[264],[266],[267],[269],[273],[275],[277],[278],[280],[281],[283],[286],[287],[292],[293],[294],[298],[300]],"hovertemplate":"Segment=\ud83c\udf1f Champions\u003cbr\u003eRecency=%{x}\u003cbr\u003eFrequency=%{y}\u003cbr\u003eMonetary=%{z}\u003cbr\u003eCustomerID=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\ud83c\udf1f Champions","marker":{"color":"#ff595e","opacity":0.7,"symbol":"circle","size":5},"mode":"markers","name":"\ud83c\udf1f Champions","scene":"scene","showlegend":true,"x":[7,20,15,11,8,29,7,19,11,21,2,12,6,12,17,27,10,28,16,15,15,19,20,25,3,5,19,7,7,18,4,14,9,15,7,12,3,18,8,2,6,22,10,4,2,10,4,14,15,23,25,21,16,18,25,28,28,9,24,3,3,10,7,26,9,28,7,9,1,22,27,3,1,3,14,26,9,15,19,17,20,29,7,13,11,29,13,27,2,13,25,12,20,26,23,25,27,25,13,9,3,7,6,1,10,12,24,15,17,17,2,17,17,24,28,23,5,1,12,6,4,23,24,27,6,20,2,16,1,9,16,3],"y":[22,29,13,19,12,27,31,17,28,30,15,13,39,18,33,15,11,29,20,13,24,15,11,24,20,17,35,14,13,28,29,21,23,12,15,19,11,29,10,18,26,18,20,24,14,23,20,18,21,10,31,17,20,23,14,28,23,23,24,11,23,15,15,12,16,17,24,38,36,31,11,19,14,19,22,24,13,21,35,14,29,20,15,17,35,21,22,27,21,13,14,18,23,31,20,10,32,10,24,30,18,18,19,20,11,16,27,36,16,15,35,30,26,29,10,22,39,28,38,25,28,27,23,11,39,10,17,19,19,28,37,16],"z":[2449.61,4929.58,2590.69,3562.05,2279.95,4886.15,3456.43,4786.92,3759.28,3991.12,4735.57,2904.09,4471.4,4898.6,4781.97,4533.0,3176.49,3274.72,1844.76,4708.41,4763.08,3313.87,2679.79,3473.69,2988.51,3188.64,4027.25,2664.07,2473.73,3761.72,3169.75,3270.84,3849.26,3439.68,2941.15,2719.75,2382.8,4823.51,2371.58,3329.44,3809.08,3954.76,2771.8,2944.85,3189.76,4068.3,3447.54,4964.6,2116.18,4261.99,3992.0,3208.35,3346.43,2806.77,2322.59,3168.13,3107.37,2284.97,1989.0,3145.48,4768.63,3224.92,2105.29,2900.8,4018.06,3674.24,2508.66,4388.97,4940.12,3131.02,3596.94,2288.21,2659.54,3586.85,4878.94,2041.94,4729.19,3798.05,4835.06,3477.35,4903.84,2184.34,4390.74,3958.34,4079.8,4634.05,4733.94,3501.37,3222.29,4398.97,4970.02,3427.3,4665.54,4556.19,4450.51,4410.05,3335.94,3244.24,2211.89,2968.25,3184.18,2955.59,2499.89,3917.05,2940.64,4781.65,4312.25,4614.06,2645.13,2274.64,4200.77,4535.21,4795.97,3446.12,3278.08,3515.43,4683.23,3114.19,4895.26,2851.16,4367.37,4099.01,1828.75,4070.33,4629.89,4170.87,2180.79,2818.29,3170.92,4071.85,4576.51,3004.87],"type":"scatter3d"},{"customdata":[[3],[8],[10],[12],[14],[15],[16],[17],[18],[19],[20],[21],[24],[27],[28],[29],[30],[32],[33],[34],[35],[36],[38],[42],[47],[48],[55],[56],[60],[61],[63],[64],[66],[67],[68],[69],[70],[72],[75],[76],[77],[79],[80],[81],[84],[90],[91],[92],[93],[94],[99],[101],[102],[104],[106],[109],[111],[112],[113],[114],[118],[119],[120],[121],[122],[123],[124],[125],[126],[128],[129],[130],[131],[133],[134],[135],[136],[139],[140],[141],[149],[150],[151],[153],[154],[155],[156],[157],[158],[159],[160],[166],[167],[169],[170],[171],[173],[174],[175],[176],[179],[180],[181],[182],[183],[185],[189],[190],[191],[194],[197],[199],[201],[202],[203],[205],[208],[209],[210],[211],[213],[215],[218],[220],[221],[222],[223],[226],[232],[233],[234],[235],[237],[242],[243],[244],[245],[246],[249],[250],[251],[252],[254],[256],[259],[260],[261],[262],[263],[265],[268],[270],[271],[272],[274],[276],[279],[282],[284],[285],[288],[289],[290],[291],[295],[296],[297],[299],[301],[302],[303],[304],[305],[306],[307],[308],[309],[310],[311],[312],[313],[314],[315],[316],[317],[318],[319],[320],[321],[322],[323],[324],[325],[326],[327],[328],[329],[330],[331],[332],[333],[334],[335],[336],[337],[338],[339],[340],[341],[342],[343],[344],[345],[346],[347],[348],[349],[350],[351],[352],[353],[354],[355],[356],[357],[358],[359],[360],[361],[362],[363],[364],[365],[366],[367],[368],[369],[370],[371],[372],[373],[374],[375],[376],[377],[378],[379],[380],[381],[382],[383],[384],[385],[386],[387],[388],[389],[390],[391],[392],[393],[394],[395],[396],[397],[398],[399],[400],[401],[402],[403],[404],[405],[406],[407],[408],[409],[410],[411],[412],[413],[414],[415],[416],[417],[418],[419],[420],[421],[422],[423],[424],[425],[426],[427],[428],[429],[430],[431],[432],[433],[434],[435],[436],[437],[438],[439],[440],[441],[442],[443],[444],[445],[446],[447],[448],[449],[450],[451],[452],[453],[454],[455],[456],[457],[458],[459],[460],[461],[462],[463],[464],[465],[466],[467],[468],[469],[470],[471],[472],[473],[474],[475],[476],[477],[478],[479],[480],[481],[482],[483],[484],[485],[486],[487],[488],[489],[490],[491],[492],[493],[494],[495],[496],[497],[498],[499],[500],[501],[502],[503],[504],[505],[506],[507],[508],[509],[510],[511],[512],[513],[514],[515],[516],[517],[518],[519],[520],[521],[522],[523],[524],[525],[526],[527],[528],[529],[530],[531],[532],[533],[534],[535],[536],[537],[538],[539],[540],[541],[542],[543],[544],[545],[546],[547],[548],[549],[550],[551],[552],[553],[554],[555],[556],[557],[558],[559],[560],[561],[562],[563],[564],[565],[566],[567],[568],[569],[570],[571],[572],[573],[574],[575],[576],[577],[578],[579],[580],[581],[582],[583],[584],[585],[586],[587],[588],[589],[590],[591],[592],[593],[594],[595],[596],[597],[598],[599],[600],[601],[602],[603],[604],[605],[606],[607],[608],[609],[610],[611],[612],[613],[614],[615],[616],[617],[618],[619],[620],[621],[622],[623],[624],[625],[626],[627],[628],[629],[630],[631],[632],[633],[634],[635],[636],[637],[638],[639],[640],[641],[642],[643],[644],[645],[646],[647],[648],[649],[650],[651],[652],[653],[654],[655],[656],[657],[658],[659],[660],[661],[662],[663],[664],[665],[666],[667],[668],[669],[670],[671],[672],[673],[674],[675],[676],[677],[678],[679],[680],[681],[682],[683],[684],[685],[686],[687],[688],[689],[690],[691],[692],[693],[694],[695],[696],[697],[698],[699],[700],[701],[702],[703],[704],[705],[706],[707],[708],[709],[710],[711],[712],[713],[714],[715],[716],[717],[718],[719],[720],[721],[722],[723],[724],[725],[726],[727],[728],[729],[730],[731],[732],[733],[734],[735],[736],[737],[738],[739],[740],[741],[742],[743],[744],[745],[746],[747],[748],[749],[750],[751],[752],[753],[754],[755],[756],[757],[758],[759],[760],[761],[762],[763],[764],[765],[766],[767],[768],[769],[770],[771],[772],[773],[774],[775],[776],[777],[778],[779],[780],[781],[782],[783],[784],[785],[786],[787],[788],[789],[790],[791],[792],[793],[794],[795],[796],[797],[798],[799],[800],[802],[806],[811],[812],[816],[821],[824],[847],[851],[862],[867],[873],[877],[878],[884],[896],[901],[913],[914],[919],[922],[925],[928],[935],[947],[948],[949],[950],[959],[961],[968],[972],[973],[980],[981],[984],[989],[991],[993],[998],[999]],"hovertemplate":"Segment=\ud83d\udc65 Loyal Regulars\u003cbr\u003eRecency=%{x}\u003cbr\u003eFrequency=%{y}\u003cbr\u003eMonetary=%{z}\u003cbr\u003eCustomerID=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\ud83d\udc65 Loyal Regulars","marker":{"color":"#ffca3a","opacity":0.7,"symbol":"circle","size":5},"mode":"markers","name":"\ud83d\udc65 Loyal Regulars","scene":"scene","showlegend":true,"x":[29,21,26,23,11,24,21,4,8,24,3,22,24,2,28,21,1,26,22,29,12,25,27,28,12,23,21,9,25,28,18,26,26,21,2,20,28,28,29,8,15,14,17,4,4,22,29,18,26,12,16,8,14,28,8,13,15,21,24,26,28,13,9,29,15,13,1,25,7,24,1,12,8,11,19,17,8,1,27,5,8,12,2,16,23,23,24,5,3,12,8,5,15,3,1,5,23,14,7,27,15,26,10,28,13,7,4,5,23,15,4,7,19,22,28,10,21,6,28,28,12,11,28,7,1,1,25,20,8,27,9,5,19,27,22,24,9,20,26,20,12,7,3,5,17,27,17,2,2,22,1,19,2,21,26,23,11,17,24,5,6,22,11,16,28,27,6,29,49,88,65,48,119,96,48,49,100,81,62,69,68,111,30,40,86,118,79,52,60,71,36,45,119,89,31,30,77,41,98,66,61,38,48,77,109,32,49,53,83,62,53,104,101,65,67,113,118,54,47,111,95,83,64,109,90,70,62,97,62,43,50,77,49,37,36,96,46,62,77,105,88,115,51,59,67,80,83,37,56,56,50,59,57,93,98,90,77,48,33,64,93,78,46,73,59,75,35,66,53,75,82,89,92,114,61,116,62,96,47,54,83,87,96,75,53,61,76,115,52,95,56,31,119,46,62,38,72,77,68,71,55,79,54,53,42,89,36,86,65,74,49,94,37,45,43,105,116,44,95,61,116,92,115,80,54,87,92,91,51,87,87,115,78,81,71,99,44,83,89,37,82,89,34,97,35,76,84,69,81,45,42,59,48,46,92,48,87,84,119,119,91,52,38,41,30,87,30,63,77,118,30,45,90,93,92,98,51,96,105,55,45,80,115,86,58,107,98,76,91,98,105,45,119,119,77,114,68,62,52,39,98,63,81,39,48,87,30,98,33,45,53,109,31,61,113,53,41,79,64,62,62,90,80,72,41,96,94,62,69,103,72,73,58,42,41,75,31,64,116,110,119,37,55,103,119,63,36,97,87,104,58,65,118,50,65,39,102,53,93,78,65,111,53,52,91,66,41,84,42,52,118,59,46,91,113,118,115,42,88,48,78,41,90,48,105,38,100,57,107,81,112,45,98,41,54,81,114,82,52,45,86,68,82,71,87,68,43,34,64,116,104,47,105,38,103,87,46,36,75,42,69,71,38,79,56,95,34,58,66,67,112,37,94,115,46,100,118,74,33,65,99,60,48,90,83,68,103,119,48,68,96,74,42,87,49,101,90,68,30,32,106,91,92,54,85,62,67,35,87,73,74,61,74,90,76,50,109,114,104,65,48,49,86,47,76,78,43,44,60,30,83,32,45,116,86,104,41,103,45,101,105,53,57,37,65,119,37,87,89,79,57,70,93,56,92,46,102,62,113,106,58,42,75,64,35,111,98,76,54,95,39,85,59,34,62,94,47,78,40,114,55,92,118,115,88,56,78,106,62,30,50,84,35,110,98,34,32,82,52,82,66,103,103,112,46,114,107,102,120,123,151,153,158,122,131,157,149,149,148,136,153,125,162,127,144,140,124,141,120,131,153,145,145,155,120,127,133,147,133,126,122,137,157,134,147,158,136,163,144],"y":[34,45,43,49,46,15,35,43,15,46,42,31,15,20,39,40,33,12,40,49,46,45,40,37,39,47,15,35,42,29,10,35,47,46,20,45,22,42,14,32,19,22,49,11,46,33,47,44,39,40,43,44,44,49,38,46,39,44,30,46,35,13,34,34,27,49,17,48,49,41,47,42,32,42,34,26,42,49,49,48,42,39,48,45,38,47,42,46,36,42,13,42,47,40,45,33,38,17,14,38,11,36,40,45,45,36,19,49,47,32,35,49,34,42,49,45,46,17,37,40,38,49,32,46,30,35,45,49,35,44,34,35,47,43,36,26,33,34,33,42,38,31,37,16,29,31,37,49,16,41,32,41,39,38,39,49,10,37,47,13,38,48,12,41,43,42,32,41,7,3,3,9,5,9,5,9,7,8,3,9,7,5,5,3,6,9,4,5,8,8,5,6,6,7,8,7,8,9,9,4,9,4,9,3,9,7,5,7,5,6,7,6,4,4,3,9,7,6,5,4,9,4,5,9,9,6,6,7,7,8,8,3,4,7,6,5,6,4,8,6,3,4,8,5,8,9,3,4,5,3,8,3,4,7,3,9,3,8,8,5,8,6,4,4,7,7,4,9,7,5,8,4,7,4,6,3,8,4,3,7,3,8,4,6,9,7,4,8,7,5,3,9,8,5,4,6,7,3,7,9,4,7,3,4,7,6,8,4,8,4,6,8,5,3,5,7,6,5,4,7,7,5,5,6,3,5,9,5,8,4,9,9,8,8,7,3,4,6,9,6,5,5,6,5,3,8,5,7,5,4,3,4,4,7,3,3,3,3,3,7,5,4,3,9,5,5,4,7,6,6,5,8,8,4,6,5,7,6,5,5,3,7,3,4,3,9,3,9,6,8,5,9,7,3,9,7,8,8,3,4,3,6,9,5,4,3,7,4,9,4,9,3,9,4,7,8,4,9,8,9,7,9,3,5,4,5,9,7,4,9,8,6,9,5,4,5,4,9,3,8,9,5,6,6,7,4,5,7,5,4,9,9,6,9,9,3,6,7,8,3,7,4,3,7,4,6,8,4,9,5,4,4,8,5,9,7,7,4,5,5,9,8,6,7,8,3,7,8,7,6,3,6,9,3,4,8,3,9,9,6,7,3,8,3,5,7,8,8,4,6,4,8,7,3,3,7,8,9,3,9,3,3,6,6,5,4,7,7,7,5,6,8,9,9,8,5,8,7,4,3,9,6,6,5,6,7,9,8,7,5,7,8,4,5,4,3,4,3,3,4,5,8,7,7,8,9,9,3,3,5,6,4,3,7,5,4,5,4,4,8,3,5,5,8,7,7,9,3,3,6,8,7,4,5,3,5,5,6,7,3,5,3,4,6,4,3,9,3,7,5,5,4,6,9,8,5,7,4,4,8,7,6,7,6,7,7,3,4,7,8,7,5,4,5,4,5,7,7,3,8,5,6,3,5,5,3,7,5,7,3,7,4,6,9,5,8,6,9,7,5,7,4,3,5,9,9,4,4,1,1,1,1,2,1,1,2,2,1,2,2,2,1,2,1,1,2,2,2,2,1,1,1,2,2,2,1,1,2,1,1,2,1,2,1,1,2,2,1,2],"z":[1173.11,3748.49,3906.77,4585.18,3871.23,1156.65,962.57,3069.07,582.65,2670.6,1446.57,2057.07,825.87,871.29,4210.31,2110.11,1949.43,1403.87,3619.37,4196.48,685.33,3516.73,1058.99,3258.25,4025.4,3255.16,683.39,1238.0,3426.32,2656.76,1980.58,2615.82,4423.25,2451.45,696.48,1227.53,593.88,1995.42,866.87,2314.68,1492.53,1416.1,4282.04,1283.87,4308.1,2812.98,3146.26,632.28,2279.82,3227.85,1777.35,2227.31,2596.16,1561.06,2323.9,2177.82,2358.64,811.1,2467.24,938.27,3481.8,928.68,3434.55,1904.67,2295.71,4360.94,540.64,3147.86,3194.21,1566.63,1556.03,4476.69,2489.11,2519.5,3512.26,1155.9,2522.45,1636.38,2116.63,2207.11,3011.63,2929.58,653.84,1053.37,1540.09,732.64,3380.01,1511.16,1310.05,898.5,964.89,578.21,1954.09,3110.51,1644.01,2847.79,2895.1,1065.84,1097.22,1145.94,1230.72,1347.57,3788.73,1202.74,1555.53,1648.88,578.82,1598.66,4238.95,1008.99,3202.74,4220.77,3097.33,2068.58,1216.79,1931.5,3885.92,907.17,1799.09,990.99,3943.36,2471.78,1927.38,2190.53,1835.91,3420.84,1977.72,3035.48,566.0,3141.78,1258.0,3391.59,2752.0,4161.95,990.13,1170.46,2869.81,1607.31,2972.36,3860.94,3719.71,2845.55,2438.88,820.76,2210.34,1387.19,2656.32,1375.51,1248.49,2853.88,2895.17,903.32,3729.36,2299.57,4204.28,1054.5,1330.63,1333.53,2410.37,891.68,2869.25,1005.37,511.63,3370.93,3409.73,1286.48,2123.48,3964.75,202.26,220.82,392.78,440.47,368.57,423.81,406.66,159.88,269.58,161.19,194.09,447.7,289.16,314.14,171.38,224.91,192.1,182.47,355.18,202.75,352.81,123.38,156.71,209.82,338.82,370.34,277.09,278.32,389.81,106.33,236.44,427.48,341.29,234.89,462.21,409.05,205.96,358.12,338.3,260.48,246.78,237.42,346.86,276.96,432.75,367.84,127.97,356.07,208.46,337.12,372.05,192.33,282.74,176.13,120.94,251.39,245.18,498.19,278.54,233.43,332.19,135.51,484.67,353.98,401.94,168.19,263.79,269.08,428.72,100.49,220.34,492.49,289.95,253.01,147.93,489.67,108.01,394.87,407.44,197.46,368.62,137.17,202.82,415.16,445.87,343.39,302.74,163.72,125.24,147.06,190.94,236.67,252.36,238.53,195.62,303.89,430.11,211.88,476.95,449.33,164.71,414.51,329.83,326.63,256.42,300.46,258.87,315.89,351.18,369.72,312.99,388.57,156.51,184.79,427.49,229.01,109.16,161.52,189.45,482.93,329.22,473.09,330.07,291.74,225.49,342.55,155.68,459.3,431.73,227.01,481.12,430.08,366.52,148.7,291.29,302.44,193.02,131.99,410.69,148.81,337.72,474.58,450.44,211.1,440.58,100.13,107.08,341.02,245.92,254.58,325.78,176.71,184.7,293.84,401.7,347.8,218.94,272.13,168.27,129.85,413.08,206.15,171.11,376.65,347.22,353.28,191.56,193.06,188.32,169.5,362.29,439.21,389.73,416.84,261.92,361.63,241.69,310.2,292.65,170.75,254.83,485.53,199.43,153.52,267.43,416.14,332.86,372.39,175.88,347.58,229.4,433.72,351.72,179.54,125.85,117.05,248.56,206.34,358.44,299.73,206.41,159.7,150.88,445.86,197.39,360.68,424.27,345.63,443.83,256.96,482.49,153.26,140.86,363.48,477.13,423.55,130.57,211.75,472.13,201.22,412.47,430.05,298.18,254.54,280.05,190.79,455.76,280.25,452.98,142.28,495.31,277.31,119.13,115.21,398.48,363.61,420.85,142.15,114.23,303.43,255.04,284.78,496.64,488.3,476.93,413.54,241.94,264.85,319.85,432.21,127.49,269.72,133.05,305.86,459.56,412.99,191.14,490.4,366.94,104.17,202.17,204.29,127.7,483.93,291.3,458.33,228.89,150.09,289.73,145.58,294.41,468.12,308.31,346.6,162.66,117.49,144.32,339.41,138.0,250.4,320.04,255.46,165.47,209.52,471.33,370.39,298.42,105.09,496.97,368.58,226.77,451.71,203.37,317.61,354.43,188.43,491.36,399.28,323.13,172.24,121.54,228.02,401.27,207.73,315.82,391.18,143.18,374.12,136.75,486.05,295.36,160.27,236.95,265.37,403.27,397.37,344.78,142.37,160.63,137.5,330.87,450.86,273.52,164.34,323.22,424.7,396.68,452.58,211.16,177.58,451.93,363.02,224.37,396.94,426.05,345.99,375.15,250.1,315.48,309.66,439.22,435.99,433.07,104.41,399.82,403.47,371.35,402.51,436.79,288.13,300.82,149.89,254.15,357.35,412.16,186.88,155.13,365.22,100.75,171.35,111.63,166.75,172.53,255.07,260.93,449.7,304.04,389.36,141.65,190.18,381.18,121.12,294.64,339.75,340.86,109.17,228.84,354.6,159.6,378.17,398.37,492.79,183.94,430.05,308.12,249.39,148.95,394.2,194.34,248.57,125.02,420.55,406.64,393.45,219.78,169.39,355.02,298.47,171.3,374.36,496.45,398.89,395.99,480.13,181.17,326.22,491.86,166.12,380.1,334.32,334.59,379.07,471.85,413.03,122.45,441.09,190.22,250.77,284.69,292.36,274.07,474.94,382.41,352.47,119.94,461.57,463.76,412.09,102.81,122.91,190.09,152.54,259.53,469.05,288.82,105.36,213.1,117.84,114.52,210.29,210.24,414.85,489.93,248.48,271.55,437.92,207.26,162.55,441.24,118.6,347.88,324.8,238.37,226.08,408.74,134.57,194.71,392.98,319.33,151.2,452.85,257.38,431.15,415.09,349.77,297.79,491.82,157.99,390.06,176.48,235.31,223.48,478.81,486.94,173.21,108.81,388.0,267.2,135.54,373.5,318.04,492.21,190.96,261.59,317.02,416.68,319.54,345.16,190.46,438.77,271.45,156.38,365.68,186.44,139.03,444.79,284.06,399.71,216.24,414.79,42.04,40.58,11.62,21.36,95.2,18.47,45.17,90.75,13.0,98.96,99.74,12.64,97.61,40.32,91.12,91.48,61.95,68.98,99.26,29.4,78.68,91.32,15.32,44.16,73.69,97.55,84.34,72.94,29.66,16.15,30.37,88.95,88.95,35.68,48.63,61.6,76.38,12.94,15.82,91.96,51.8],"type":"scatter3d"},{"customdata":[[801],[803],[804],[805],[807],[808],[809],[810],[813],[814],[815],[817],[818],[819],[820],[822],[823],[825],[826],[827],[828],[829],[830],[831],[832],[833],[834],[835],[836],[837],[838],[839],[840],[841],[842],[843],[844],[845],[846],[848],[849],[850],[852],[853],[854],[855],[856],[857],[858],[859],[860],[861],[863],[864],[865],[866],[868],[869],[870],[871],[872],[874],[875],[876],[879],[880],[881],[882],[883],[885],[886],[887],[888],[889],[890],[891],[892],[893],[894],[895],[897],[898],[899],[900],[902],[903],[904],[905],[906],[907],[908],[909],[910],[911],[912],[915],[916],[917],[918],[920],[921],[923],[924],[926],[927],[929],[930],[931],[932],[933],[934],[936],[937],[938],[939],[940],[941],[942],[943],[944],[945],[946],[951],[952],[953],[954],[955],[956],[957],[958],[960],[962],[963],[964],[965],[966],[967],[969],[970],[971],[974],[975],[976],[977],[978],[979],[982],[983],[985],[986],[987],[988],[990],[992],[994],[995],[996],[997],[1000]],"hovertemplate":"Segment=\ud83c\udd95 New \u002f Occasional\u003cbr\u003eRecency=%{x}\u003cbr\u003eFrequency=%{y}\u003cbr\u003eMonetary=%{z}\u003cbr\u003eCustomerID=%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\ud83c\udd95 New \u002f Occasional","marker":{"color":"#8ac926","opacity":0.7,"symbol":"circle","size":5},"mode":"markers","name":"\ud83c\udd95 New \u002f Occasional","scene":"scene","showlegend":true,"x":[229,170,292,324,309,312,232,351,211,214,191,273,281,301,237,242,169,312,173,355,252,341,341,176,264,231,166,270,326,348,204,261,185,194,298,222,285,311,345,169,217,201,198,210,298,310,345,171,285,344,335,198,225,170,200,252,251,257,303,264,193,203,335,188,172,313,324,245,354,359,322,234,230,270,302,199,214,322,237,263,251,223,251,303,314,215,314,274,212,279,297,180,241,170,266,329,211,289,180,268,189,252,352,209,165,296,197,337,164,274,192,166,240,333,358,175,213,226,182,167,180,200,232,218,299,326,166,246,175,333,337,334,197,335,249,228,273,306,175,234,230,270,357,226,358,356,346,234,311,336,238,348,321,304,350,205,337,245,264],"y":[2,1,2,1,2,2,2,2,2,1,2,1,2,1,1,1,2,2,2,2,2,1,1,2,2,1,2,1,2,1,2,2,1,2,2,1,2,1,1,2,2,2,2,2,1,2,1,2,2,1,2,2,2,2,2,1,2,2,2,1,1,2,1,1,2,1,1,1,1,1,1,2,1,1,2,1,2,2,2,2,2,1,1,1,1,1,1,1,1,1,2,2,2,1,2,1,1,1,1,2,2,1,1,2,1,2,2,1,1,1,1,1,2,2,2,1,2,1,1,2,1,1,2,2,1,2,2,2,1,1,1,1,1,2,2,2,1,1,2,2,2,2,1,2,2,1,2,1,2,2,2,2,2,1,1,2,2,1,2],"z":[20.07,98.03,81.46,54.75,88.49,59.04,78.26,77.87,69.37,24.55,32.99,60.42,77.57,60.22,59.73,40.93,35.42,81.85,43.47,50.65,45.76,18.41,49.7,27.6,26.81,18.46,42.1,78.17,34.88,38.11,67.84,27.63,90.73,56.82,50.28,60.2,24.94,65.21,42.68,25.2,55.63,63.83,42.73,75.94,83.83,38.18,81.87,97.1,87.12,20.59,76.58,38.77,53.68,21.02,75.27,39.07,98.18,69.05,21.68,71.82,18.37,84.07,28.88,44.11,36.68,92.64,19.97,78.36,98.93,68.65,38.27,32.89,83.73,89.18,57.29,31.99,20.16,17.85,74.72,47.81,76.57,27.21,65.24,49.2,76.43,82.56,85.94,32.86,12.8,76.54,19.57,38.34,10.34,71.35,25.04,16.54,16.94,40.63,87.97,42.43,16.17,46.75,78.33,30.95,82.67,90.9,68.57,88.68,10.02,25.22,45.08,30.41,44.35,21.6,47.15,82.21,53.12,11.62,47.93,12.45,96.96,21.47,85.55,98.36,65.92,60.33,66.54,57.94,67.16,50.49,20.82,33.7,14.15,61.05,35.54,84.21,16.68,75.72,63.89,15.8,39.74,40.64,99.01,66.36,57.82,85.43,34.1,81.02,69.29,32.71,29.82,53.95,57.27,88.17,96.02,12.26,72.5,17.4,22.38],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"scene":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"xaxis":{"title":{"text":"Recency"}},"yaxis":{"title":{"text":"Frequency"}},"zaxis":{"title":{"text":"Monetary"}}},"legend":{"title":{"text":"Segment"},"tracegroupgap":0},"height":600,"title":{"text":"Customer Segments in RFM Space"}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('50c9e2cb-346f-43f7-b581-57a4ca8508e2');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-segments-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: 3D view of the four segments — drag to rotate
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="step-6-segment-economics" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-segment-economics">Step 6 — Segment economics</h2>
+<div id="cell-fig-segment-revenue" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>segment_summary <span class="op">=</span> rfm.groupby(<span class="st">'Segment'</span>).agg(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    Customers<span class="op">=</span>(<span class="st">'CustomerID'</span>, <span class="st">'count'</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    TotalRevenue<span class="op">=</span>(<span class="st">'Monetary'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    AvgOrderValue<span class="op">=</span>(<span class="st">'Monetary'</span>, <span class="st">'mean'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(<span class="st">'TotalRevenue'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    segment_summary.reset_index(),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'Segment'</span>, y<span class="op">=</span><span class="st">'TotalRevenue'</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'Segment'</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="st">'TotalRevenue'</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#6a4c93'</span>, <span class="st">'#8ac926'</span>, <span class="st">'#ffca3a'</span>, <span class="st">'#ff595e'</span>]</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>fig.update_traces(texttemplate<span class="op">=</span><span class="st">'€%</span><span class="sc">{text:,.0f}</span><span class="st">'</span>, textposition<span class="op">=</span><span class="st">'outside'</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>fig.update_layout(showlegend<span class="op">=</span><span class="va">False</span>, template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                  yaxis_title<span class="op">=</span><span class="st">'Total Revenue (€)'</span>, height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="fig-segment-revenue" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-segment-revenue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>                            <div id="0b211f1e-abde-4a7a-be88-3a23df257df5" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("0b211f1e-abde-4a7a-be88-3a23df257df5")) {                    Plotly.newPlot(                        "0b211f1e-abde-4a7a-be88-3a23df257df5",                        [{"alignmentgroup":"True","hovertemplate":"Segment=%{x}\u003cbr\u003eTotalRevenue=%{text}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\ud83d\udc65 Loyal Regulars","marker":{"color":"#6a4c93","pattern":{"shape":""}},"name":"\ud83d\udc65 Loyal Regulars","offsetgroup":"\ud83d\udc65 Loyal Regulars","orientation":"v","showlegend":true,"text":[520441.65],"textposition":"outside","x":["\ud83d\udc65 Loyal Regulars"],"xaxis":"x","y":[520441.65],"yaxis":"y","type":"bar","texttemplate":"\u20ac%{text:,.0f}"},{"alignmentgroup":"True","hovertemplate":"Segment=%{x}\u003cbr\u003eTotalRevenue=%{text}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\ud83c\udf1f Champions","marker":{"color":"#8ac926","pattern":{"shape":""}},"name":"\ud83c\udf1f Champions","offsetgroup":"\ud83c\udf1f Champions","orientation":"v","showlegend":true,"text":[472783.19],"textposition":"outside","x":["\ud83c\udf1f Champions"],"xaxis":"x","y":[472783.19],"yaxis":"y","type":"bar","texttemplate":"\u20ac%{text:,.0f}"},{"alignmentgroup":"True","hovertemplate":"Segment=%{x}\u003cbr\u003eTotalRevenue=%{text}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\ud83c\udd95 New \u002f Occasional","marker":{"color":"#ffca3a","pattern":{"shape":""}},"name":"\ud83c\udd95 New \u002f Occasional","offsetgroup":"\ud83c\udd95 New \u002f Occasional","orientation":"v","showlegend":true,"text":[8400.01],"textposition":"outside","x":["\ud83c\udd95 New \u002f Occasional"],"xaxis":"x","y":[8400.01],"yaxis":"y","type":"bar","texttemplate":"\u20ac%{text:,.0f}"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Segment"},"categoryorder":"array","categoryarray":["\ud83d\udc65 Loyal Regulars","\ud83c\udf1f Champions","\ud83c\udd95 New \u002f Occasional"]},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Total Revenue (\u20ac)"}},"legend":{"title":{"text":"Segment"},"tracegroupgap":0},"barmode":"relative","showlegend":false,"height":400},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('0b211f1e-abde-4a7a-be88-3a23df257df5');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-segment-revenue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Revenue contribution by segment
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="what-this-tells-the-business" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-tells-the-business">What this tells the business</h2>
+<div class="callout callout-style-default callout-important callout-titled" title="Takeaways">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Takeaways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>🌟 Champions</strong> are a small group but contribute the lion’s share of revenue — protect them with loyalty perks and early access, not discounts.</li>
+<li><strong>💤 At Risk</strong> customers haven’t ordered in months. A targeted win-back campaign (personalised offer, not a generic 10%) is the highest-ROI move here.</li>
+<li><strong>🆕 New / Occasional</strong> customers need nurturing — educational content, first-purchase offers, onboarding sequences.</li>
+<li><strong>👥 Loyal Regulars</strong> are the backbone. Cross-sell and upsell fit best here.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="what-i-learned" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-learned">What I learned</h2>
+<ul>
+<li><strong>Scaling matters.</strong> K-Means with raw RFM values put everything into the monetary dimension. Standardising gave genuinely 3D clusters.</li>
+<li><strong>K selection is a judgement call.</strong> I used 4 after inspecting the elbow plot, but 3 and 5 were both defensible. In practice you’d validate against business intuition.</li>
+<li><strong>Naming segments is the real deliverable.</strong> Cluster 2 / 3 means nothing to marketing. “At Risk” does.</li>
+</ul>
+</section>
+<section id="code-data" class="level2">
+<h2 class="anchored" data-anchor-id="code-data">Code &amp; data</h2>
+<p>The full notebook with synthetic data generation is in <a href="https://github.com/priyadharshini-code-beep/priyadharshini-code-beep.github.io">this repo</a>.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/priyadharshini-code-beep\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Customer Segmentation with RFM Analysis"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Segmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering."</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Priyadharshini Balaji"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-04-15"</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "customer-segmentation.jpg"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [python, clustering, marketing-analytics]</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Question</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>*Not every customer is equally valuable — and not every customer should get the same marketing treatment.* How can we segment a customer base into meaningful groups using only three simple signals: **Recency**, **Frequency**, and **Monetary value**?</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Approach</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>RFM (Recency, Frequency, Monetary) is a classic marketing framework. I combine it with **K-Means clustering** to identify natural customer segments without hand-picking thresholds.</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>Data in this project is **synthetic** — generated to simulate realistic retail patterns. The methodology is what matters; the same pipeline runs on real transaction data without changes.</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 1 — Generate the data</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: data-generation</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Synthetic retail transaction data preview"</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>n_customers <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>today <span class="op">=</span> datetime(<span class="dv">2026</span>, <span class="dv">4</span>, <span class="dv">15</span>)</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate customer behaviour with three archetypes mixed in</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>customer_ids <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, n_customers <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>recency <span class="op">=</span> np.concatenate([</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">1</span>, <span class="dv">30</span>, <span class="dv">300</span>),     <span class="co"># active</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">30</span>, <span class="dv">120</span>, <span class="dv">500</span>),   <span class="co"># moderate</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">120</span>, <span class="dv">365</span>, <span class="dv">200</span>)   <span class="co"># lapsed</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>frequency <span class="op">=</span> np.concatenate([</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">300</span>),</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">500</span>),</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">200</span>)</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>monetary <span class="op">=</span> np.concatenate([</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>    np.random.uniform(<span class="dv">500</span>, <span class="dv">5000</span>, <span class="dv">300</span>),</span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>    np.random.uniform(<span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">500</span>),</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>    np.random.uniform(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">200</span>)</span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>]).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>rfm <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CustomerID'</span>: customer_ids,</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Recency'</span>: recency,</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Frequency'</span>: frequency,</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Monetary'</span>: monetary</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>rfm.head(<span class="dv">10</span>)</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 2 — Explore the distribution</span></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-rfm-dist</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Distribution of Recency, Frequency, and Monetary values"</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotly.subplots <span class="im">import</span> make_subplots</span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> make_subplots(rows<span class="op">=</span><span class="dv">1</span>, cols<span class="op">=</span><span class="dv">3</span>, subplot_titles<span class="op">=</span>(<span class="st">'Recency (days)'</span>, <span class="st">'Frequency (orders)'</span>, <span class="st">'Monetary (€)'</span>))</span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Histogram(x<span class="op">=</span>rfm[<span class="st">'Recency'</span>], marker_color<span class="op">=</span><span class="st">'#6a4c93'</span>, nbinsx<span class="op">=</span><span class="dv">30</span>), row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Histogram(x<span class="op">=</span>rfm[<span class="st">'Frequency'</span>], marker_color<span class="op">=</span><span class="st">'#1982c4'</span>, nbinsx<span class="op">=</span><span class="dv">30</span>), row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Histogram(x<span class="op">=</span>rfm[<span class="st">'Monetary'</span>], marker_color<span class="op">=</span><span class="st">'#ff595e'</span>, nbinsx<span class="op">=</span><span class="dv">30</span>), row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>fig.update_layout(showlegend<span class="op">=</span><span class="va">False</span>, height<span class="op">=</span><span class="dv">350</span>, template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>                  title_text<span class="op">=</span><span class="st">"RFM Feature Distributions"</span>)</span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>The three features are heavily **right-skewed** — a handful of customers dominate frequency and spend. This is exactly what we'd expect in retail and motivates scaling before clustering.</span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 3 — Cluster with K-Means</span></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: clustering</span></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Assigning each customer to a segment"</span></span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale features (K-Means is distance-based, so scale matters)</span></span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>rfm_scaled <span class="op">=</span> scaler.fit_transform(rfm[[<span class="st">'Recency'</span>, <span class="st">'Frequency'</span>, <span class="st">'Monetary'</span>]])</span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit K-Means with 4 clusters</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_init<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>rfm[<span class="st">'Cluster'</span>] <span class="op">=</span> kmeans.fit_predict(rfm_scaled)</span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Profile each cluster</span></span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>cluster_profile <span class="op">=</span> rfm.groupby(<span class="st">'Cluster'</span>).agg(</span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>    Count<span class="op">=</span>(<span class="st">'CustomerID'</span>, <span class="st">'count'</span>),</span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>    AvgRecency<span class="op">=</span>(<span class="st">'Recency'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>    AvgFrequency<span class="op">=</span>(<span class="st">'Frequency'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a>    AvgMonetary<span class="op">=</span>(<span class="st">'Monetary'</span>, <span class="st">'mean'</span>)</span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>).<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>cluster_profile</span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 4 — Name the segments</span></span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>Based on the cluster profile, I can assign meaningful labels:</span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: segment-labels</span></span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>segment_names <span class="op">=</span> {</span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>    rfm.groupby(<span class="st">'Cluster'</span>)[<span class="st">'Monetary'</span>].mean().idxmax(): <span class="st">'🌟 Champions'</span>,</span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>    rfm.groupby(<span class="st">'Cluster'</span>)[<span class="st">'Recency'</span>].mean().idxmax(): <span class="st">'💤 At Risk'</span>,</span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a>    rfm.groupby(<span class="st">'Cluster'</span>)[<span class="st">'Frequency'</span>].mean().idxmin(): <span class="st">'🆕 New / Occasional'</span>,</span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill in the remaining cluster</span></span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>remaining <span class="op">=</span> <span class="bu">set</span>(rfm[<span class="st">'Cluster'</span>].unique()) <span class="op">-</span> <span class="bu">set</span>(segment_names.keys())</span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> remaining:</span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>    segment_names[c] <span class="op">=</span> <span class="st">'👥 Loyal Regulars'</span></span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>rfm[<span class="st">'Segment'</span>] <span class="op">=</span> rfm[<span class="st">'Cluster'</span>].<span class="bu">map</span>(segment_names)</span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>rfm[<span class="st">'Segment'</span>].value_counts()</span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 5 — Visualise the segments interactively</span></span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-segments-3d</span></span>
+<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "3D view of the four segments — drag to rotate"</span></span>
+<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter_3d(</span>
+<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a>    rfm, x<span class="op">=</span><span class="st">'Recency'</span>, y<span class="op">=</span><span class="st">'Frequency'</span>, z<span class="op">=</span><span class="st">'Monetary'</span>,</span>
+<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'Segment'</span>,</span>
+<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a>    hover_data<span class="op">=</span>[<span class="st">'CustomerID'</span>],</span>
+<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="fl">0.7</span>,</span>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#ff595e'</span>, <span class="st">'#ffca3a'</span>, <span class="st">'#8ac926'</span>, <span class="st">'#6a4c93'</span>]</span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a>fig.update_traces(marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">5</span>))</span>
+<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">600</span>, template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a>                  title<span class="op">=</span><span class="st">'Customer Segments in RFM Space'</span>)</span>
+<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 6 — Segment economics</span></span>
+<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-segment-revenue</span></span>
+<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Revenue contribution by segment"</span></span>
+<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a>segment_summary <span class="op">=</span> rfm.groupby(<span class="st">'Segment'</span>).agg(</span>
+<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a>    Customers<span class="op">=</span>(<span class="st">'CustomerID'</span>, <span class="st">'count'</span>),</span>
+<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a>    TotalRevenue<span class="op">=</span>(<span class="st">'Monetary'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>    AvgOrderValue<span class="op">=</span>(<span class="st">'Monetary'</span>, <span class="st">'mean'</span>)</span>
+<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a>).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(<span class="st">'TotalRevenue'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>    segment_summary.reset_index(),</span>
+<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'Segment'</span>, y<span class="op">=</span><span class="st">'TotalRevenue'</span>,</span>
+<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'Segment'</span>,</span>
+<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="st">'TotalRevenue'</span>,</span>
+<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#6a4c93'</span>, <span class="st">'#8ac926'</span>, <span class="st">'#ffca3a'</span>, <span class="st">'#ff595e'</span>]</span>
+<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a>fig.update_traces(texttemplate<span class="op">=</span><span class="st">'€%</span><span class="sc">{text:,.0f}</span><span class="st">'</span>, textposition<span class="op">=</span><span class="st">'outside'</span>)</span>
+<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a>fig.update_layout(showlegend<span class="op">=</span><span class="va">False</span>, template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a>                  yaxis_title<span class="op">=</span><span class="st">'Total Revenue (€)'</span>, height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a><span class="fu">## What this tells the business</span></span>
+<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a>::: {.callout-important title="Takeaways"}</span>
+<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**🌟 Champions** are a small group but contribute the lion's share of revenue — protect them with loyalty perks and early access, not discounts.</span>
+<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**💤 At Risk** customers haven't ordered in months. A targeted win-back campaign (personalised offer, not a generic 10%) is the highest-ROI move here.</span>
+<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**🆕 New / Occasional** customers need nurturing — educational content, first-purchase offers, onboarding sequences.</span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**👥 Loyal Regulars** are the backbone. Cross-sell and upsell fit best here.</span>
+<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a><span class="fu">## What I learned</span></span>
+<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Scaling matters.** K-Means with raw RFM values put everything into the monetary dimension. Standardising gave genuinely 3D clusters.</span>
+<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**K selection is a judgement call.** I used 4 after inspecting the elbow plot, but 3 and 5 were both defensible. In practice you'd validate against business intuition.</span>
+<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Naming segments is the real deliverable.** Cluster 2 / 3 means nothing to marketing. "At Risk" does.</span>
+<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code &amp; data</span></span>
+<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a>The full notebook with synthetic data generation is in <span class="co">[</span><span class="ot">this repo</span><span class="co">](https://github.com/priyadharshini-code-beep/priyadharshini-code-beep.github.io)</span>.</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Priyadharshini Balaji</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/priyadharshini-code-beep">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/priyadharshini-balaji-66a361224/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

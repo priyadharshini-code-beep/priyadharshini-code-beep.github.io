@@ -1,0 +1,52 @@
+---
+title: "Curriculum Vitae"
+---
+
+My full CV is available as a downloadable PDF.
+
+::: {.callout-tip}
+## Download my CV
+[📄 Click here to download the PDF](cv/cv.pdf){target="_blank"}
+:::
+
+## Summary
+
+**MSc Business Analytics candidate** at Dublin City University with an undergraduate background in Information Technology. Focus on transforming data into actionable business decisions through Python, SQL, and modern visualisation tools.
+
+## Education
+
+### MSc Business Analytics
+**Dublin City University**, Dublin, Ireland  
+*In progress*
+
+Core modules include statistical analysis, data mining, machine learning, business decision modelling, and data visualisation.
+
+### B.Tech, Information Technology
+*Completed*
+
+Foundation in programming, databases, software engineering, and computer networks.
+
+## Core Competencies
+
+- **Programming:** Python (pandas, scikit-learn, Plotly), SQL, R
+- **Analytics:** Exploratory data analysis, predictive modelling, clustering, classification
+- **Visualisation:** Plotly, Tableau, Power BI
+- **Tools & workflow:** Git, Quarto, Jupyter, VS Code
+- **Soft skills:** Stakeholder communication, technical writing, collaborative version control
+
+## Projects
+
+Explore the detailed project pages on this site:
+
+- **[Customer Segmentation & RFM Analysis](projects/list/customer-segmentation.qmd)** — unsupervised learning on retail data
+- **[Sales Forecasting Dashboard](projects/list/sales-forecasting.qmd)** — time series analysis with interactive visualisations
+
+## Contact
+
+- **Email:** [priyadharshiniblj25@gmail.com](mailto:priyadharshiniblj25@gmail.com)
+- **LinkedIn:** [linkedin.com/in/priyadharshini-balaji](https://www.linkedin.com/in/priyadharshini-balaji-66a361224/)
+- **GitHub:** [github.com/priyadharshini-code-beep](https://github.com/priyadharshini-code-beep)
+
+::: {.callout-note}
+This web page is a summary. The [PDF version](cv/cv.pdf){target="_blank"} has the full, formatted CV suitable for submission to employers.
+:::

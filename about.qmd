@@ -1,5 +1,55 @@
 ---
-title: "About"
+title: "About Me"
+image: images/profile.jpg
+about:
+  template: jolla
+  image-width: 12em
+  image-shape: round
 ---
 
-About this site
+## Background
+
+I'm Priyadharshini Balaji, currently pursuing an **MSc in Business Analytics** at **Dublin City University** (DCU). I hold a **Bachelor of Technology in Information Technology**, which gave me a strong foundation in programming, databases, and systems thinking before I moved into analytics.
+
+## What drives me
+
+I'm fascinated by the way data can change decisions. A well-placed chart can shift a strategy; a well-designed dashboard can save hours of guesswork. My MSc has been pushing me from *describing* data to *predicting* with it — statistical modelling, machine learning, and communicating findings to non-technical audiences.
+
+## Skills
+
+::: {.grid}
+
+::: {.g-col-6}
+### Technical
+- **Languages:** Python, SQL, R
+- **Libraries:** pandas, scikit-learn, Plotly, matplotlib
+- **Tools:** Git, Quarto, Jupyter, VS Code
+- **Databases:** MySQL, PostgreSQL
+- **Visualisation:** Plotly, Tableau, Power BI
+:::
+
+::: {.g-col-6}
+### Analytical & Professional
+- Data cleaning & exploratory analysis
+- Statistical modelling
+- Dashboard design
+- Report writing & storytelling
+- Collaborative version control
+- Presenting insights to non-technical stakeholders
+:::
+
+:::
+
+## Goals
+
+Over the next year I want to:
+
+1. **Deepen my machine learning fundamentals** — especially classification, clustering, and time series.
+2. **Build a portfolio of end-to-end analytics projects** that real people can interact with (this site is step one).
+3. **Secure an analyst role** where I can combine business context with rigorous technical work.
+
+## Beyond analytics
+
+When I'm not staring at Jupyter notebooks, I enjoy exploring Dublin, reading, and tinkering with little side projects that usually start as "this should take an hour" and end up taking a weekend.
+
+Thanks for reading — feel free to [get in touch](contact.qmd) or browse my [projects](projects/index.qmd).

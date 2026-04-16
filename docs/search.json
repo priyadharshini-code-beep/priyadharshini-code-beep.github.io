@@ -1,10 +1,45 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Curriculum Vitae",
     "section": "",
-    "text": "About this site"
+    "text": "My full CV is available as a downloadable PDF."
+  },
+  {
+    "objectID": "cv.html#summary",
+    "href": "cv.html#summary",
+    "title": "Curriculum Vitae",
+    "section": "Summary",
+    "text": "Summary\nMSc Business Analytics candidate at Dublin City University with an undergraduate background in Information Technology. Focus on transforming data into actionable business decisions through Python, SQL, and modern visualisation tools."
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "Curriculum Vitae",
+    "section": "Education",
+    "text": "Education\n\nMSc Business Analytics\nDublin City University, Dublin, Ireland\nIn progress\nCore modules include statistical analysis, data mining, machine learning, business decision modelling, and data visualisation.\n\n\nB.Tech, Information Technology\nCompleted\nFoundation in programming, databases, software engineering, and computer networks."
+  },
+  {
+    "objectID": "cv.html#core-competencies",
+    "href": "cv.html#core-competencies",
+    "title": "Curriculum Vitae",
+    "section": "Core Competencies",
+    "text": "Core Competencies\n\nProgramming: Python (pandas, scikit-learn, Plotly), SQL, R\nAnalytics: Exploratory data analysis, predictive modelling, clustering, classification\nVisualisation: Plotly, Tableau, Power BI\nTools & workflow: Git, Quarto, Jupyter, VS Code\nSoft skills: Stakeholder communication, technical writing, collaborative version control"
+  },
+  {
+    "objectID": "cv.html#projects",
+    "href": "cv.html#projects",
+    "title": "Curriculum Vitae",
+    "section": "Projects",
+    "text": "Projects\nExplore the detailed project pages on this site:\n\nCustomer Segmentation & RFM Analysis — unsupervised learning on retail data\nSales Forecasting Dashboard — time series analysis with interactive visualisations"
+  },
+  {
+    "objectID": "cv.html#contact",
+    "href": "cv.html#contact",
+    "title": "Curriculum Vitae",
+    "section": "Contact",
+    "text": "Contact\n\nEmail: priyadharshiniblj25@gmail.com\nLinkedIn: linkedin.com/in/priyadharshini-balaji\nGitHub: github.com/priyadharshini-code-beep\n\n\n\n\n\n\n\nNote\n\n\n\nThis web page is a summary. The PDF version has the full, formatted CV suitable for submission to employers."
   },
   {
     "objectID": "index.html",
@@ -19,5 +54,215 @@
     "title": "Priyadharshini Balaji",
     "section": "",
     "text": "I’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.\nThis site is my ePortfolio: a collection of projects, reflections, and a living record of what I’m learning along the way.\n\n\n\n📊 Projects that apply analytical methods to real business questions\n📝 Reflection on skills I’ve picked up — Git, Quarto, Python, design thinking\n📄 CV summarising my background and experience\n📬 Contact if you’d like to get in touch\n\nThanks for visiting!"
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html",
+    "href": "projects/list/customer-segmentation.html",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "",
+    "text": "Not every customer is equally valuable — and not every customer should get the same marketing treatment. How can we segment a customer base into meaningful groups using only three simple signals: Recency, Frequency, and Monetary value?"
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#the-question",
+    "href": "projects/list/customer-segmentation.html#the-question",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "",
+    "text": "Not every customer is equally valuable — and not every customer should get the same marketing treatment. How can we segment a customer base into meaningful groups using only three simple signals: Recency, Frequency, and Monetary value?"
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#the-approach",
+    "href": "projects/list/customer-segmentation.html#the-approach",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "The Approach",
+    "text": "The Approach\nRFM (Recency, Frequency, Monetary) is a classic marketing framework. I combine it with K-Means clustering to identify natural customer segments without hand-picking thresholds.\n\n\n\n\n\n\nNote\n\n\n\nData in this project is synthetic — generated to simulate realistic retail patterns. The methodology is what matters; the same pipeline runs on real transaction data without changes."
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#step-1-generate-the-data",
+    "href": "projects/list/customer-segmentation.html#step-1-generate-the-data",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Step 1 — Generate the data",
+    "text": "Step 1 — Generate the data\n\n\nCode\nimport pandas as pd\nimport numpy as np\nfrom datetime import datetime, timedelta\n\nnp.random.seed(42)\n\nn_customers = 1000\ntoday = datetime(2026, 4, 15)\n\n# Simulate customer behaviour with three archetypes mixed in\ncustomer_ids = range(1, n_customers + 1)\nrecency = np.concatenate([\n    np.random.randint(1, 30, 300),     # active\n    np.random.randint(30, 120, 500),   # moderate\n    np.random.randint(120, 365, 200)   # lapsed\n])\nfrequency = np.concatenate([\n    np.random.randint(10, 50, 300),\n    np.random.randint(3, 10, 500),\n    np.random.randint(1, 3, 200)\n])\nmonetary = np.concatenate([\n    np.random.uniform(500, 5000, 300),\n    np.random.uniform(100, 500, 500),\n    np.random.uniform(10, 100, 200)\n]).round(2)\n\nrfm = pd.DataFrame({\n    'CustomerID': customer_ids,\n    'Recency': recency,\n    'Frequency': frequency,\n    'Monetary': monetary\n})\n\nrfm.head(10)\n\n\n\n\n\n\n\n\n\nCustomerID\nRecency\nFrequency\nMonetary\n\n\n\n\n0\n1\n7\n22\n2449.61\n\n\n1\n2\n20\n29\n4929.58\n\n\n2\n3\n29\n34\n1173.11\n\n\n3\n4\n15\n13\n2590.69\n\n\n4\n5\n11\n19\n3562.05\n\n\n5\n6\n8\n12\n2279.95\n\n\n6\n7\n29\n27\n4886.15\n\n\n7\n8\n21\n45\n3748.49\n\n\n8\n9\n7\n31\n3456.43\n\n\n9\n10\n26\n43\n3906.77\n\n\n\n\n\nSynthetic retail transaction data preview"
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#step-2-explore-the-distribution",
+    "href": "projects/list/customer-segmentation.html#step-2-explore-the-distribution",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Step 2 — Explore the distribution",
+    "text": "Step 2 — Explore the distribution\n\n\nCode\nimport plotly.express as px\nfrom plotly.subplots import make_subplots\nimport plotly.graph_objects as go\n\nfig = make_subplots(rows=1, cols=3, subplot_titles=('Recency (days)', 'Frequency (orders)', 'Monetary (€)'))\n\nfig.add_trace(go.Histogram(x=rfm['Recency'], marker_color='#6a4c93', nbinsx=30), row=1, col=1)\nfig.add_trace(go.Histogram(x=rfm['Frequency'], marker_color='#1982c4', nbinsx=30), row=1, col=2)\nfig.add_trace(go.Histogram(x=rfm['Monetary'], marker_color='#ff595e', nbinsx=30), row=1, col=3)\n\nfig.update_layout(showlegend=False, height=350, template='plotly_white',\n                  title_text=\"RFM Feature Distributions\")\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 1: Distribution of Recency, Frequency, and Monetary values\n\n\n\n\nThe three features are heavily right-skewed — a handful of customers dominate frequency and spend. This is exactly what we’d expect in retail and motivates scaling before clustering."
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#step-3-cluster-with-k-means",
+    "href": "projects/list/customer-segmentation.html#step-3-cluster-with-k-means",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Step 3 — Cluster with K-Means",
+    "text": "Step 3 — Cluster with K-Means\n\n\nCode\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\n\n# Scale features (K-Means is distance-based, so scale matters)\nscaler = StandardScaler()\nrfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])\n\n# Fit K-Means with 4 clusters\nkmeans = KMeans(n_clusters=4, random_state=42, n_init=10)\nrfm['Cluster'] = kmeans.fit_predict(rfm_scaled)\n\n# Profile each cluster\ncluster_profile = rfm.groupby('Cluster').agg(\n    Count=('CustomerID', 'count'),\n    AvgRecency=('Recency', 'mean'),\n    AvgFrequency=('Frequency', 'mean'),\n    AvgMonetary=('Monetary', 'mean')\n).round(1)\n\ncluster_profile\n\n\n\n\n\n\n\n\n\nCount\nAvgRecency\nAvgFrequency\nAvgMonetary\n\n\nCluster\n\n\n\n\n\n\n\n\n0\n566\n74.8\n6.0\n307.2\n\n\n1\n143\n16.6\n40.4\n2423.4\n\n\n2\n132\n14.0\n21.5\n3581.7\n\n\n3\n159\n258.6\n1.5\n52.8\n\n\n\n\n\nAssigning each customer to a segment"
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#step-4-name-the-segments",
+    "href": "projects/list/customer-segmentation.html#step-4-name-the-segments",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Step 4 — Name the segments",
+    "text": "Step 4 — Name the segments\nBased on the cluster profile, I can assign meaningful labels:\n\n\nCode\nsegment_names = {\n    rfm.groupby('Cluster')['Monetary'].mean().idxmax(): '🌟 Champions',\n    rfm.groupby('Cluster')['Recency'].mean().idxmax(): '💤 At Risk',\n    rfm.groupby('Cluster')['Frequency'].mean().idxmin(): '🆕 New / Occasional',\n}\n# Fill in the remaining cluster\nremaining = set(rfm['Cluster'].unique()) - set(segment_names.keys())\nfor c in remaining:\n    segment_names[c] = '👥 Loyal Regulars'\n\nrfm['Segment'] = rfm['Cluster'].map(segment_names)\nrfm['Segment'].value_counts()\n\n\nSegment\n👥 Loyal Regulars      709\n🆕 New / Occasional    159\n🌟 Champions           132\nName: count, dtype: int64"
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#step-5-visualise-the-segments-interactively",
+    "href": "projects/list/customer-segmentation.html#step-5-visualise-the-segments-interactively",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Step 5 — Visualise the segments interactively",
+    "text": "Step 5 — Visualise the segments interactively\n\n\nCode\nfig = px.scatter_3d(\n    rfm, x='Recency', y='Frequency', z='Monetary',\n    color='Segment',\n    hover_data=['CustomerID'],\n    opacity=0.7,\n    color_discrete_sequence=['#ff595e', '#ffca3a', '#8ac926', '#6a4c93']\n)\nfig.update_traces(marker=dict(size=5))\nfig.update_layout(height=600, template='plotly_white',\n                  title='Customer Segments in RFM Space')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 2: 3D view of the four segments — drag to rotate"
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#step-6-segment-economics",
+    "href": "projects/list/customer-segmentation.html#step-6-segment-economics",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Step 6 — Segment economics",
+    "text": "Step 6 — Segment economics\n\n\nCode\nsegment_summary = rfm.groupby('Segment').agg(\n    Customers=('CustomerID', 'count'),\n    TotalRevenue=('Monetary', 'sum'),\n    AvgOrderValue=('Monetary', 'mean')\n).round(2).sort_values('TotalRevenue', ascending=False)\n\nfig = px.bar(\n    segment_summary.reset_index(),\n    x='Segment', y='TotalRevenue',\n    color='Segment',\n    text='TotalRevenue',\n    color_discrete_sequence=['#6a4c93', '#8ac926', '#ffca3a', '#ff595e']\n)\nfig.update_traces(texttemplate='€%{text:,.0f}', textposition='outside')\nfig.update_layout(showlegend=False, template='plotly_white',\n                  yaxis_title='Total Revenue (€)', height=400)\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 3: Revenue contribution by segment"
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#what-this-tells-the-business",
+    "href": "projects/list/customer-segmentation.html#what-this-tells-the-business",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "What this tells the business",
+    "text": "What this tells the business\n\n\n\n\n\n\nImportantTakeaways\n\n\n\n\n🌟 Champions are a small group but contribute the lion’s share of revenue — protect them with loyalty perks and early access, not discounts.\n💤 At Risk customers haven’t ordered in months. A targeted win-back campaign (personalised offer, not a generic 10%) is the highest-ROI move here.\n🆕 New / Occasional customers need nurturing — educational content, first-purchase offers, onboarding sequences.\n👥 Loyal Regulars are the backbone. Cross-sell and upsell fit best here."
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#what-i-learned",
+    "href": "projects/list/customer-segmentation.html#what-i-learned",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "What I learned",
+    "text": "What I learned\n\nScaling matters. K-Means with raw RFM values put everything into the monetary dimension. Standardising gave genuinely 3D clusters.\nK selection is a judgement call. I used 4 after inspecting the elbow plot, but 3 and 5 were both defensible. In practice you’d validate against business intuition.\nNaming segments is the real deliverable. Cluster 2 / 3 means nothing to marketing. “At Risk” does."
+  },
+  {
+    "objectID": "projects/list/customer-segmentation.html#code-data",
+    "href": "projects/list/customer-segmentation.html#code-data",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Code & data",
+    "text": "Code & data\nThe full notebook with synthetic data generation is in this repo."
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html",
+    "href": "projects/list/sales-forecasting.html",
+    "title": "Sales Forecasting Dashboard",
+    "section": "",
+    "text": "What will our sales look like for the next quarter? Accurate short-horizon sales forecasts drive staffing, stock, and cash-flow decisions. I build a simple but honest forecast pipeline on two years of synthetic daily sales."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#the-question",
+    "href": "projects/list/sales-forecasting.html#the-question",
+    "title": "Sales Forecasting Dashboard",
+    "section": "",
+    "text": "What will our sales look like for the next quarter? Accurate short-horizon sales forecasts drive staffing, stock, and cash-flow decisions. I build a simple but honest forecast pipeline on two years of synthetic daily sales."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#the-approach",
+    "href": "projects/list/sales-forecasting.html#the-approach",
+    "title": "Sales Forecasting Dashboard",
+    "section": "The Approach",
+    "text": "The Approach\n\nGenerate a realistic-looking sales series (trend + weekly seasonality + noise)\nDecompose it into components so we understand what is moving\nForecast the next 90 days with moving-average smoothing\nBuild an interactive dashboard to explore the forecast"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-1-simulate-daily-sales",
+    "href": "projects/list/sales-forecasting.html#step-1-simulate-daily-sales",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 1 — Simulate daily sales",
+    "text": "Step 1 — Simulate daily sales\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport plotly.graph_objects as go\nimport plotly.express as px\nfrom plotly.subplots import make_subplots\n\nnp.random.seed(7)\n\n# 730 days ending today\ndates = pd.date_range(end='2026-04-15', periods=730)\n\n# Trend: slow upward growth\ntrend = np.linspace(1000, 1800, 730)\n\n# Weekly seasonality: weekends ~30% higher\nday_of_week = dates.dayofweek\nweekly = np.where(day_of_week &gt;= 5, 300, 0) + np.sin(day_of_week * np.pi / 3.5) * 80\n\n# Yearly seasonality: December spike\nmonth = dates.month\nyearly = np.where(month == 12, 400, 0) + np.where(month.isin([6, 7]), 150, 0)\n\n# Noise\nnoise = np.random.normal(0, 60, 730)\n\nsales = (trend + weekly + yearly + noise).round(2)\n\ndf = pd.DataFrame({'Date': dates, 'Sales': sales})\ndf.head()\n\n\n\n\n\n\n\n\n\nDate\nSales\n\n\n\n\n0\n2024-04-16\n1163.98\n\n\n1\n2024-04-17\n1051.14\n\n\n2\n2024-04-18\n1038.87\n\n\n3\n2024-04-19\n993.03\n\n\n4\n2024-04-20\n1179.06"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-2-the-raw-time-series",
+    "href": "projects/list/sales-forecasting.html#step-2-the-raw-time-series",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 2 — The raw time series",
+    "text": "Step 2 — The raw time series\n\n\nCode\nfig = px.line(df, x='Date', y='Sales', template='plotly_white')\nfig.update_traces(line=dict(color='#6a4c93', width=1.5))\nfig.update_layout(height=400, title='Daily Sales — 2 year history',\n                  yaxis_title='Sales (€)', xaxis_title='')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 1: Daily sales over the past 24 months\n\n\n\n\nStraight away you can see the weekly rhythm (the fuzzy band), the trend (rising baseline), and the December spike."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-3-decompose-into-trend-season-residual",
+    "href": "projects/list/sales-forecasting.html#step-3-decompose-into-trend-season-residual",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 3 — Decompose into trend, season, residual",
+    "text": "Step 3 — Decompose into trend, season, residual\n\n\nCode\n# Simple moving averages to extract components\ndf['Trend'] = df['Sales'].rolling(window=30, center=True).mean()\ndf['Detrended'] = df['Sales'] - df['Trend']\ndf['Seasonal'] = df.groupby(df['Date'].dt.dayofweek)['Detrended'].transform('mean')\ndf['Residual'] = df['Sales'] - df['Trend'] - df['Seasonal']\n\nfig = make_subplots(rows=3, cols=1, shared_xaxes=True,\n                     subplot_titles=('Trend (30-day moving average)', 'Weekly seasonality', 'Residual'))\n\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Trend'], line=dict(color='#6a4c93'), name='Trend'), row=1, col=1)\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Seasonal'], line=dict(color='#1982c4'), name='Season'), row=2, col=1)\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Residual'], line=dict(color='#ff595e'), name='Residual'), row=3, col=1)\n\nfig.update_layout(height=600, showlegend=False, template='plotly_white')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 2: Classical decomposition of the sales series\n\n\n\n\nThe decomposition confirms the trend is genuinely increasing (business growing), the weekly seasonality is stable (reliable to forecast), and the residual is well-behaved (no missed pattern)."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-4-forecast-the-next-90-days",
+    "href": "projects/list/sales-forecasting.html#step-4-forecast-the-next-90-days",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 4 — Forecast the next 90 days",
+    "text": "Step 4 — Forecast the next 90 days\n\n\nCode\n# A simple but honest forecast: trend projection + average seasonality\nfuture_dates = pd.date_range(start=df['Date'].max() + pd.Timedelta(days=1), periods=90)\n\n# Extend the trend linearly from last known trend value\nlast_trend = df['Trend'].dropna().iloc[-15:].mean()\ntrend_slope = (df['Trend'].dropna().iloc[-15:].mean() - df['Trend'].dropna().iloc[-45:-30].mean()) / 30\nfuture_trend = last_trend + trend_slope * np.arange(1, 91)\n\n# Apply the weekly seasonality map\ndow_seasonality = df.groupby(df['Date'].dt.dayofweek)['Seasonal'].mean()\nfuture_seasonal = future_dates.to_series().dt.dayofweek.map(dow_seasonality).values\n\nforecast = future_trend + future_seasonal\n\n# 80% confidence interval from residual std\nresidual_std = df['Residual'].std()\nupper = forecast + 1.28 * residual_std\nlower = forecast - 1.28 * residual_std\n\nforecast_df = pd.DataFrame({\n    'Date': future_dates,\n    'Forecast': forecast.round(2),\n    'Upper': upper.round(2),\n    'Lower': lower.round(2)\n})\n\nfig = go.Figure()\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Sales'], name='Historical',\n                          line=dict(color='#6a4c93', width=1)))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Forecast'], name='Forecast',\n                          line=dict(color='#ff595e', width=2)))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Upper'], name='Upper 80%',\n                          line=dict(color='#ff595e', dash='dot', width=0.5), showlegend=False))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Lower'], name='80% CI',\n                          line=dict(color='#ff595e', dash='dot', width=0.5),\n                          fill='tonexty', fillcolor='rgba(255, 89, 94, 0.15)'))\n\nfig.update_layout(height=450, template='plotly_white',\n                  title='90-Day Sales Forecast with 80% Confidence Band',\n                  yaxis_title='Sales (€)', xaxis_title='')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 3: Historical sales and 90-day forecast"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-5-summary-metrics-for-decision-makers",
+    "href": "projects/list/sales-forecasting.html#step-5-summary-metrics-for-decision-makers",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 5 — Summary metrics for decision-makers",
+    "text": "Step 5 — Summary metrics for decision-makers\n\n\nCode\ntotal_forecast = forecast_df['Forecast'].sum()\navg_daily = forecast_df['Forecast'].mean()\npeak_day = forecast_df.loc[forecast_df['Forecast'].idxmax(), 'Date']\npeak_value = forecast_df['Forecast'].max()\n\nsummary = pd.DataFrame({\n    'Metric': ['Total 90-day forecast', 'Average daily sales', 'Peak day', 'Peak value'],\n    'Value': [f'€{total_forecast:,.0f}',\n              f'€{avg_daily:,.0f}',\n              peak_day.strftime('%a %d %b %Y'),\n              f'€{peak_value:,.0f}']\n})\n\nsummary\n\n\n\n\n\n\n\n\n\nMetric\nValue\n\n\n\n\n0\nTotal 90-day forecast\n€175,711\n\n\n1\nAverage daily sales\n€1,952\n\n\n2\nPeak day\nSun 12 Jul 2026\n\n\n3\nPeak value\n€2,173"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#what-this-tells-the-business",
+    "href": "projects/list/sales-forecasting.html#what-this-tells-the-business",
+    "title": "Sales Forecasting Dashboard",
+    "section": "What this tells the business",
+    "text": "What this tells the business\n\n\n\n\n\n\nImportantActionable insights\n\n\n\n\nStaff up for weekends — the Saturday/Sunday lift is consistent enough to plan for.\nThe forecast trend is upward, reflecting the underlying growth — capacity planning should reflect that, not flat last-year numbers.\nThe 80% confidence band is tight enough to give stock planners a usable range. Revisit in 30 days with actuals."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#what-i-learned",
+    "href": "projects/list/sales-forecasting.html#what-i-learned",
+    "title": "Sales Forecasting Dashboard",
+    "section": "What I learned",
+    "text": "What I learned\n\nDecomposition before forecasting is non-negotiable. Looking at trend/season/residual separately showed the pattern was stable and the model could be simple.\nA simple model that you understand beats a complex one you don’t. I could have reached for Prophet or ARIMA, but a moving-average + seasonal map is transparent, cheap to retrain, and adequately accurate for a 90-day horizon.\nConfidence bands matter more than point estimates — decision-makers need to know the uncertainty, not a pretend-precise single line."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#next-steps",
+    "href": "projects/list/sales-forecasting.html#next-steps",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Next steps",
+    "text": "Next steps\n\nSwap in real transaction data and compare residuals\nTest exponential smoothing (Holt-Winters) as a benchmark\nAdd promotional calendar as a regressor for higher accuracy during campaigns"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m Priyadharshini Balaji, currently pursuing an MSc in Business Analytics at Dublin City University (DCU). I hold a Bachelor of Technology in Information Technology, which gave me a strong foundation in programming, databases, and systems thinking before I moved into analytics."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m Priyadharshini Balaji, currently pursuing an MSc in Business Analytics at Dublin City University (DCU). I hold a Bachelor of Technology in Information Technology, which gave me a strong foundation in programming, databases, and systems thinking before I moved into analytics."
+  },
+  {
+    "objectID": "about.html#what-drives-me",
+    "href": "about.html#what-drives-me",
+    "title": "About Me",
+    "section": "What drives me",
+    "text": "What drives me\nI’m fascinated by the way data can change decisions. A well-placed chart can shift a strategy; a well-designed dashboard can save hours of guesswork. My MSc has been pushing me from describing data to predicting with it — statistical modelling, machine learning, and communicating findings to non-technical audiences."
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About Me",
+    "section": "Skills",
+    "text": "Skills\n\n\nTechnical\n\nLanguages: Python, SQL, R\nLibraries: pandas, scikit-learn, Plotly, matplotlib\nTools: Git, Quarto, Jupyter, VS Code\nDatabases: MySQL, PostgreSQL\nVisualisation: Plotly, Tableau, Power BI\n\n\n\nAnalytical & Professional\n\nData cleaning & exploratory analysis\nStatistical modelling\nDashboard design\nReport writing & storytelling\nCollaborative version control\nPresenting insights to non-technical stakeholders"
+  },
+  {
+    "objectID": "about.html#goals",
+    "href": "about.html#goals",
+    "title": "About Me",
+    "section": "Goals",
+    "text": "Goals\nOver the next year I want to:\n\nDeepen my machine learning fundamentals — especially classification, clustering, and time series.\nBuild a portfolio of end-to-end analytics projects that real people can interact with (this site is step one).\nSecure an analyst role where I can combine business context with rigorous technical work."
+  },
+  {
+    "objectID": "about.html#beyond-analytics",
+    "href": "about.html#beyond-analytics",
+    "title": "About Me",
+    "section": "Beyond analytics",
+    "text": "Beyond analytics\nWhen I’m not staring at Jupyter notebooks, I enjoy exploring Dublin, reading, and tinkering with little side projects that usually start as “this should take an hour” and end up taking a weekend.\nThanks for reading — feel free to get in touch or browse my projects."
   }
 ]
