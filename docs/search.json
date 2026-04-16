@@ -1,59 +1,220 @@
 [
   {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Curriculum Vitae",
+    "objectID": " contact.html",
+    "href": " contact.html",
+    "title": "Contact & References",
     "section": "",
-    "text": "My full CV is available as a downloadable PDF."
+    "text": "I’d love to hear from you — whether it’s about a role, a collaboration, or just to say hello."
   },
   {
-    "objectID": "cv.html#summary",
-    "href": "cv.html#summary",
-    "title": "Curriculum Vitae",
-    "section": "Summary",
-    "text": "Summary\nMSc Business Analytics candidate at Dublin City University with an undergraduate background in Information Technology. Focus on transforming data into actionable business decisions through Python, SQL, and modern visualisation tools."
+    "objectID": " contact.html#get-in-touch",
+    "href": " contact.html#get-in-touch",
+    "title": "Contact & References",
+    "section": "Get in touch",
+    "text": "Get in touch\n\n\nDirect contact\n\nEmail: priyadharshiniblj25@gmail.com\nLinkedIn: Priyadharshini Balaji\nGitHub: @priyadharshini-code-beep\nLocation: Dublin, Ireland\n\n\n\nBest for\n\nEmail → detailed questions, opportunities, long replies\nLinkedIn → quick professional messages, connection requests\nGitHub → code discussions, issues on projects"
   },
   {
-    "objectID": "cv.html#education",
-    "href": "cv.html#education",
-    "title": "Curriculum Vitae",
-    "section": "Education",
-    "text": "Education\n\nMSc Business Analytics\nDublin City University, Dublin, Ireland\nIn progress\nCore modules include statistical analysis, data mining, machine learning, business decision modelling, and data visualisation.\n\n\nB.Tech, Information Technology\nCompleted\nFoundation in programming, databases, software engineering, and computer networks."
+    "objectID": " contact.html#availability",
+    "href": " contact.html#availability",
+    "title": "Contact & References",
+    "section": "Availability",
+    "text": "Availability\nI’m currently completing my MSc in Business Analytics at Dublin City University and am actively looking for analytics and data science roles — internships, graduate programmes, and entry-level analyst positions in Ireland or remote.\n\n\n\n\n\n\nTipResponse time\n\n\n\nI aim to reply to all professional messages within 48 hours. For time-sensitive opportunities, please mark the subject line accordingly."
   },
   {
-    "objectID": "cv.html#core-competencies",
-    "href": "cv.html#core-competencies",
-    "title": "Curriculum Vitae",
-    "section": "Core Competencies",
-    "text": "Core Competencies\n\nProgramming: Python (pandas, scikit-learn, Plotly), SQL, R\nAnalytics: Exploratory data analysis, predictive modelling, clustering, classification\nVisualisation: Plotly, Tableau, Power BI\nTools & workflow: Git, Quarto, Jupyter, VS Code\nSoft skills: Stakeholder communication, technical writing, collaborative version control"
+    "objectID": " contact.html#references",
+    "href": " contact.html#references",
+    "title": "Contact & References",
+    "section": "References",
+    "text": "References\nAcademic and professional references are available on request. Please reach out via email with a short note about the role or context, and I’ll share contact details of"
   },
   {
-    "objectID": "cv.html#projects",
-    "href": "cv.html#projects",
-    "title": "Curriculum Vitae",
-    "section": "Projects",
-    "text": "Projects\nExplore the detailed project pages on this site:\n\nCustomer Segmentation & RFM Analysis — unsupervised learning on retail data\nSales Forecasting Dashboard — time series analysis with interactive visualisations"
-  },
-  {
-    "objectID": "cv.html#contact",
-    "href": "cv.html#contact",
-    "title": "Curriculum Vitae",
-    "section": "Contact",
-    "text": "Contact\n\nEmail: priyadharshiniblj25@gmail.com\nLinkedIn: linkedin.com/in/priyadharshini-balaji\nGitHub: github.com/priyadharshini-code-beep\n\n\n\n\n\n\n\nNote\n\n\n\nThis web page is a summary. The PDF version has the full, formatted CV suitable for submission to employers."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Priyadharshini Balaji",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
     "section": "",
-    "text": "I’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.\nThis site is my ePortfolio: a collection of projects, reflections, and a living record of what I’m learning along the way.\n\n\n\n📊 Projects that apply analytical methods to real business questions\n📝 Reflection on skills I’ve picked up — Git, Quarto, Python, design thinking\n📄 CV summarising my background and experience\n📬 Contact if you’d like to get in touch\n\nThanks for visiting!"
+    "text": "I’m Priyadharshini Balaji, currently pursuing an MSc in Business Analytics at Dublin City University (DCU). I hold a Bachelor of Technology in Information Technology, which gave me a strong foundation in programming, databases, and systems thinking before I moved into analytics."
   },
   {
-    "objectID": "index.html#hello-im-priyadharshini",
-    "href": "index.html#hello-im-priyadharshini",
-    "title": "Priyadharshini Balaji",
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
     "section": "",
-    "text": "I’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.\nThis site is my ePortfolio: a collection of projects, reflections, and a living record of what I’m learning along the way.\n\n\n\n📊 Projects that apply analytical methods to real business questions\n📝 Reflection on skills I’ve picked up — Git, Quarto, Python, design thinking\n📄 CV summarising my background and experience\n📬 Contact if you’d like to get in touch\n\nThanks for visiting!"
+    "text": "I’m Priyadharshini Balaji, currently pursuing an MSc in Business Analytics at Dublin City University (DCU). I hold a Bachelor of Technology in Information Technology, which gave me a strong foundation in programming, databases, and systems thinking before I moved into analytics."
+  },
+  {
+    "objectID": "about.html#what-drives-me",
+    "href": "about.html#what-drives-me",
+    "title": "About Me",
+    "section": "What drives me",
+    "text": "What drives me\nI’m fascinated by the way data can change decisions. A well-placed chart can shift a strategy; a well-designed dashboard can save hours of guesswork. My MSc has been pushing me from describing data to predicting with it — statistical modelling, machine learning, and communicating findings to non-technical audiences."
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About Me",
+    "section": "Skills",
+    "text": "Skills\n\n\nTechnical\n\nLanguages: Python, SQL, R\nLibraries: pandas, scikit-learn, Plotly, matplotlib\nTools: Git, Quarto, Jupyter, VS Code\nDatabases: MySQL, PostgreSQL\nVisualisation: Plotly, Tableau, Power BI\n\n\n\nAnalytical & Professional\n\nData cleaning & exploratory analysis\nStatistical modelling\nDashboard design\nReport writing & storytelling\nCollaborative version control\nPresenting insights to non-technical stakeholders"
+  },
+  {
+    "objectID": "about.html#goals",
+    "href": "about.html#goals",
+    "title": "About Me",
+    "section": "Goals",
+    "text": "Goals\nOver the next year I want to:\n\nDeepen my machine learning fundamentals — especially classification, clustering, and time series.\nBuild a portfolio of end-to-end analytics projects that real people can interact with (this site is step one).\nSecure an analyst role where I can combine business context with rigorous technical work."
+  },
+  {
+    "objectID": "about.html#beyond-analytics",
+    "href": "about.html#beyond-analytics",
+    "title": "About Me",
+    "section": "Beyond analytics",
+    "text": "Beyond analytics\nWhen I’m not staring at Jupyter notebooks, I enjoy exploring Dublin, reading, and tinkering with little side projects that usually start as “this should take an hour” and end up taking a weekend.\nThanks for reading — feel free to get in touch or browse my projects."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html",
+    "href": "projects/list/sales-forecasting.html",
+    "title": "Sales Forecasting Dashboard",
+    "section": "",
+    "text": "What will our sales look like for the next quarter? Accurate short-horizon sales forecasts drive staffing, stock, and cash-flow decisions. I build a simple but honest forecast pipeline on two years of synthetic daily sales."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#the-question",
+    "href": "projects/list/sales-forecasting.html#the-question",
+    "title": "Sales Forecasting Dashboard",
+    "section": "",
+    "text": "What will our sales look like for the next quarter? Accurate short-horizon sales forecasts drive staffing, stock, and cash-flow decisions. I build a simple but honest forecast pipeline on two years of synthetic daily sales."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#the-approach",
+    "href": "projects/list/sales-forecasting.html#the-approach",
+    "title": "Sales Forecasting Dashboard",
+    "section": "The Approach",
+    "text": "The Approach\n\nGenerate a realistic-looking sales series (trend + weekly seasonality + noise)\nDecompose it into components so we understand what is moving\nForecast the next 90 days with moving-average smoothing\nBuild an interactive dashboard to explore the forecast"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-1-simulate-daily-sales",
+    "href": "projects/list/sales-forecasting.html#step-1-simulate-daily-sales",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 1 — Simulate daily sales",
+    "text": "Step 1 — Simulate daily sales\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport plotly.graph_objects as go\nimport plotly.express as px\nfrom plotly.subplots import make_subplots\n\nnp.random.seed(7)\n\n# 730 days ending today\ndates = pd.date_range(end='2026-04-15', periods=730)\n\n# Trend: slow upward growth\ntrend = np.linspace(1000, 1800, 730)\n\n# Weekly seasonality: weekends ~30% higher\nday_of_week = dates.dayofweek\nweekly = np.where(day_of_week &gt;= 5, 300, 0) + np.sin(day_of_week * np.pi / 3.5) * 80\n\n# Yearly seasonality: December spike\nmonth = dates.month\nyearly = np.where(month == 12, 400, 0) + np.where(month.isin([6, 7]), 150, 0)\n\n# Noise\nnoise = np.random.normal(0, 60, 730)\n\nsales = (trend + weekly + yearly + noise).round(2)\n\ndf = pd.DataFrame({'Date': dates, 'Sales': sales})\ndf.head()\n\n\n\n\n\n\n\n\n\nDate\nSales\n\n\n\n\n0\n2024-04-16\n1163.98\n\n\n1\n2024-04-17\n1051.14\n\n\n2\n2024-04-18\n1038.87\n\n\n3\n2024-04-19\n993.03\n\n\n4\n2024-04-20\n1179.06"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-2-the-raw-time-series",
+    "href": "projects/list/sales-forecasting.html#step-2-the-raw-time-series",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 2 — The raw time series",
+    "text": "Step 2 — The raw time series\n\n\nCode\nfig = px.line(df, x='Date', y='Sales', template='plotly_white')\nfig.update_traces(line=dict(color='#6a4c93', width=1.5))\nfig.update_layout(height=400, title='Daily Sales — 2 year history',\n                  yaxis_title='Sales (€)', xaxis_title='')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 1: Daily sales over the past 24 months\n\n\n\n\nStraight away you can see the weekly rhythm (the fuzzy band), the trend (rising baseline), and the December spike."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-3-decompose-into-trend-season-residual",
+    "href": "projects/list/sales-forecasting.html#step-3-decompose-into-trend-season-residual",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 3 — Decompose into trend, season, residual",
+    "text": "Step 3 — Decompose into trend, season, residual\n\n\nCode\n# Simple moving averages to extract components\ndf['Trend'] = df['Sales'].rolling(window=30, center=True).mean()\ndf['Detrended'] = df['Sales'] - df['Trend']\ndf['Seasonal'] = df.groupby(df['Date'].dt.dayofweek)['Detrended'].transform('mean')\ndf['Residual'] = df['Sales'] - df['Trend'] - df['Seasonal']\n\nfig = make_subplots(rows=3, cols=1, shared_xaxes=True,\n                     subplot_titles=('Trend (30-day moving average)', 'Weekly seasonality', 'Residual'))\n\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Trend'], line=dict(color='#6a4c93'), name='Trend'), row=1, col=1)\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Seasonal'], line=dict(color='#1982c4'), name='Season'), row=2, col=1)\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Residual'], line=dict(color='#ff595e'), name='Residual'), row=3, col=1)\n\nfig.update_layout(height=600, showlegend=False, template='plotly_white')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 2: Classical decomposition of the sales series\n\n\n\n\nThe decomposition confirms the trend is genuinely increasing (business growing), the weekly seasonality is stable (reliable to forecast), and the residual is well-behaved (no missed pattern)."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-4-forecast-the-next-90-days",
+    "href": "projects/list/sales-forecasting.html#step-4-forecast-the-next-90-days",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 4 — Forecast the next 90 days",
+    "text": "Step 4 — Forecast the next 90 days\n\n\nCode\n# A simple but honest forecast: trend projection + average seasonality\nfuture_dates = pd.date_range(start=df['Date'].max() + pd.Timedelta(days=1), periods=90)\n\n# Extend the trend linearly from last known trend value\nlast_trend = df['Trend'].dropna().iloc[-15:].mean()\ntrend_slope = (df['Trend'].dropna().iloc[-15:].mean() - df['Trend'].dropna().iloc[-45:-30].mean()) / 30\nfuture_trend = last_trend + trend_slope * np.arange(1, 91)\n\n# Apply the weekly seasonality map\ndow_seasonality = df.groupby(df['Date'].dt.dayofweek)['Seasonal'].mean()\nfuture_seasonal = future_dates.to_series().dt.dayofweek.map(dow_seasonality).values\n\nforecast = future_trend + future_seasonal\n\n# 80% confidence interval from residual std\nresidual_std = df['Residual'].std()\nupper = forecast + 1.28 * residual_std\nlower = forecast - 1.28 * residual_std\n\nforecast_df = pd.DataFrame({\n    'Date': future_dates,\n    'Forecast': forecast.round(2),\n    'Upper': upper.round(2),\n    'Lower': lower.round(2)\n})\n\nfig = go.Figure()\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Sales'], name='Historical',\n                          line=dict(color='#6a4c93', width=1)))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Forecast'], name='Forecast',\n                          line=dict(color='#ff595e', width=2)))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Upper'], name='Upper 80%',\n                          line=dict(color='#ff595e', dash='dot', width=0.5), showlegend=False))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Lower'], name='80% CI',\n                          line=dict(color='#ff595e', dash='dot', width=0.5),\n                          fill='tonexty', fillcolor='rgba(255, 89, 94, 0.15)'))\n\nfig.update_layout(height=450, template='plotly_white',\n                  title='90-Day Sales Forecast with 80% Confidence Band',\n                  yaxis_title='Sales (€)', xaxis_title='')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 3: Historical sales and 90-day forecast"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#step-5-summary-metrics-for-decision-makers",
+    "href": "projects/list/sales-forecasting.html#step-5-summary-metrics-for-decision-makers",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Step 5 — Summary metrics for decision-makers",
+    "text": "Step 5 — Summary metrics for decision-makers\n\n\nCode\ntotal_forecast = forecast_df['Forecast'].sum()\navg_daily = forecast_df['Forecast'].mean()\npeak_day = forecast_df.loc[forecast_df['Forecast'].idxmax(), 'Date']\npeak_value = forecast_df['Forecast'].max()\n\nsummary = pd.DataFrame({\n    'Metric': ['Total 90-day forecast', 'Average daily sales', 'Peak day', 'Peak value'],\n    'Value': [f'€{total_forecast:,.0f}',\n              f'€{avg_daily:,.0f}',\n              peak_day.strftime('%a %d %b %Y'),\n              f'€{peak_value:,.0f}']\n})\n\nsummary\n\n\n\n\n\n\n\n\n\nMetric\nValue\n\n\n\n\n0\nTotal 90-day forecast\n€175,711\n\n\n1\nAverage daily sales\n€1,952\n\n\n2\nPeak day\nSun 12 Jul 2026\n\n\n3\nPeak value\n€2,173"
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#what-this-tells-the-business",
+    "href": "projects/list/sales-forecasting.html#what-this-tells-the-business",
+    "title": "Sales Forecasting Dashboard",
+    "section": "What this tells the business",
+    "text": "What this tells the business\n\n\n\n\n\n\nImportantActionable insights\n\n\n\n\nStaff up for weekends — the Saturday/Sunday lift is consistent enough to plan for.\nThe forecast trend is upward, reflecting the underlying growth — capacity planning should reflect that, not flat last-year numbers.\nThe 80% confidence band is tight enough to give stock planners a usable range. Revisit in 30 days with actuals."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#what-i-learned",
+    "href": "projects/list/sales-forecasting.html#what-i-learned",
+    "title": "Sales Forecasting Dashboard",
+    "section": "What I learned",
+    "text": "What I learned\n\nDecomposition before forecasting is non-negotiable. Looking at trend/season/residual separately showed the pattern was stable and the model could be simple.\nA simple model that you understand beats a complex one you don’t. I could have reached for Prophet or ARIMA, but a moving-average + seasonal map is transparent, cheap to retrain, and adequately accurate for a 90-day horizon.\nConfidence bands matter more than point estimates — decision-makers need to know the uncertainty, not a pretend-precise single line."
+  },
+  {
+    "objectID": "projects/list/sales-forecasting.html#next-steps",
+    "href": "projects/list/sales-forecasting.html#next-steps",
+    "title": "Sales Forecasting Dashboard",
+    "section": "Next steps",
+    "text": "Next steps\n\nSwap in real transaction data and compare residuals\nTest exponential smoothing (Holt-Winters) as a benchmark\nAdd promotional calendar as a regressor for higher accuracy during campaigns"
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "reflection.html",
+    "href": "reflection.html",
+    "title": "Reflection",
+    "section": "",
+    "text": "Note\n\n\n\nThis page is my honest reflection on the skills I picked up building this ePortfolio and what I want to carry forward."
+  },
+  {
+    "objectID": "reflection.html#starting-point",
+    "href": "reflection.html#starting-point",
+    "title": "Reflection",
+    "section": "Starting point",
+    "text": "Starting point\nWhen I started this module I had a clear undergraduate foundation in IT and a reasonable grasp of Python from coursework, but I had never built a website from scratch, never deployed anything to the public internet, and never used Git beyond the occasional git clone. By the end of this module, I had to combine all three to produce this site. That gap — between knowing things in isolation and shipping them together — turned out to be the most valuable part of the learning."
+  },
+  {
+    "objectID": "reflection.html#git-and-version-control",
+    "href": "reflection.html#git-and-version-control",
+    "title": "Reflection",
+    "section": "Git and version control",
+    "text": "Git and version control\nThe thing that surprised me most about Git was how quickly it stopped feeling like a chore. My first commits were cautious — small, nervous pushes with messages like “update” and “fix”. Within a day I was committing on purpose, writing messages that actually described why I made a change, not just what I changed. That shift mattered.\nWhat clicked:\n\nSmall commits are better than big ones. If something breaks, you can walk back one step.\n.gitignore is not optional. I accidentally committed a .DS_Store file early on and it taught me to set that up from the start.\nThe GitHub Pages deploy loop is fast. Commit → push → 30 seconds → live. That tight feedback loop made me more willing to experiment.\n\nWhat I’d still like to learn: branching and merge conflicts. I worked on main the whole time because it was a solo project, but I know team workflows require feature branches, pull requests, and reviews."
+  },
+  {
+    "objectID": "reflection.html#quarto",
+    "href": "reflection.html#quarto",
+    "title": "Reflection",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto was new to me. I picked it because the brief required it, but I ended up genuinely liking it. The idea of writing in Markdown, dropping in live Python code, and getting a polished site out the other end feels like the right abstraction for the kind of data work I want to do.\nWhat I built comfort with:\n\nYAML frontmatter to control page behaviour (About templates, listing pages, code folding)\nProject-wide configuration through _quarto.yml — navbar, footer, theme, SCSS\nThe {python} code chunk and its options (fig-cap, code-fold, echo)\nCallout blocks, grids, and rich Markdown features\n\nWhat I struggled with: the first time my _quarto.yml had a tiny indentation error, the whole render broke with a cryptic message. I learned to render after every significant change rather than stacking up edits blindly."
+  },
+  {
+    "objectID": "reflection.html#python-for-analytics",
+    "href": "reflection.html#python-for-analytics",
+    "title": "Reflection",
+    "section": "Python for analytics",
+    "text": "Python for analytics\nI’d used Python before, but mostly in isolated notebooks for class exercises. Building the two project pages — Customer Segmentation with RFM and Sales Forecasting — pushed me to think about Python as a tool for communicating analysis, not just running it.\nWriting analyses for an audience that isn’t the grader changed how I wrote code:\n\nI started naming variables for readers, not for myself\nI split code into small blocks with narrative between them\nI picked visualisations for what they showed, not for what was easy to plot\nI learned to use Plotly for interactivity, where a static matplotlib chart would have shortened the file but lost the reader"
+  },
+  {
+    "objectID": "reflection.html#web-design-as-a-learning-experience",
+    "href": "reflection.html#web-design-as-a-learning-experience",
+    "title": "Reflection",
+    "section": "Web design as a learning experience",
+    "text": "Web design as a learning experience\nI did not expect to spend as much time thinking about design as I did. Choosing a theme, picking fonts, tuning a colour palette — these weren’t decisions I’d ever made consciously before. I came out with a much better appreciation for why designers care about hierarchy, whitespace, and typography.\nThe custom styles.scss file was where I learned the most. Bootswatch gives you a competent starting point; Sass variables give you real control. Changing one $primary variable and watching every link, button, and navbar element shift colour was weirdly satisfying."
+  },
+  {
+    "objectID": "reflection.html#biggest-mistakes-and-lessons",
+    "href": "reflection.html#biggest-mistakes-and-lessons",
+    "title": "Reflection",
+    "section": "Biggest mistakes (and lessons)",
+    "text": "Biggest mistakes (and lessons)\n\n\n\n\n\n\nWarningLessons from mistakes I actually made\n\n\n\n\n404 panic. Early on my site returned 404 for about 15 minutes and I thought I’d broken something fundamental. It was just GitHub Pages propagation — patience is part of the workflow.\nYAML frontmatter. I accidentally pasted content without the --- frontmatter delimiters and the landing page rendered as plain Markdown. Lesson: always check the top three lines.\nRendering before pushing. A few times I pushed without rendering and wondered why the live site hadn’t updated. The docs/ folder is what gets served — if you don’t render, you push stale HTML."
+  },
+  {
+    "objectID": "reflection.html#skills-im-taking-forward",
+    "href": "reflection.html#skills-im-taking-forward",
+    "title": "Reflection",
+    "section": "Skills I’m taking forward",
+    "text": "Skills I’m taking forward\nBeyond this module, this is the kit I now have:\n\nI can ship. I can go from “blank folder” to “live website with interactive analysis” in a day.\nI can version. Every project I build from now on will live in Git from the first commit.\nI can communicate. Technical writing, charts-as-argument, and structured narrative are skills I’ll use in every analyst role I apply for.\nI can iterate. The render → commit → push → refresh loop is a pattern I can apply to any deliverable, not just websites."
+  },
+  {
+    "objectID": "reflection.html#whats-next",
+    "href": "reflection.html#whats-next",
+    "title": "Reflection",
+    "section": "What’s next",
+    "text": "What’s next\nConcretely, over the next few weeks I want to:\n\nReplace the two synthetic-data projects with one real dataset each (UCI repository or Kaggle)\nAdd a third project using machine learning (probably classification — customer churn)\nExperiment with GitHub Actions to auto-deploy the site instead of committing the rendered output manually\nStart applying for analyst roles with this portfolio as my calling card\n\nThanks for reading. If you have thoughts or feedback, I’d love to hear from you via the contact page."
   },
   {
     "objectID": "projects/list/customer-segmentation.html",
@@ -140,129 +301,59 @@
     "text": "Code & data\nThe full notebook with synthetic data generation is in this repo."
   },
   {
-    "objectID": "projects/index.html",
-    "href": "projects/index.html",
-    "title": "Projects",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Priyadharshini Balaji",
     "section": "",
-    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "I’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.\nThis site is my ePortfolio: a collection of projects, reflections, and a living record of what I’m learning along the way.\n\n\n\n📊 Projects that apply analytical methods to real business questions\n📝 Reflection on skills I’ve picked up — Git, Quarto, Python, design thinking\n📄 CV summarising my background and experience\n📬 Contact if you’d like to get in touch\n\nThanks for visiting!"
   },
   {
-    "objectID": "projects/list/sales-forecasting.html",
-    "href": "projects/list/sales-forecasting.html",
-    "title": "Sales Forecasting Dashboard",
+    "objectID": "index.html#hello-im-priyadharshini",
+    "href": "index.html#hello-im-priyadharshini",
+    "title": "Priyadharshini Balaji",
     "section": "",
-    "text": "What will our sales look like for the next quarter? Accurate short-horizon sales forecasts drive staffing, stock, and cash-flow decisions. I build a simple but honest forecast pipeline on two years of synthetic daily sales."
+    "text": "I’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.\nThis site is my ePortfolio: a collection of projects, reflections, and a living record of what I’m learning along the way.\n\n\n\n📊 Projects that apply analytical methods to real business questions\n📝 Reflection on skills I’ve picked up — Git, Quarto, Python, design thinking\n📄 CV summarising my background and experience\n📬 Contact if you’d like to get in touch\n\nThanks for visiting!"
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#the-question",
-    "href": "projects/list/sales-forecasting.html#the-question",
-    "title": "Sales Forecasting Dashboard",
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Curriculum Vitae",
     "section": "",
-    "text": "What will our sales look like for the next quarter? Accurate short-horizon sales forecasts drive staffing, stock, and cash-flow decisions. I build a simple but honest forecast pipeline on two years of synthetic daily sales."
+    "text": "My full CV is available as a downloadable PDF."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#the-approach",
-    "href": "projects/list/sales-forecasting.html#the-approach",
-    "title": "Sales Forecasting Dashboard",
-    "section": "The Approach",
-    "text": "The Approach\n\nGenerate a realistic-looking sales series (trend + weekly seasonality + noise)\nDecompose it into components so we understand what is moving\nForecast the next 90 days with moving-average smoothing\nBuild an interactive dashboard to explore the forecast"
+    "objectID": "cv.html#summary",
+    "href": "cv.html#summary",
+    "title": "Curriculum Vitae",
+    "section": "Summary",
+    "text": "Summary\nMSc Business Analytics candidate at Dublin City University with an undergraduate background in Information Technology. Focus on transforming data into actionable business decisions through Python, SQL, and modern visualisation tools."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-1-simulate-daily-sales",
-    "href": "projects/list/sales-forecasting.html#step-1-simulate-daily-sales",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Step 1 — Simulate daily sales",
-    "text": "Step 1 — Simulate daily sales\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport plotly.graph_objects as go\nimport plotly.express as px\nfrom plotly.subplots import make_subplots\n\nnp.random.seed(7)\n\n# 730 days ending today\ndates = pd.date_range(end='2026-04-15', periods=730)\n\n# Trend: slow upward growth\ntrend = np.linspace(1000, 1800, 730)\n\n# Weekly seasonality: weekends ~30% higher\nday_of_week = dates.dayofweek\nweekly = np.where(day_of_week &gt;= 5, 300, 0) + np.sin(day_of_week * np.pi / 3.5) * 80\n\n# Yearly seasonality: December spike\nmonth = dates.month\nyearly = np.where(month == 12, 400, 0) + np.where(month.isin([6, 7]), 150, 0)\n\n# Noise\nnoise = np.random.normal(0, 60, 730)\n\nsales = (trend + weekly + yearly + noise).round(2)\n\ndf = pd.DataFrame({'Date': dates, 'Sales': sales})\ndf.head()\n\n\n\n\n\n\n\n\n\nDate\nSales\n\n\n\n\n0\n2024-04-16\n1163.98\n\n\n1\n2024-04-17\n1051.14\n\n\n2\n2024-04-18\n1038.87\n\n\n3\n2024-04-19\n993.03\n\n\n4\n2024-04-20\n1179.06"
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "Curriculum Vitae",
+    "section": "Education",
+    "text": "Education\n\nMSc Business Analytics\nDublin City University, Dublin, Ireland\nIn progress\nCore modules include statistical analysis, data mining, machine learning, business decision modelling, and data visualisation.\n\n\nB.Tech, Information Technology\nCompleted\nFoundation in programming, databases, software engineering, and computer networks."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-2-the-raw-time-series",
-    "href": "projects/list/sales-forecasting.html#step-2-the-raw-time-series",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Step 2 — The raw time series",
-    "text": "Step 2 — The raw time series\n\n\nCode\nfig = px.line(df, x='Date', y='Sales', template='plotly_white')\nfig.update_traces(line=dict(color='#6a4c93', width=1.5))\nfig.update_layout(height=400, title='Daily Sales — 2 year history',\n                  yaxis_title='Sales (€)', xaxis_title='')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 1: Daily sales over the past 24 months\n\n\n\n\nStraight away you can see the weekly rhythm (the fuzzy band), the trend (rising baseline), and the December spike."
+    "objectID": "cv.html#core-competencies",
+    "href": "cv.html#core-competencies",
+    "title": "Curriculum Vitae",
+    "section": "Core Competencies",
+    "text": "Core Competencies\n\nProgramming: Python (pandas, scikit-learn, Plotly), SQL, R\nAnalytics: Exploratory data analysis, predictive modelling, clustering, classification\nVisualisation: Plotly, Tableau, Power BI\nTools & workflow: Git, Quarto, Jupyter, VS Code\nSoft skills: Stakeholder communication, technical writing, collaborative version control"
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-3-decompose-into-trend-season-residual",
-    "href": "projects/list/sales-forecasting.html#step-3-decompose-into-trend-season-residual",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Step 3 — Decompose into trend, season, residual",
-    "text": "Step 3 — Decompose into trend, season, residual\n\n\nCode\n# Simple moving averages to extract components\ndf['Trend'] = df['Sales'].rolling(window=30, center=True).mean()\ndf['Detrended'] = df['Sales'] - df['Trend']\ndf['Seasonal'] = df.groupby(df['Date'].dt.dayofweek)['Detrended'].transform('mean')\ndf['Residual'] = df['Sales'] - df['Trend'] - df['Seasonal']\n\nfig = make_subplots(rows=3, cols=1, shared_xaxes=True,\n                     subplot_titles=('Trend (30-day moving average)', 'Weekly seasonality', 'Residual'))\n\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Trend'], line=dict(color='#6a4c93'), name='Trend'), row=1, col=1)\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Seasonal'], line=dict(color='#1982c4'), name='Season'), row=2, col=1)\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Residual'], line=dict(color='#ff595e'), name='Residual'), row=3, col=1)\n\nfig.update_layout(height=600, showlegend=False, template='plotly_white')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 2: Classical decomposition of the sales series\n\n\n\n\nThe decomposition confirms the trend is genuinely increasing (business growing), the weekly seasonality is stable (reliable to forecast), and the residual is well-behaved (no missed pattern)."
+    "objectID": "cv.html#projects",
+    "href": "cv.html#projects",
+    "title": "Curriculum Vitae",
+    "section": "Projects",
+    "text": "Projects\nExplore the detailed project pages on this site:\n\nCustomer Segmentation & RFM Analysis — unsupervised learning on retail data\nSales Forecasting Dashboard — time series analysis with interactive visualisations"
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-4-forecast-the-next-90-days",
-    "href": "projects/list/sales-forecasting.html#step-4-forecast-the-next-90-days",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Step 4 — Forecast the next 90 days",
-    "text": "Step 4 — Forecast the next 90 days\n\n\nCode\n# A simple but honest forecast: trend projection + average seasonality\nfuture_dates = pd.date_range(start=df['Date'].max() + pd.Timedelta(days=1), periods=90)\n\n# Extend the trend linearly from last known trend value\nlast_trend = df['Trend'].dropna().iloc[-15:].mean()\ntrend_slope = (df['Trend'].dropna().iloc[-15:].mean() - df['Trend'].dropna().iloc[-45:-30].mean()) / 30\nfuture_trend = last_trend + trend_slope * np.arange(1, 91)\n\n# Apply the weekly seasonality map\ndow_seasonality = df.groupby(df['Date'].dt.dayofweek)['Seasonal'].mean()\nfuture_seasonal = future_dates.to_series().dt.dayofweek.map(dow_seasonality).values\n\nforecast = future_trend + future_seasonal\n\n# 80% confidence interval from residual std\nresidual_std = df['Residual'].std()\nupper = forecast + 1.28 * residual_std\nlower = forecast - 1.28 * residual_std\n\nforecast_df = pd.DataFrame({\n    'Date': future_dates,\n    'Forecast': forecast.round(2),\n    'Upper': upper.round(2),\n    'Lower': lower.round(2)\n})\n\nfig = go.Figure()\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Sales'], name='Historical',\n                          line=dict(color='#6a4c93', width=1)))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Forecast'], name='Forecast',\n                          line=dict(color='#ff595e', width=2)))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Upper'], name='Upper 80%',\n                          line=dict(color='#ff595e', dash='dot', width=0.5), showlegend=False))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Lower'], name='80% CI',\n                          line=dict(color='#ff595e', dash='dot', width=0.5),\n                          fill='tonexty', fillcolor='rgba(255, 89, 94, 0.15)'))\n\nfig.update_layout(height=450, template='plotly_white',\n                  title='90-Day Sales Forecast with 80% Confidence Band',\n                  yaxis_title='Sales (€)', xaxis_title='')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 3: Historical sales and 90-day forecast"
-  },
-  {
-    "objectID": "projects/list/sales-forecasting.html#step-5-summary-metrics-for-decision-makers",
-    "href": "projects/list/sales-forecasting.html#step-5-summary-metrics-for-decision-makers",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Step 5 — Summary metrics for decision-makers",
-    "text": "Step 5 — Summary metrics for decision-makers\n\n\nCode\ntotal_forecast = forecast_df['Forecast'].sum()\navg_daily = forecast_df['Forecast'].mean()\npeak_day = forecast_df.loc[forecast_df['Forecast'].idxmax(), 'Date']\npeak_value = forecast_df['Forecast'].max()\n\nsummary = pd.DataFrame({\n    'Metric': ['Total 90-day forecast', 'Average daily sales', 'Peak day', 'Peak value'],\n    'Value': [f'€{total_forecast:,.0f}',\n              f'€{avg_daily:,.0f}',\n              peak_day.strftime('%a %d %b %Y'),\n              f'€{peak_value:,.0f}']\n})\n\nsummary\n\n\n\n\n\n\n\n\n\nMetric\nValue\n\n\n\n\n0\nTotal 90-day forecast\n€175,711\n\n\n1\nAverage daily sales\n€1,952\n\n\n2\nPeak day\nSun 12 Jul 2026\n\n\n3\nPeak value\n€2,173"
-  },
-  {
-    "objectID": "projects/list/sales-forecasting.html#what-this-tells-the-business",
-    "href": "projects/list/sales-forecasting.html#what-this-tells-the-business",
-    "title": "Sales Forecasting Dashboard",
-    "section": "What this tells the business",
-    "text": "What this tells the business\n\n\n\n\n\n\nImportantActionable insights\n\n\n\n\nStaff up for weekends — the Saturday/Sunday lift is consistent enough to plan for.\nThe forecast trend is upward, reflecting the underlying growth — capacity planning should reflect that, not flat last-year numbers.\nThe 80% confidence band is tight enough to give stock planners a usable range. Revisit in 30 days with actuals."
-  },
-  {
-    "objectID": "projects/list/sales-forecasting.html#what-i-learned",
-    "href": "projects/list/sales-forecasting.html#what-i-learned",
-    "title": "Sales Forecasting Dashboard",
-    "section": "What I learned",
-    "text": "What I learned\n\nDecomposition before forecasting is non-negotiable. Looking at trend/season/residual separately showed the pattern was stable and the model could be simple.\nA simple model that you understand beats a complex one you don’t. I could have reached for Prophet or ARIMA, but a moving-average + seasonal map is transparent, cheap to retrain, and adequately accurate for a 90-day horizon.\nConfidence bands matter more than point estimates — decision-makers need to know the uncertainty, not a pretend-precise single line."
-  },
-  {
-    "objectID": "projects/list/sales-forecasting.html#next-steps",
-    "href": "projects/list/sales-forecasting.html#next-steps",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Next steps",
-    "text": "Next steps\n\nSwap in real transaction data and compare residuals\nTest exponential smoothing (Holt-Winters) as a benchmark\nAdd promotional calendar as a regressor for higher accuracy during campaigns"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "I’m Priyadharshini Balaji, currently pursuing an MSc in Business Analytics at Dublin City University (DCU). I hold a Bachelor of Technology in Information Technology, which gave me a strong foundation in programming, databases, and systems thinking before I moved into analytics."
-  },
-  {
-    "objectID": "about.html#background",
-    "href": "about.html#background",
-    "title": "About Me",
-    "section": "",
-    "text": "I’m Priyadharshini Balaji, currently pursuing an MSc in Business Analytics at Dublin City University (DCU). I hold a Bachelor of Technology in Information Technology, which gave me a strong foundation in programming, databases, and systems thinking before I moved into analytics."
-  },
-  {
-    "objectID": "about.html#what-drives-me",
-    "href": "about.html#what-drives-me",
-    "title": "About Me",
-    "section": "What drives me",
-    "text": "What drives me\nI’m fascinated by the way data can change decisions. A well-placed chart can shift a strategy; a well-designed dashboard can save hours of guesswork. My MSc has been pushing me from describing data to predicting with it — statistical modelling, machine learning, and communicating findings to non-technical audiences."
-  },
-  {
-    "objectID": "about.html#skills",
-    "href": "about.html#skills",
-    "title": "About Me",
-    "section": "Skills",
-    "text": "Skills\n\n\nTechnical\n\nLanguages: Python, SQL, R\nLibraries: pandas, scikit-learn, Plotly, matplotlib\nTools: Git, Quarto, Jupyter, VS Code\nDatabases: MySQL, PostgreSQL\nVisualisation: Plotly, Tableau, Power BI\n\n\n\nAnalytical & Professional\n\nData cleaning & exploratory analysis\nStatistical modelling\nDashboard design\nReport writing & storytelling\nCollaborative version control\nPresenting insights to non-technical stakeholders"
-  },
-  {
-    "objectID": "about.html#goals",
-    "href": "about.html#goals",
-    "title": "About Me",
-    "section": "Goals",
-    "text": "Goals\nOver the next year I want to:\n\nDeepen my machine learning fundamentals — especially classification, clustering, and time series.\nBuild a portfolio of end-to-end analytics projects that real people can interact with (this site is step one).\nSecure an analyst role where I can combine business context with rigorous technical work."
-  },
-  {
-    "objectID": "about.html#beyond-analytics",
-    "href": "about.html#beyond-analytics",
-    "title": "About Me",
-    "section": "Beyond analytics",
-    "text": "Beyond analytics\nWhen I’m not staring at Jupyter notebooks, I enjoy exploring Dublin, reading, and tinkering with little side projects that usually start as “this should take an hour” and end up taking a weekend.\nThanks for reading — feel free to get in touch or browse my projects."
+    "objectID": "cv.html#contact",
+    "href": "cv.html#contact",
+    "title": "Curriculum Vitae",
+    "section": "Contact",
+    "text": "Contact\n\nEmail: priyadharshiniblj25@gmail.com\nLinkedIn: linkedin.com/in/priyadharshini-balaji\nGitHub: github.com/priyadharshini-code-beep\n\n\n\n\n\n\n\nNote\n\n\n\nThis web page is a summary. The PDF version has the full, formatted CV suitable for submission to employers."
   }
 ]

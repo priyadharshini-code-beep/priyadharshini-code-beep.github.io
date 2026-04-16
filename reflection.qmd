@@ -1,0 +1,83 @@
+---
+title: "Reflection"
+subtitle: "On building this portfolio and what I've learned along the way"
+date: "2026-04-16"
+---
+
+::: {.callout-note}
+This page is my honest reflection on the skills I picked up building this ePortfolio and what I want to carry forward.
+:::
+
+## Starting point
+
+When I started this module I had a clear undergraduate foundation in IT and a reasonable grasp of Python from coursework, but I had **never built a website from scratch**, **never deployed anything to the public internet**, and **never used Git beyond the occasional `git clone`**. By the end of this module, I had to combine all three to produce this site. That gap — between knowing things in isolation and shipping them together — turned out to be the most valuable part of the learning.
+
+## Git and version control
+
+The thing that surprised me most about Git was how quickly it stopped feeling like a chore. My first commits were cautious — small, nervous pushes with messages like "update" and "fix". Within a day I was **committing on purpose**, writing messages that actually described *why* I made a change, not just *what* I changed. That shift mattered.
+
+**What clicked:**
+
+- Small commits are better than big ones. If something breaks, you can walk back one step.
+- `.gitignore` is not optional. I accidentally committed a `.DS_Store` file early on and it taught me to set that up from the start.
+- The GitHub Pages deploy loop is *fast*. Commit → push → 30 seconds → live. That tight feedback loop made me more willing to experiment.
+
+**What I'd still like to learn:** branching and merge conflicts. I worked on `main` the whole time because it was a solo project, but I know team workflows require feature branches, pull requests, and reviews.
+
+## Quarto
+
+Quarto was new to me. I picked it because the brief required it, but I ended up genuinely liking it. The idea of writing in Markdown, dropping in live Python code, and getting a polished site out the other end feels like the right abstraction for the kind of data work I want to do.
+
+**What I built comfort with:**
+
+- YAML frontmatter to control page behaviour (About templates, listing pages, code folding)
+- Project-wide configuration through `_quarto.yml` — navbar, footer, theme, SCSS
+- The `{python}` code chunk and its options (`fig-cap`, `code-fold`, `echo`)
+- Callout blocks, grids, and rich Markdown features
+
+**What I struggled with:** the first time my `_quarto.yml` had a tiny indentation error, the whole render broke with a cryptic message. I learned to **render after every significant change** rather than stacking up edits blindly.
+
+## Python for analytics
+
+I'd used Python before, but mostly in isolated notebooks for class exercises. Building the two project pages — **Customer Segmentation with RFM** and **Sales Forecasting** — pushed me to think about Python as a tool for *communicating analysis*, not just running it.
+
+Writing analyses for an audience that isn't the grader changed how I wrote code:
+
+- I started naming variables for readers, not for myself
+- I split code into small blocks with narrative between them
+- I picked visualisations for *what they showed*, not for what was easy to plot
+- I learned to use Plotly for interactivity, where a static matplotlib chart would have shortened the file but lost the reader
+
+## Web design as a learning experience
+
+I did not expect to spend as much time thinking about **design** as I did. Choosing a theme, picking fonts, tuning a colour palette — these weren't decisions I'd ever made consciously before. I came out with a much better appreciation for why designers care about hierarchy, whitespace, and typography.
+
+The custom `styles.scss` file was where I learned the most. Bootswatch gives you a competent starting point; Sass variables give you real control. Changing one `$primary` variable and watching every link, button, and navbar element shift colour was weirdly satisfying.
+
+## Biggest mistakes (and lessons)
+
+::: {.callout-warning title="Lessons from mistakes I actually made"}
+- **404 panic.** Early on my site returned 404 for about 15 minutes and I thought I'd broken something fundamental. It was just GitHub Pages propagation — patience is part of the workflow.
+- **YAML frontmatter.** I accidentally pasted content without the `---` frontmatter delimiters and the landing page rendered as plain Markdown. Lesson: *always* check the top three lines.
+- **Rendering before pushing.** A few times I pushed without rendering and wondered why the live site hadn't updated. The `docs/` folder is what gets served — if you don't render, you push stale HTML.
+:::
+
+## Skills I'm taking forward
+
+Beyond this module, this is the kit I now have:
+
+1. **I can ship.** I can go from "blank folder" to "live website with interactive analysis" in a day.
+2. **I can version.** Every project I build from now on will live in Git from the first commit.
+3. **I can communicate.** Technical writing, charts-as-argument, and structured narrative are skills I'll use in every analyst role I apply for.
+4. **I can iterate.** The render → commit → push → refresh loop is a pattern I can apply to any deliverable, not just websites.
+
+## What's next
+
+Concretely, over the next few weeks I want to:
+
+- Replace the two synthetic-data projects with **one real dataset** each (UCI repository or Kaggle)
+- Add a **third project** using machine learning (probably classification — customer churn)
+- Experiment with **GitHub Actions** to auto-deploy the site instead of committing the rendered output manually
+- Start applying for analyst roles with this portfolio as my calling card
+
+Thanks for reading. If you have thoughts or feedback, I'd love to hear from you via the [contact page](contact.qmd).

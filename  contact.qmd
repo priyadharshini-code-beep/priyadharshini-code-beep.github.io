@@ -1,0 +1,39 @@
+---
+title: "Contact & References"
+---
+
+I'd love to hear from you — whether it's about a role, a collaboration, or just to say hello.
+
+## Get in touch
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+### Direct contact
+- **Email:** [priyadharshiniblj25@gmail.com](mailto:priyadharshiniblj25@gmail.com)
+- **LinkedIn:** [Priyadharshini Balaji](https://www.linkedin.com/in/priyadharshini-balaji-66a361224/){target="_blank"}
+- **GitHub:** [@priyadharshini-code-beep](https://github.com/priyadharshini-code-beep){target="_blank"}
+- **Location:** Dublin, Ireland
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### Best for
+- **Email** → detailed questions, opportunities, long replies
+- **LinkedIn** → quick professional messages, connection requests
+- **GitHub** → code discussions, issues on projects
+:::
+
+:::
+
+## Availability
+
+I'm currently completing my **MSc in Business Analytics at Dublin City University** and am **actively looking for analytics and data science roles** — internships, graduate programmes, and entry-level analyst positions in Ireland or remote.
+
+::: {.callout-tip}
+## Response time
+I aim to reply to all professional messages within **48 hours**. For time-sensitive opportunities, please mark the subject line accordingly.
+:::
+
+## References
+
+Academic and professional references are available on request. Please reach out via email with a short note about the role or context, and I'll share contact details of
