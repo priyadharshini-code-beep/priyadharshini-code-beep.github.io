@@ -50,4 +50,25 @@ Rajalakshmi Engineering College, Chennai, India
 - Contributed to the development of an industrial Android application integrated with IoT sensors, bridging hardware inputs with a mobile interface.
 - Gained exposure to end-to-end IoT-to-mobile workflows — hardware signals, data capture, and application-layer handling.
 
-## P
+## Projects
+
+**Customer Segmentation with RFM Analysis** — *Python, scikit-learn, Plotly*  
+Segmented 1,000 synthetic retail customers into four actionable groups using RFM scoring and K-Means clustering. Built an interactive 3D visualisation to communicate segments to non-technical stakeholders.
+
+**Sales Forecasting Dashboard** — *Python, time series, Plotly*  
+Built a 90-day sales forecasting pipeline with decomposition (trend, weekly seasonality, residual) and an 80% confidence band. Produced an interactive dashboard to surface daily, weekly, and peak-day insights.
+
+**ePortfolio Website** — *Quarto, Git, GitHub Pages*  
+Designed and deployed a personal portfolio site with custom Sass styling, interactive Python visualisations, and continuous deployment.  
+[priyadharshini-code-beep.github.io](https://priyadharshini-code-beep.github.io)
+
+## Technical Skills
+
+**Programming & Query:** Python (pandas, scikit-learn, Plotly), SQL, R  
+**Data & BI:** Excel, Power BI, Tableau  
+**Tools & Workflow:** Git, GitHub, Quarto, Jupyter, VS Code  
+**Core Competencies:** Data cleaning, exploratory analysis, statistical modelling, clustering, time series forecasting, dashboard design, stakeholder communication
+
+## Languages
+
+English (fluent) · Hindi · Tamil
