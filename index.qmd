@@ -31,9 +31,9 @@ This site is my ePortfolio: a collection of projects, reflections, and a living 
 
 ### What you'll find here
 
-- 📊 **Projects** that apply analytical methods to real business questions
-- 📝 **Reflection** on skills I've picked up — Git, Quarto, Python, design thinking
-- 📄 **CV** summarising my background and experience
-- 📬 **Contact** if you'd like to get in touch
+- {{< fa chart-line >}} **[Projects](projects/index.qmd)** — analytical methods applied to real business questions
+- {{< fa pen-to-square >}} **[Reflection](reflection.qmd)** — on skills I've picked up (Git, Quarto, Python, design)
+- {{< fa file-pdf >}} **[CV](cv/cv.pdf)** — my full background and experience
+- {{< fa envelope >}} **[Contact](contact.qmd)** — get in touch if you'd like to collaborate
 
 Thanks for visiting!
