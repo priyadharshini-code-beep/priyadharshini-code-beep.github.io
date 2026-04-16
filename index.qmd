@@ -1,7 +1,39 @@
 ---
-title: "Priyadharshini Balaji | ePortfolio"
+title: "Priyadharshini Balaji"
+image: images/profile.jpg
+about:
+  template: trestles
+  image-width: 16em
+  image-shape: round
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/priyadharshini-balaji-66a361224/
+      target: _blank
+    - icon: github
+      text: GitHub
+      href: https://github.com/priyadharshini-code-beep
+      target: _blank
+    - icon: envelope
+      text: Email
+      href: mailto:priyadharshiniblj25@gmail.com
+    - icon: file-earmark-pdf
+      text: CV
+      href: cv/cv.pdf
+      target: _blank
 ---
 
-This is a Quarto website.
+## Hello, I'm Priyadharshini 👋
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I'm an **MSc Business Analytics** student at **Dublin City University**, with an undergraduate degree in **B.Tech Information Technology**. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.
+
+This site is my ePortfolio: a collection of projects, reflections, and a living record of what I'm learning along the way.
+
+### What you'll find here
+
+- 📊 **Projects** that apply analytical methods to real business questions
+- 📝 **Reflection** on skills I've picked up — Git, Quarto, Python, design thinking
+- 📄 **CV** summarising my background and experience
+- 📬 **Contact** if you'd like to get in touch
+
+Thanks for visiting!
