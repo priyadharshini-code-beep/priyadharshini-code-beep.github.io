@@ -21,7 +21,15 @@ execute:
 
 ## The Approach
 
-RFM (Recency, Frequency, Monetary) is a classic marketing framework. I combine it with **K-Means clustering** to identify natural customer segments without hand-picking thresholds.
+RFM (Recency, Frequency, Monetary) is a classic marketing framework.[^rfm] I combine it with **K-Means clustering** to identify natural customer segments without hand-picking thresholds.
+
+[^rfm]: RFM analysis was first formalised by Bult & Wansbeek (1995) and has since become a standard tool in direct marketing and CRM analytics.
+
+The composite RFM score weights each standardised dimension equally:
+
+$$\text{RFM Score} = w_R \cdot \tilde{R} + w_F \cdot \tilde{F} + w_M \cdot \tilde{M}$$
+
+where $\tilde{R}$, $\tilde{F}$, and $\tilde{M}$ are the standardised Recency, Frequency, and Monetary values, and $w_R + w_F + w_M = 1$. In this project all weights are set to $\frac{1}{3}$, but they can be tuned to reflect business priorities.
 
 ::: {.callout-note}
 Data in this project is **synthetic** — generated to simulate realistic retail patterns. The methodology is what matters; the same pipeline runs on real transaction data without changes.

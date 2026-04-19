@@ -25,6 +25,14 @@ execute:
 2. Decompose it into components so we understand *what* is moving
 3. Forecast the next 90 days with moving-average smoothing
 4. Build an interactive dashboard to explore the forecast
+
+The centred $n$-period moving average used for trend extraction is:[^ma]
+
+$$\hat{T}_t = \frac{1}{n} \sum_{i=-(n-1)/2}^{(n-1)/2} y_{t+i}$$
+
+where $y_t$ is the observed sales value at time $t$ and $n = 30$ days is the window chosen to smooth out weekly seasonality without over-smoothing the trend.
+
+[^ma]: A centred moving average is preferred over a trailing average for decomposition because it avoids introducing a phase lag into the estimated trend.
 ```{mermaid}
 flowchart LR
     A[Raw Daily Sales] --> B[Decomposition]

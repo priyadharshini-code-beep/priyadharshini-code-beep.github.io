@@ -20,7 +20,9 @@ The thing that surprised me most about Git was how quickly it stopped feeling li
 
 - Small commits are better than big ones. If something breaks, you can walk back one step.
 - `.gitignore` is not optional. I accidentally committed a `.DS_Store` file early on and it taught me to set that up from the start.
-- The GitHub Pages deploy loop is *fast*. Commit → push → 30 seconds → live. That tight feedback loop made me more willing to experiment.
+- The GitHub Pages deploy loop is *fast*. Commit → push → 30 seconds → live.[^ghpages] That tight feedback loop made me more willing to experiment.
+
+[^ghpages]: GitHub Pages is a free static site hosting service provided by GitHub. It serves files directly from a repository branch — in this case the `docs/` folder on `main`.
 
 **What I'd still like to learn:** branching and merge conflicts. I worked on `main` the whole time because it was a solo project, but I know team workflows require feature branches, pull requests, and reviews.
 
@@ -71,13 +73,23 @@ Beyond this module, this is the kit I now have:
 3. **I can communicate.** Technical writing, charts-as-argument, and structured narrative are skills I'll use in every analyst role I apply for.
 4. **I can iterate.** The render → commit → push → refresh loop is a pattern I can apply to any deliverable, not just websites.
 
+## Further watching
+
+If you'd like to see Quarto in action from one of its creators, this talk by Mine Çetinkaya-Rundel is an excellent introduction:
+
+{{< video https://www.youtube.com/watch?v=yvi5uXQMvu4 >}}
+
 ## What's next
 
-Concretely, over the next few weeks I want to:
+Here's my honest checklist — ticked items are already done, the rest are in progress:
 
-- Replace the two synthetic-data projects with **one real dataset** each (UCI repository or Kaggle)
-- Add a **third project** using machine learning (probably classification — customer churn)
-- Experiment with **GitHub Actions** to auto-deploy the site instead of committing the rendered output manually
-- Start applying for analyst roles with this portfolio as my calling card
+- [x] Build a public ePortfolio with live, executable Python analysis
+- [x] Learn Git and version control from scratch
+- [x] Deploy a site to GitHub Pages using the `docs/` workflow
+- [x] Write a custom `styles.scss` with a cohesive colour palette
+- [ ] Replace the two synthetic-data projects with **one real dataset** each (UCI repository or Kaggle)
+- [ ] Add a **third project** using machine learning (probably classification — customer churn)
+- [ ] Experiment with **GitHub Actions** to auto-deploy the site instead of committing the rendered output manually
+- [ ] Start applying for analyst roles with this portfolio as my calling card
 
 Thanks for reading. If you have thoughts or feedback, I'd love to hear from you via the [contact page](contact.qmd).

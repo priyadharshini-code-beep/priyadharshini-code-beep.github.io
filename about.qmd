@@ -40,6 +40,20 @@ I'm fascinated by the way data can change decisions. A well-placed chart can shi
 
 :::
 
+### Tools at a glance
+
+| Tool | Category | Proficiency | Primary use |
+|------|----------|-------------|-------------|
+| Python | Language | ⭐⭐⭐⭐ | Analysis, modelling, visualisation |
+| SQL | Language | ⭐⭐⭐⭐ | Data extraction & transformation |
+| R | Language | ⭐⭐⭐ | Statistical analysis |
+| pandas / NumPy | Library | ⭐⭐⭐⭐ | Data wrangling |
+| scikit-learn | Library | ⭐⭐⭐ | Machine learning |
+| Plotly | Library | ⭐⭐⭐⭐ | Interactive visualisation |
+| Git & GitHub | Tool | ⭐⭐⭐⭐ | Version control & deployment |
+| Quarto | Tool | ⭐⭐⭐ | Reproducible reporting & this site |
+| Tableau / Power BI | Tool | ⭐⭐⭐ | Business dashboards |
+
 ## Goals
 
 Over the next year I want to:
@@ -51,5 +65,7 @@ Over the next year I want to:
 ## Beyond analytics
 
 When I'm not staring at Jupyter notebooks, I enjoy exploring Dublin, reading, and tinkering with little side projects that usually start as "this should take an hour" and end up taking a weekend.
+
+![Priyadharshini Balaji — MSc Business Analytics student at Dublin City University, 2026.](images/profile.jpg){fig-alt="Profile photo of Priyadharshini Balaji" width=260 fig-align="left"}
 
 Thanks for reading — feel free to [get in touch](contact.qmd) or browse my [projects](projects/index.qmd).
