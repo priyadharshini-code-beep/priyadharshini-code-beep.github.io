@@ -17,9 +17,8 @@ website:
       - href: contact.qmd
         text: Contact
     right: []
-    background: light
-    foreground: primary
-
+    background: primary
+    foreground: light
   page-footer:
     left: "© 2026 Priyadharshini Balaji"
     right:
@@ -30,7 +29,7 @@ website:
 
 format:
   html:
-    theme: [flatly, styles.scss]
+    theme: [cosmo, styles.scss]
     css: styles.css
     toc: false
     smooth-scroll: true

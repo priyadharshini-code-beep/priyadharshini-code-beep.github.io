@@ -1,253 +1,284 @@
 /*-- scss:defaults --*/
 
-// Google Font
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+// Google Fonts - matching Meghana's aesthetic
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
-// Brand colour palette — Navy/Blue theme
-$primary:   #1e3a5f;   // Deep navy — main brand colour
-$secondary: #2563eb;   // Bright blue — accent
-$success:   #16a34a;   // Green
-$info:      #2563eb;
-$warning:   #f59e0b;
-$danger:    #ef4444;
+// ── SAGE GREEN PALETTE ─────────────────────────────────────────────
+$primary:   #3a6447;   // deep sage green – main accent
+$secondary: #4a7c59;   // medium sage
+$success:   #6b9e7a;   // light sage
+$info:      #4a7c59;
+$warning:   #c8a96e;
+$danger:    #c0735a;
 
-// Light theme
-$body-bg:    #ffffff;
-$body-color: #1f2937;
-$link-color: $secondary;
-$link-hover-color: darken($secondary, 12%);
+// Backgrounds
+$body-bg:          #f0f5ea;   // pale sage – exactly like Meghana's
+$body-color:       #2c3a2a;   // near-black ink
+$link-color:       $primary;
+$link-hover-color: darken($primary, 12%);
 
 // Typography
-$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-family-sans-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
 $font-family-monospace:  'JetBrains Mono', 'SF Mono', Menlo, monospace;
-$headings-font-weight: 700;
-$headings-color: $primary;
+$headings-font-family:   'Playfair Display', Georgia, serif;
+$headings-font-weight:   600;
+$headings-color:         $primary;
+$font-size-base:         1rem;
+$line-height-base:       1.75;
 
-// Navbar — white with navy text
-$navbar-bg: #ffffff;
-$navbar-fg: $primary;
-$navbar-hl: $secondary;
+// Navbar – sage green bar
+$navbar-bg: #3a6447;
+$navbar-fg: #ffffff;
+$navbar-hl: #c8d5b9;
 
 // Code
-$code-bg:    #eff6ff;
-$code-color: $secondary;
+$code-bg:    #eaf2e0;
+$code-color: #2c5038;
+
+// Cards / panels
+$card-bg:           #fafdf7;
+$card-border-color: #c2d4b4;
 
 /*-- scss:rules --*/
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.7;
+  background-color: #f0f5ea;
+  color: #2c3a2a;
 }
 
-// ── Navbar ────────────────────────────────────────────────
+// ── HEADINGS ──────────────────────────────────────────────────────
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  border-bottom: 2px solid #c8d5b9;
+  padding-bottom: 0.3em;
+  margin-top: 2em;
+  color: $primary;
+}
+
+h3 { color: darken($secondary, 8%); }
+
+// ── NAVBAR ────────────────────────────────────────────────────────
 .navbar {
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  background-color: #3a6447 !important;
+  box-shadow: 0 2px 8px rgba(44, 58, 42, 0.15);
 
   .navbar-brand {
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
-    color: $primary !important;
+    font-size: 1.05rem;
     letter-spacing: 0.02em;
+    color: #ffffff !important;
   }
 
   .nav-link {
-    font-weight: 500;
-    color: $primary !important;
+    font-weight: 400;
+    color: rgba(255,255,255,0.9) !important;
     transition: color 0.2s ease;
-
-    &:hover { color: $secondary !important; }
-  }
-}
-
-// ── Hero / About template section ─────────────────────────
-// The index page uses Quarto's "trestles" about template.
-// We override it so the whole above-fold area becomes a full-width
-// dark navy banner, matching the reference screenshot.
-
-// Hero wrapper — targets the about-entity block on the homepage
-.about-entity {
-  background: linear-gradient(135deg, #1e3a5f 0%, #1e3a8a 100%);
-  color: #ffffff !important;
-  padding: 4rem 2rem !important;
-  border-radius: 0;
-  margin: -1.5rem -1.5rem 2rem -1.5rem;
-
-  h1.title, .title {
-    color: #ffffff !important;
-    font-size: 2.4rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
-
-  p.subtitle, .subtitle {
-    color: #93c5fd !important;   // light blue
-    font-size: 1.05rem;
-    margin-bottom: 1.2rem;
-  }
-
-  p {
-    color: #e2e8f0 !important;
-  }
-
-  .about-links .about-link {
-    border: 1px solid rgba(255,255,255,0.45) !important;
-    color: #ffffff !important;
-    background: rgba(255,255,255,0.08) !important;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    font-family: 'Source Serif 4', serif;
 
     &:hover {
-      background: rgba(255,255,255,0.18) !important;
-      transform: translateY(-2px);
+      color: #c8d5b9 !important;
     }
   }
 
-  img.about-image {
-    border: 4px solid rgba(255,255,255,0.3) !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
+  .nav-link.active {
+    color: #c8d5b9 !important;
+    border-bottom: 2px solid #c8d5b9;
   }
 }
 
-// ── About Me section below the hero ───────────────────────
-h2 {
-  color: $primary;
-  font-size: 1.6rem;
-  font-weight: 700;
-  border-bottom: 3px solid $secondary;
-  padding-bottom: 0.4em;
-  margin-top: 2.4em;
-  display: inline-block;
+// ── ABOUT PAGE (home) ─────────────────────────────────────────────
+.about-entity {
+  background: #f0f5ea;
 }
 
-h3 {
-  color: darken($secondary, 8%);
+.about-links .about-link {
+  border: 1.5px solid #c2d4b4 !important;
+  color: #3a6447 !important;
+  background: #fafdf7 !important;
+  border-radius: 6px !important;
+  font-family: 'Source Serif 4', serif;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #3a6447 !important;
+    color: #ffffff !important;
+    border-color: #3a6447 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(58, 100, 71, 0.2);
+  }
 }
 
-// ── Skill / tools tags ────────────────────────────────────
-// You can wrap tool names in backtick code spans and they'll
-// pick up this style automatically.
-code:not(.sourceCode) {
-  background-color: #eff6ff;
-  color: $secondary;
-  border: 1px solid #bfdbfe;
-  padding: 0.2em 0.55em;
-  border-radius: 99px;   // pill shape matching reference
-  font-weight: 500;
-  font-size: 0.85em;
-  font-family: $font-family-sans-serif;
-}
-
-// ── Project listing cards ─────────────────────────────────
+// ── PROJECT LISTING CARDS ────────────────────────────────────────
 .quarto-listing .quarto-post {
-  border: 1px solid #e5e7eb;
+  background: #fafdf7;
+  border: 1px solid #c2d4b4;
   border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 28px rgba(37,99,235,0.13);
+    box-shadow: 0 8px 28px rgba(44, 58, 42, 0.10);
   }
 
   .listing-title {
-    color: $primary;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: #2c3a2a;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .listing-description {
+    color: #4a5e47;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .listing-date {
+    color: #6b7f68;
+    font-size: 0.82rem;
+    font-style: italic;
   }
 
   .listing-categories .listing-category {
-    background-color: #eff6ff;
-    color: $secondary;
-    border: 1px solid #bfdbfe;
-    border-radius: 99px;
-    padding: 0.15em 0.7em;
-    font-size: 0.78em;
-    font-weight: 600;
+    background-color: #dde9d0 !important;
+    color: #3a5a35 !important;
+    border: none !important;
+    border-radius: 3px;
+    padding: 0.15em 0.6em;
+    font-size: 0.72rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
   }
 }
 
-// ── Code blocks ───────────────────────────────────────────
+// ── SIDEBAR CATEGORIES ────────────────────────────────────────────
+.quarto-listing-category-title {
+  font-family: 'Playfair Display', serif;
+  color: $primary;
+  font-size: 1.1rem;
+}
+
+.quarto-listing-category .category {
+  color: #4a5e47;
+  transition: color 0.2s;
+
+  &:hover, &.active {
+    color: $primary;
+    font-weight: 600;
+  }
+}
+
+// ── CODE BLOCKS ──────────────────────────────────────────────────
 pre.sourceCode {
-  border-left: 3px solid $secondary;
+  border-left: 3px solid #4a7c59;
   border-radius: 6px;
-  background-color: #f8fafc;
+  background-color: #f4f8f2 !important;
 }
 
-// ── Callouts ──────────────────────────────────────────────
-.callout {
-  border-radius: 8px;
-  border-width: 1px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+code:not(.sourceCode) {
+  background-color: #dde9d0;
+  color: #2c5038;
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 0.9em;
 }
 
-// ── TOC sidebar ───────────────────────────────────────────
+// ── TOC ──────────────────────────────────────────────────────────
 #TOC, .sidebar nav[role="doc-toc"] {
   a {
-    color: lighten($body-color, 25%);
+    color: #6b7f68;
     border-left: 2px solid transparent;
     transition: all 0.15s ease;
 
     &:hover {
-      color: $secondary;
-      border-left-color: $secondary;
-      background-color: #eff6ff;
+      color: $primary;
+      border-left-color: $primary;
+      background-color: #eaf2e0;
     }
 
     &.active {
-      color: $secondary;
+      color: $primary;
       font-weight: 600;
-      border-left-color: $secondary;
+      border-left-color: $primary;
     }
   }
 }
 
-// ── Footer ────────────────────────────────────────────────
+// ── FOOTER ───────────────────────────────────────────────────────
 .page-footer, .nav-footer {
-  background-color: #f9fafb !important;
-  color: $body-color !important;
-  border-top: 1px solid #e5e7eb;
-  padding: 1.5em 0;
+  background-color: #eaf2e0 !important;
+  color: #4a5e47 !important;
+  border-top: 1px solid #c2d4b4;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.88rem;
 
   a {
-    color: $secondary;
+    color: $primary;
     font-weight: 500;
-    &:hover { color: darken($secondary, 12%); }
+
+    &:hover { color: darken($primary, 12%); }
   }
 }
 
-// ── Misc ──────────────────────────────────────────────────
+// ── LINKS ────────────────────────────────────────────────────────
 a {
   text-decoration: none;
-  &:hover:not(.nav-link):not(.about-link):not(.btn):not(.quarto-post) {
+
+  &:hover:not(.nav-link):not(.about-link):not(.btn) {
     text-decoration: underline;
     text-underline-offset: 3px;
   }
 }
 
+// ── BUTTONS ──────────────────────────────────────────────────────
 .btn-primary {
-  background-color: $secondary;
-  border-color: $secondary;
+  background-color: $primary;
+  border-color: $primary;
+
   &:hover {
-    background-color: darken($secondary, 8%);
-    border-color: darken($secondary, 8%);
+    background-color: darken($primary, 10%);
+    border-color: darken($primary, 10%);
     transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(37,99,235,0.3);
+    box-shadow: 0 2px 6px rgba(58, 100, 71, 0.3);
   }
 }
 
+// ── BLOCKQUOTES ──────────────────────────────────────────────────
 blockquote {
-  border-left: 4px solid $secondary;
-  background-color: #eff6ff;
+  border-left: 4px solid #4a7c59;
+  background-color: #eaf2e0;
   padding: 1em 1.2em;
   border-radius: 0 6px 6px 0;
   font-style: italic;
-  color: darken($body-color, 5%);
+  color: #4a5e47;
 }
 
-::selection {
-  background-color: #bfdbfe;
-  color: $primary;
+// ── CALLOUTS ─────────────────────────────────────────────────────
+.callout {
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(44, 58, 42, 0.06);
 }
+
+// ── SELECTION ────────────────────────────────────────────────────
+::selection {
+  background-color: #c8d5b9;
+  color: #2c3a2a;
+}
+
+// ── CONTENT PAGES ────────────────────────────────────────────────
+.page-columns .content {
+  background: transparent;
+}
+
+// Remove any lingering purple/blue
+.quarto-title-meta-heading { color: #4a5e47; }

@@ -1,0 +1,112 @@
+---
+title: "Customer Segmentation with RFM Analysis"
+date: "2026-04-15"
+categories: [python, clustering, marketing-analytics]
+description: "Segmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering."
+---
+
+## Overview
+
+**Recency-Frequency-Monetary (RFM)** analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies.
+
+---
+
+## RFM Feature Engineering
+
+Three features were calculated per customer from transaction history:
+
+- **Recency** — days since the customer's last purchase (lower = more recent = better)
+- **Frequency** — number of purchases within the analysis period
+- **Monetary** — total spend over the period
+
+Each raw value was then scaled using `StandardScaler` before clustering to prevent any single dimension from dominating.
+
+```python
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+
+snapshot_date = pd.Timestamp('2026-04-01')
+
+# Calculate RFM features per customer
+rfm = df.groupby('customer_id').agg(
+    Recency   = ('order_date', lambda x: (snapshot_date - x.max()).days),
+    Frequency = ('order_id',   'count'),
+    Monetary  = ('revenue',    'sum')
+).reset_index()
+
+# Scale features
+scaler = StandardScaler()
+rfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])
+```
+
+---
+
+## Selecting the Optimal K
+
+The **Elbow Method** (inertia vs K) and **Silhouette Scores** were both used to select the number of clusters. K=4 was chosen — it produced the clearest elbow and the highest silhouette score, while remaining interpretable for business stakeholders.
+
+```python
+from sklearn.metrics import silhouette_score
+import matplotlib.pyplot as plt
+
+inertias, silhouettes = [], []
+for k in range(2, 11):
+    km = KMeans(n_clusters=k, random_state=42, n_init=10)
+    labels = km.fit_predict(rfm_scaled)
+    inertias.append(km.inertia_)
+    silhouettes.append(silhouette_score(rfm_scaled, labels))
+
+# K=4 selected based on elbow + silhouette
+km_final = KMeans(n_clusters=4, random_state=42, n_init=10)
+rfm['Cluster'] = km_final.fit_predict(rfm_scaled)
+```
+
+---
+
+## Segment Profiles
+
+| Segment | Avg Recency | Avg Frequency | Avg Monetary | % of Customers |
+|---|---|---|---|---|
+| **Champions** | 15 days | 18 orders | £820 | 22% |
+| **Loyal Customers** | 45 days | 9 orders | £410 | 31% |
+| **At-Risk** | 120 days | 4 orders | £190 | 28% |
+| **Lost Customers** | 280 days | 1 order | £55 | 19% |
+
+---
+
+## Marketing Strategies by Segment
+
+**Champions (22%)** — Recent, frequent, high-spend buyers. These are your best customers.
+
+- Reward with loyalty programmes or early access to new products
+- Ask for reviews and referrals
+
+**Loyal Customers (31%)** — Regular buyers with moderate spend. High potential.
+
+- Upsell to premium products or bundles
+- Cross-sell complementary categories
+
+**At-Risk (28%)** — Previously active customers who haven't purchased recently.
+
+- Send targeted re-engagement emails with personalised offers
+- Highlight new arrivals relevant to their purchase history
+
+**Lost Customers (19%)** — Low recency, low frequency, low spend. Mostly churned.
+
+- Win-back campaign with a compelling discount
+- If no response after 2 attempts, discontinue spend on this segment
+
+---
+
+## Conclusion
+
+RFM-based K-Means clustering provides a **practical, interpretable framework** for customer segmentation that any marketing team can act on. The four identified segments enable efficient budget allocation — concentrating retention spend on Champions and Loyal Customers while deploying re-engagement tactics for At-Risk customers.
+
+**Key learnings:**
+
+- Scaling features before clustering is essential — unscaled RFM produces misleading segments
+- Combining Elbow + Silhouette gives more confidence in K selection than either alone
+- Always interpret cluster centroids in the original (unscaled) space for business communication
+
+> **Tools:** Python, Scikit-learn, Pandas, Matplotlib, Seaborn
