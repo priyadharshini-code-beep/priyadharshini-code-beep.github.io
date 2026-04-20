@@ -1,0 +1,307 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Customer Segmentation with RFM Analysis\"\n",
+        "description: \"Segmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\"\n",
+        "author: \"Priyadharshini Balaji\"\n",
+        "date: \"2026-04-15\"\n",
+        "image: \"customer-segmentation.jpg\"\n",
+        "categories: [python, clustering, marketing-analytics]\n",
+        "format:\n",
+        "  html:\n",
+        "    code-fold: true\n",
+        "    code-tools: true\n",
+        "    toc: true\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  message: false\n",
+        "---\n",
+        "\n",
+        "## The Question\n",
+        "\n",
+        "*Not every customer is equally valuable — and not every customer should get the same marketing treatment.* How can we segment a customer base into meaningful groups using only three simple signals: **Recency**, **Frequency**, and **Monetary value**?\n",
+        "\n",
+        "## The Approach\n",
+        "\n",
+        "RFM (Recency, Frequency, Monetary) is a classic marketing framework.[^rfm] I combine it with **K-Means clustering** to identify natural customer segments without hand-picking thresholds.\n",
+        "\n",
+        "[^rfm]: RFM analysis was first formalised by Bult & Wansbeek (1995) and has since become a standard tool in direct marketing and CRM analytics.\n",
+        "\n",
+        "The composite RFM score weights each standardised dimension equally:\n",
+        "\n",
+        "$$\\text{RFM Score} = w_R \\cdot \\tilde{R} + w_F \\cdot \\tilde{F} + w_M \\cdot \\tilde{M}$$\n",
+        "\n",
+        "where $\\tilde{R}$, $\\tilde{F}$, and $\\tilde{M}$ are the standardised Recency, Frequency, and Monetary values, and $w_R + w_F + w_M = 1$. In this project all weights are set to $\\frac{1}{3}$, but they can be tuned to reflect business priorities.\n",
+        "\n",
+        "::: {.callout-note}\n",
+        "Data in this project is **synthetic** — generated to simulate realistic retail patterns. The methodology is what matters; the same pipeline runs on real transaction data without changes.\n",
+        ":::\n",
+        "\n",
+        "## Step 1 — Generate the data"
+      ],
+      "id": "d7b79482"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: data-generation\n",
+        "#| fig-cap: Synthetic retail transaction data preview\n",
+        "\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "from datetime import datetime, timedelta\n",
+        "\n",
+        "np.random.seed(42)\n",
+        "\n",
+        "n_customers = 1000\n",
+        "today = datetime(2026, 4, 15)\n",
+        "\n",
+        "# Simulate customer behaviour with three archetypes mixed in\n",
+        "customer_ids = range(1, n_customers + 1)\n",
+        "recency = np.concatenate([\n",
+        "    np.random.randint(1, 30, 300),     # active\n",
+        "    np.random.randint(30, 120, 500),   # moderate\n",
+        "    np.random.randint(120, 365, 200)   # lapsed\n",
+        "])\n",
+        "frequency = np.concatenate([\n",
+        "    np.random.randint(10, 50, 300),\n",
+        "    np.random.randint(3, 10, 500),\n",
+        "    np.random.randint(1, 3, 200)\n",
+        "])\n",
+        "monetary = np.concatenate([\n",
+        "    np.random.uniform(500, 5000, 300),\n",
+        "    np.random.uniform(100, 500, 500),\n",
+        "    np.random.uniform(10, 100, 200)\n",
+        "]).round(2)\n",
+        "\n",
+        "rfm = pd.DataFrame({\n",
+        "    'CustomerID': customer_ids,\n",
+        "    'Recency': recency,\n",
+        "    'Frequency': frequency,\n",
+        "    'Monetary': monetary\n",
+        "})\n",
+        "\n",
+        "rfm.head(10)"
+      ],
+      "id": "data-generation",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Step 2 — Explore the distribution"
+      ],
+      "id": "3199474a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: fig-rfm-dist\n",
+        "#| fig-cap: Distribution of Recency, Frequency, and Monetary values\n",
+        "\n",
+        "import plotly.express as px\n",
+        "from plotly.subplots import make_subplots\n",
+        "import plotly.graph_objects as go\n",
+        "\n",
+        "fig = make_subplots(rows=1, cols=3, subplot_titles=('Recency (days)', 'Frequency (orders)', 'Monetary (€)'))\n",
+        "\n",
+        "fig.add_trace(go.Histogram(x=rfm['Recency'], marker_color='#6a4c93', nbinsx=30), row=1, col=1)\n",
+        "fig.add_trace(go.Histogram(x=rfm['Frequency'], marker_color='#1982c4', nbinsx=30), row=1, col=2)\n",
+        "fig.add_trace(go.Histogram(x=rfm['Monetary'], marker_color='#ff595e', nbinsx=30), row=1, col=3)\n",
+        "\n",
+        "fig.update_layout(showlegend=False, height=350, template='plotly_white',\n",
+        "                  title_text=\"RFM Feature Distributions\")\n",
+        "fig.show()"
+      ],
+      "id": "fig-rfm-dist",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The three features are heavily **right-skewed** — a handful of customers dominate frequency and spend. This is exactly what we'd expect in retail and motivates scaling before clustering.\n",
+        "\n",
+        "## Step 3 — Cluster with K-Means"
+      ],
+      "id": "45666615"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: clustering\n",
+        "#| fig-cap: Assigning each customer to a segment\n",
+        "\n",
+        "from sklearn.preprocessing import StandardScaler\n",
+        "from sklearn.cluster import KMeans\n",
+        "\n",
+        "# Scale features (K-Means is distance-based, so scale matters)\n",
+        "scaler = StandardScaler()\n",
+        "rfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])\n",
+        "\n",
+        "# Fit K-Means with 4 clusters\n",
+        "kmeans = KMeans(n_clusters=4, random_state=42, n_init=10)\n",
+        "rfm['Cluster'] = kmeans.fit_predict(rfm_scaled)\n",
+        "\n",
+        "# Profile each cluster\n",
+        "cluster_profile = rfm.groupby('Cluster').agg(\n",
+        "    Count=('CustomerID', 'count'),\n",
+        "    AvgRecency=('Recency', 'mean'),\n",
+        "    AvgFrequency=('Frequency', 'mean'),\n",
+        "    AvgMonetary=('Monetary', 'mean')\n",
+        ").round(1)\n",
+        "\n",
+        "cluster_profile"
+      ],
+      "id": "clustering",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Step 4 — Name the segments\n",
+        "\n",
+        "Based on the cluster profile, I can assign meaningful labels:"
+      ],
+      "id": "301d0b50"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: segment-labels\n",
+        "\n",
+        "segment_names = {\n",
+        "    rfm.groupby('Cluster')['Monetary'].mean().idxmax(): '🌟 Champions',\n",
+        "    rfm.groupby('Cluster')['Recency'].mean().idxmax(): '💤 At Risk',\n",
+        "    rfm.groupby('Cluster')['Frequency'].mean().idxmin(): '🆕 New / Occasional',\n",
+        "}\n",
+        "# Fill in the remaining cluster\n",
+        "remaining = set(rfm['Cluster'].unique()) - set(segment_names.keys())\n",
+        "for c in remaining:\n",
+        "    segment_names[c] = '👥 Loyal Regulars'\n",
+        "\n",
+        "rfm['Segment'] = rfm['Cluster'].map(segment_names)\n",
+        "rfm['Segment'].value_counts()"
+      ],
+      "id": "segment-labels",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Step 5 — Visualise the segments interactively"
+      ],
+      "id": "75e9ca10"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: fig-segments-3d\n",
+        "#| fig-cap: 3D view of the four segments — drag to rotate\n",
+        "\n",
+        "fig = px.scatter_3d(\n",
+        "    rfm, x='Recency', y='Frequency', z='Monetary',\n",
+        "    color='Segment',\n",
+        "    hover_data=['CustomerID'],\n",
+        "    opacity=0.7,\n",
+        "    color_discrete_sequence=['#ff595e', '#ffca3a', '#8ac926', '#6a4c93']\n",
+        ")\n",
+        "fig.update_traces(marker=dict(size=5))\n",
+        "fig.update_layout(height=600, template='plotly_white',\n",
+        "                  title='Customer Segments in RFM Space')\n",
+        "fig.show()"
+      ],
+      "id": "fig-segments-3d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Step 6 — Segment economics"
+      ],
+      "id": "45860bce"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: fig-segment-revenue\n",
+        "#| fig-cap: Revenue contribution by segment\n",
+        "\n",
+        "segment_summary = rfm.groupby('Segment').agg(\n",
+        "    Customers=('CustomerID', 'count'),\n",
+        "    TotalRevenue=('Monetary', 'sum'),\n",
+        "    AvgOrderValue=('Monetary', 'mean')\n",
+        ").round(2).sort_values('TotalRevenue', ascending=False)\n",
+        "\n",
+        "fig = px.bar(\n",
+        "    segment_summary.reset_index(),\n",
+        "    x='Segment', y='TotalRevenue',\n",
+        "    color='Segment',\n",
+        "    text='TotalRevenue',\n",
+        "    color_discrete_sequence=['#6a4c93', '#8ac926', '#ffca3a', '#ff595e']\n",
+        ")\n",
+        "fig.update_traces(texttemplate='€%{text:,.0f}', textposition='outside')\n",
+        "fig.update_layout(showlegend=False, template='plotly_white',\n",
+        "                  yaxis_title='Total Revenue (€)', height=400)\n",
+        "fig.show()"
+      ],
+      "id": "fig-segment-revenue",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## What this tells the business\n",
+        "\n",
+        "::: {.callout-important title=\"Takeaways\"}\n",
+        "- **🌟 Champions** are a small group but contribute the lion's share of revenue — protect them with loyalty perks and early access, not discounts.\n",
+        "- **💤 At Risk** customers haven't ordered in months. A targeted win-back campaign (personalised offer, not a generic 10%) is the highest-ROI move here.\n",
+        "- **🆕 New / Occasional** customers need nurturing — educational content, first-purchase offers, onboarding sequences.\n",
+        "- **👥 Loyal Regulars** are the backbone. Cross-sell and upsell fit best here.\n",
+        ":::\n",
+        "\n",
+        "## What I learned\n",
+        "\n",
+        "- **Scaling matters.** K-Means with raw RFM values put everything into the monetary dimension. Standardising gave genuinely 3D clusters.\n",
+        "- **K selection is a judgement call.** I used 4 after inspecting the elbow plot, but 3 and 5 were both defensible. In practice you'd validate against business intuition.\n",
+        "- **Naming segments is the real deliverable.** Cluster 2 / 3 means nothing to marketing. \"At Risk\" does.\n",
+        "\n",
+        "## Code & data\n",
+        "\n",
+        "The full notebook with synthetic data generation is in [this repo](https://github.com/priyadharshini-code-beep/priyadharshini-code-beep.github.io)."
+      ],
+      "id": "6f6fc8c7"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Applications/anaconda3/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
