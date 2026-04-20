@@ -179,7 +179,7 @@
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Projects\nExplore my work in data analytics, machine learning, and visualisation.\n\n\n\n📊 3XM Data Analytics\nMachine learning pipeline to predict revenue using real-world data.\nView Project\n\n\n📈 Power BI Dashboard\nInteractive dashboard analysing sales and KPIs.\nView Project\n\n\n🤖 BERT vs Gemini\nComparison of NLP models for sentiment analysis.\nView Project"
   },
   {
     "objectID": "contact.html",

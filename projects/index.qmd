@@ -1,19 +1,33 @@
----
-title: "Projects"
-listing:
-  contents: list
-  type: grid
-  grid-columns: 2
-  sort: "date desc"
-  categories: true
-  sort-ui: false
-  filter-ui: false
-  fields: [image, date, title, description, categories]
-  image-height: 200px
-page-layout: full
-title-block-banner: true
----
+# Projects
 
-Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.
+Explore my work in data analytics, machine learning, and visualisation.
 
-Browse the collection below — click a card to dive in.
+<br>
+
+::: {.grid}
+
+::: {.card}
+### 📊 3XM Data Analytics
+
+Machine learning pipeline to predict revenue using real-world data.
+
+[View Project](3xm.qmd)
+:::
+
+::: {.card}
+### 📈 Power BI Dashboard
+
+Interactive dashboard analysing sales and KPIs.
+
+[View Project](powerbi.qmd)
+:::
+
+::: {.card}
+### 🤖 BERT vs Gemini
+
+Comparison of NLP models for sentiment analysis.
+
+[View Project](bert.qmd)
+:::
+
+:::

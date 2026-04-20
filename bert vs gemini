@@ -1,0 +1,104 @@
+---
+title: "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews"
+date: "2025-04-19"
+categories: [python, nlp, bert, deep-learning]
+description: "Fine-tuning BERT on Rotten Tomatoes reviews and comparing with Llama 3.1 zero-shot and few-shot prompting for binary sentiment classification."
+---
+
+## Overview
+
+This project investigates two paradigms of NLP for business sentiment analysis:
+
+1. **Fine-tuned BERT** — a discriminative transformer model trained on labelled data
+2. **Llama 3.1** — a large generative model evaluated with zero-shot and few-shot prompting
+
+The **Rotten Tomatoes** movie review dataset provides a binary classification task (positive / negative), serving as a realistic business proxy for customer feedback analysis.
+
+---
+
+## Motivation
+
+Businesses increasingly rely on sentiment analysis to understand customer feedback at scale. Two leading approaches have emerged:
+
+- **Fine-tuning** a pre-trained model like BERT requires labelled training data but achieves high accuracy on the target domain
+- **Prompting** a generative model like Llama 3.1 requires no labelled data, enabling rapid deployment in low-resource settings
+
+This project rigorously compares both approaches on identical data.
+
+---
+
+## BERT Fine-Tuning
+
+`bert-base-uncased` was fine-tuned using Hugging Face Transformers. A classification head was added on top of the `[CLS]` token representation. Training used **AdamW** with a cosine learning rate schedule for **3 epochs**, batch size 16.
+
+```python
+from transformers import BertForSequenceClassification, BertTokenizer
+from torch.optim import AdamW
+from torch.optim.lr_scheduler import get_cosine_schedule_with_warmup
+
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained(
+    'bert-base-uncased', num_labels=2
+)
+
+optimizer = AdamW(model.parameters(), lr=2e-5)
+scheduler = get_cosine_schedule_with_warmup(
+    optimizer, num_warmup_steps=100, num_training_steps=len(train_loader)*3
+)
+
+# Training loop — 3 epochs, batch size 16
+for epoch in range(3):
+    model.train()
+    for batch in train_loader:
+        outputs = model(**batch)
+        loss = outputs.loss
+        loss.backward()
+        optimizer.step()
+        scheduler.step()
+        optimizer.zero_grad()
+```
+
+---
+
+## Llama 3.1 Prompting
+
+Llama 3.1 was evaluated in two settings:
+
+- **Zero-shot** — model receives only the review text and is asked to classify
+- **Few-shot** — model receives 3 labelled examples before classifying the target review
+
+```python
+# Few-shot prompt template
+def build_prompt(review, examples):
+    prompt = "Classify each movie review as positive or negative.\n\n"
+    for ex_review, ex_label in examples:
+        prompt += f"Review: {ex_review}\nSentiment: {ex_label}\n\n"
+    prompt += f"Review: {review}\nSentiment:"
+    return prompt
+```
+
+---
+
+## Results
+
+| Method | Accuracy | F1-Score | Training Data Required |
+|---|---|---|---|
+| **BERT Fine-tuned** | ~88% | ~0.88 | Yes (labelled) |
+| **Llama 3.1 Few-shot** | ~83% | ~0.83 | No |
+| **Llama 3.1 Zero-shot** | ~77% | ~0.76 | No |
+
+Fine-tuned BERT achieved the highest accuracy, benefiting from task-specific training. Llama 3.1 few-shot prompting performed competitively **with no labelled training data**. Zero-shot Llama showed more inconsistency on nuanced or sarcastic reviews.
+
+---
+
+## Conclusion
+
+Fine-tuned BERT remains the gold standard for classification when labelled data is available. However, generative models like Llama 3.1 offer a compelling alternative for **rapid prototyping** or **low-resource settings** where annotation is costly.
+
+**Business implications:**
+
+- If labelled data exists → fine-tune BERT for maximum accuracy
+- If speed-to-deployment matters → few-shot Llama achieves ~83% with no annotation cost
+- Zero-shot is viable for quick experiments but not production-grade sentiment pipelines
+
+The choice ultimately depends on business constraints around labelling budget vs. time-to-deployment vs. accuracy requirements.

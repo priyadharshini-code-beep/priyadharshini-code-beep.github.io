@@ -1,0 +1,83 @@
+---
+title: "Power BI Dashboard — Sales Analysis"
+date: "2025-04-19"
+categories: [power-bi, data-visualisation, business-analytics]
+description: "An interactive business dashboard built in Power BI analysing sales trends and KPIs for TechNovaInc across regions, categories, and time."
+---
+
+## Overview
+
+This Power BI dashboard was built for **TechNovaInc** to deliver a comprehensive, interactive view of sales performance. It surfaces key business metrics across regions, product categories, sales representatives, and time periods — with a country slicer enabling on-the-fly filtering across all visuals simultaneously.
+
+---
+
+## KPI Summary
+
+Five headline metrics anchor the dashboard:
+
+| KPI | Value |
+|---|---|
+| Total Revenue | 263.47K |
+| Total Orders | 500 |
+| Sum of Profit | 4.59K |
+| Avg % of Discount | 15.18% |
+| Net Revenue | 217.82K |
+
+---
+
+## Net Revenue by Region
+
+A donut chart breaks down net revenue geographically. Revenue is distributed relatively evenly across five regions:
+
+- **Asia**: 22.41%
+- **North America**: 20.47%
+- **South America**: 19.43%
+- **Africa**: 19.3%
+- **Europe**: 18.33%
+
+The balanced distribution indicates a **global customer base** with no single region dominating, which has implications for currency risk and regional marketing spend.
+
+---
+
+## Gross Revenue by Category
+
+A bar chart ranks product categories by gross revenue. **Accessories** and **Automotive** lead (~30–32K each), followed by Finance, Energy, Healthcare, Agriculture, Education, Travel, Electronics, and Construction. This ranking directly informs inventory prioritisation and category-level marketing investment decisions.
+
+---
+
+## Profit by Year & Sales Channel
+
+A line chart reveals profit volatility from 2016–2024:
+
+- Peak profit in **2018** (6K)
+- Losses in **2020** and **2022** (both ~-2K) — likely COVID-era disruption
+- Recovery to 4K in **2024**
+
+The sales channel donut shows **online dominates at 82.7%** vs 17.3% offline — highlighting the importance of digital channel investment and optimisation.
+
+---
+
+## Sales & Profit by Representatives
+
+A combo chart (bars = sales, line = profit) reveals important variance across the sales team:
+
+- **Alice** and **Charlie** achieve the highest sales (~55–57K)
+- **Diana** records **negative profit (-3.2K)** despite moderate sales (~47K) — suggesting excessive discounting or high cost-of-sale requiring management attention
+- **Bob** has the lowest sales (47K) but positive profit (0.9K), indicating disciplined pricing
+
+---
+
+## Key Business Insights
+
+1. **Diana's profit deficit** is the most actionable finding — discount policy review needed
+2. **Online channel dominance** (82.7%) warrants continued digital investment
+3. **2020/2022 loss years** suggest vulnerability to external shocks — scenario planning recommended
+4. **Accessories & Automotive** are the highest-revenue categories — prime targets for upsell campaigns
+
+---
+
+## Conclusion
+
+The Power BI dashboard enables TechNovaInc management to **drill into performance at a glance** — reducing time-to-insight from hours of spreadsheet analysis to seconds of interactive filtering. The country slicer adds another layer of analytical depth for regional management teams.
+
+> **Tools used:** Power BI Desktop, DAX measures, custom donut/bar/combo/scatter charts, country-level slicer
