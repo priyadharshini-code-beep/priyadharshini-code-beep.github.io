@@ -1,9 +1,10 @@
 ---
 title: "Priyadharshini Balaji"
+subtitle: "MSc Business Analytics · Dublin City University"
 image: images/profile.jpg
 about:
   template: trestles
-  image-width: 16em
+  image-width: 14em
   image-shape: round
   links:
     - icon: linkedin
@@ -23,17 +24,42 @@ about:
       target: _blank
 ---
 
-## Hello, I'm Priyadharshini 👋
+I enjoy turning data into decisions — building machine learning models,
+interactive dashboards, and NLP pipelines that bridge analytical rigour with
+real-world business impact.
 
-I'm an **MSc Business Analytics** student at **Dublin City University**, with an undergraduate degree in **B.Tech Information Technology**. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.
+## About Me
 
-This site is my ePortfolio: a collection of projects, reflections, and a living record of what I'm learning along the way.
+I'm an **MSc Business Analytics** student at **Dublin City University**, with
+an undergraduate degree in **B.Tech Information Technology**. My focus sits at
+the intersection of data science and strategic decision-making — turning
+complex datasets into clear, actionable insights.
 
+My work spans machine learning pipelines, interactive dashboards, and applied
+NLP. I'm particularly interested in how analytical methods can drive better
+business outcomes.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Tools & Technologies
+
+`Python` `Scikit-learn` `PyTorch` `Hugging Face`
+
+`Pandas & NumPy` `Matplotlib / Seaborn` `Power BI` `SQL`
+
+`BERT / NLP` `Random Forest` `Ridge Regression`
+
+`Git & GitHub` `Google Colab` `Quarto`
+:::
+
+::: {.column width="50%"}
 ### What you'll find here
 
 - {{< fa chart-line >}} **[Projects](projects/index.qmd)** — analytical methods applied to real business questions
-- {{< fa pen-to-square >}} **[Reflection](reflection.qmd)** — on skills I've picked up (Git, Quarto, Python, design)
+- {{< fa pen-to-square >}} **[Reflection](reflection.qmd)** — on skills I've picked up along the way
 - {{< fa file-pdf >}} **[CV](cv/cv.pdf)** — my full background and experience
-- {{< fa envelope >}} **[Contact](contact.qmd)** — get in touch if you'd like to collaborate
+- {{< fa envelope >}} **[Contact](contact.qmd)** — get in touch to collaborate
+:::
 
-Thanks for visiting!
+::::

@@ -3,44 +3,25 @@ project:
   output-dir: docs
 
 website:
-  title: "Priyadharshini Balaji"
-  description: "ePortfolio — MSc Business Analytics, Dublin City University"
-  favicon: images/favicon.png
-  site-url: https://priyadharshini-code-beep.github.io
-  repo-url: https://github.com/priyadharshini-code-beep/priyadharshini-code-beep.github.io
-
+  title: "PB"
   navbar:
-    logo: images/logo.png
-    background: primary
-    search: true
     left:
-      - text: "Home"
-        href: index.qmd
-      - text: "About"
-        href: about.qmd
-      - text: "Projects"
-        href: projects/index.qmd
-      - text: "Reflection"
-        href: reflection.qmd
-      - text: "Contact"
-        href: contact.qmd
-      - text: "CV"
-        href: cv/cv.pdf
-        target: _blank
-    right:
-      - icon: github
-        href: https://github.com/priyadharshini-code-beep
-        target: _blank
-      - icon: linkedin
-        href: https://www.linkedin.com/in/priyadharshini-balaji-66a361224/
-        target: _blank
-      - icon: envelope
-        href: "mailto:priyadharshiniblj25@gmail.com"
+      - href: index.qmd
+        text: Home
+      - href: projects/index.qmd
+        text: Projects
+      - href: reflection.qmd
+        text: Reflection
+      - href: cv.qmd
+        text: CV
+      - href: contact.qmd
+        text: Contact
+    right: []
+    background: light
+    foreground: primary
 
   page-footer:
-    background: light
     left: "© 2026 Priyadharshini Balaji"
-    center: "Built with [Quarto](https://quarto.org)"
     right:
       - icon: github
         href: https://github.com/priyadharshini-code-beep
@@ -49,13 +30,7 @@ website:
 
 format:
   html:
-    theme:
-      light: [cosmo, styles.scss]
+    theme: [flatly, styles.scss]
     css: styles.css
-    toc: true
-    toc-location: right
-    code-fold: true
-    code-tools: true
-    highlight-style: github
-    fig-cap-location: bottom
-    page-layout: full
+    toc: false
+    smooth-scroll: true

@@ -179,7 +179,7 @@
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "contact.html",
@@ -382,14 +382,14 @@
     "href": "index.html",
     "title": "Priyadharshini Balaji",
     "section": "",
-    "text": "I’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.\nThis site is my ePortfolio: a collection of projects, reflections, and a living record of what I’m learning along the way.\n\n\n\n Projects — analytical methods applied to real business questions\n Reflection — on skills I’ve picked up (Git, Quarto, Python, design)\n CV — my full background and experience\n Contact — get in touch if you’d like to collaborate\n\nThanks for visiting!"
+    "text": "I enjoy turning data into decisions — building machine learning models, interactive dashboards, and NLP pipelines that bridge analytical rigour with real-world business impact."
   },
   {
-    "objectID": "index.html#hello-im-priyadharshini",
-    "href": "index.html#hello-im-priyadharshini",
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
     "title": "Priyadharshini Balaji",
-    "section": "",
-    "text": "I’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. I enjoy turning data into decisions — building dashboards, exploring patterns, and communicating insights clearly.\nThis site is my ePortfolio: a collection of projects, reflections, and a living record of what I’m learning along the way.\n\n\n\n Projects — analytical methods applied to real business questions\n Reflection — on skills I’ve picked up (Git, Quarto, Python, design)\n CV — my full background and experience\n Contact — get in touch if you’d like to collaborate\n\nThanks for visiting!"
+    "section": "About Me",
+    "text": "About Me\nI’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. My focus sits at the intersection of data science and strategic decision-making — turning complex datasets into clear, actionable insights.\nMy work spans machine learning pipelines, interactive dashboards, and applied NLP. I’m particularly interested in how analytical methods can drive better business outcomes.\n\n\n\nTools & Technologies\nPython Scikit-learn PyTorch Hugging Face\nPandas & NumPy Matplotlib / Seaborn Power BI SQL\nBERT / NLP Random Forest Ridge Regression\nGit & GitHub Google Colab Quarto\n\n\n\nWhat you’ll find here\n\n Projects — analytical methods applied to real business questions\n Reflection — on skills I’ve picked up along the way\n CV — my full background and experience\n Contact — get in touch to collaborate"
   },
   {
     "objectID": "cv.html",
