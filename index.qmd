@@ -1,10 +1,9 @@
 ---
 title: "Priyadharshini Balaji"
-subtitle: "MSc Business Analytics · Dublin City University"
 image: images/profile.jpg
 about:
   template: trestles
-  image-width: 14em
+  image-width: 16em
   image-shape: round
   links:
     - icon: linkedin
@@ -24,42 +23,12 @@ about:
       target: _blank
 ---
 
-I enjoy turning data into decisions — building machine learning models,
-interactive dashboards, and NLP pipelines that bridge analytical rigour with
-real-world business impact.
+## Hello, I'm Priyadharshini 👋
 
-## About Me
+I'm an **MSc Business Analytics** student at **Dublin City University**, combining a background in Information Technology with data science and business intelligence skills.
 
-I'm an **MSc Business Analytics** student at **Dublin City University**, with
-an undergraduate degree in **B.Tech Information Technology**. My focus sits at
-the intersection of data science and strategic decision-making — turning
-complex datasets into clear, actionable insights.
+My journey started with a BTech in IT from Rajalakshmi Engineering College in Chennai. Today I work at the intersection of data engineering and strategic analytics — using Python, SQL, machine learning, and visualisation to turn complex data into clear decisions.
 
-My work spans machine learning pipelines, interactive dashboards, and applied
-NLP. I'm particularly interested in how analytical methods can drive better
-business outcomes.
+I'm currently working on a real-world industry project with **Safefood (Seafood Ireland)** as part of the DCU MSc practicum.
 
-:::: {.columns}
-
-::: {.column width="50%"}
-### Tools & Technologies
-
-`Python` `Scikit-learn` `PyTorch` `Hugging Face`
-
-`Pandas & NumPy` `Matplotlib / Seaborn` `Power BI` `SQL`
-
-`BERT / NLP` `Random Forest` `Ridge Regression`
-
-`Git & GitHub` `Google Colab` `Quarto`
-:::
-
-::: {.column width="50%"}
-### What you'll find here
-
-- {{< fa chart-line >}} **[Projects](projects/index.qmd)** — analytical methods applied to real business questions
-- {{< fa pen-to-square >}} **[Reflection](reflection.qmd)** — on skills I've picked up along the way
-- {{< fa file-pdf >}} **[CV](cv/cv.pdf)** — my full background and experience
-- {{< fa envelope >}} **[Contact](contact.qmd)** — get in touch to collaborate
-:::
-
-::::
+📍 Dublin, Ireland

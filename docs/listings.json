@@ -6,11 +6,37 @@
   {
     "listing": "/projects/index-2.html",
     "items": [
-      "/projects/customer-segmentation-rfm.html",
+      "/projects/segmentation.html",
       "/projects/sales-forecasting.html",
-      "/projects/3xm-data-analytics.html",
-      "/projects/bert-vs-generative-ai.html",
-      "/projects/powerbi-sales-dashboard.html"
+      "/projects/3xm.html",
+      "/projects/powerbi-sales-dashboard.html",
+      "/projects/bert.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/projects/index-2.html",
+      "/projects/segmentation.html",
+      "/projects/sales-forecasting.html",
+      "/projects/3xm.html",
+      "/projects/powerbi-sales-dashboard.html",
+      "/projects/bert.html"
+    ]
+  },
+  {
+    "listing": "/index-2.html",
+    "items": [
+      "/contact.html",
+      "/about.html",
+      "/cv.html",
+      "/cv-source.html",
+      "/reflection.html",
+      "/projects/segmentation.html",
+      "/projects/sales-forecasting.html",
+      "/projects/3xm.html",
+      "/projects/powerbi-sales-dashboard.html",
+      "/projects/bert.html"
     ]
   }
 ]
