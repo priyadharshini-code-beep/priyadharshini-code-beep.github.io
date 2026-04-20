@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-16">
+<meta name="dcterms.date" content="2026-04-15">
+<meta name="description" content="Segmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.">
 
-<title>Reflection – PB</title>
+<title>Customer Segmentation with RFM Analysis – PB</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,26 +25,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ce9af5621250e8d6d0230c3c37461b05.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-de6a83ccecd31c7966992802689c718e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ce9af5621250e8d6d0230c3c37461b05.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-de6a83ccecd31c7966992802689c718e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -84,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PB</span>
     </a>
   </div>
@@ -95,23 +131,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects/index.html"> 
+    <a class="nav-link" href="../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./reflection.html" aria-current="page"> 
+    <a class="nav-link" href="../reflection.html"> 
 <span class="menu-text">Reflection</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -133,10 +169,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reflection</h1>
-<p class="subtitle lead">On building this portfolio and what I’ve learned along the way</p>
-</div>
+<h1 class="title">Customer Segmentation with RFM Analysis</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">python</div>
+    <div class="quarto-category">clustering</div>
+    <div class="quarto-category">marketing-analytics</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Segmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -145,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 16, 2026</p>
+      <p class="date">April 15, 2026</p>
     </div>
   </div>
   
@@ -157,122 +202,149 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This page is my honest reflection on the skills I picked up building this ePortfolio and what I want to carry forward.</p>
-</div>
-</div>
-<section id="starting-point" class="level2">
-<h2 class="anchored" data-anchor-id="starting-point">Starting point</h2>
-<p>When I started this module I had a clear undergraduate foundation in IT and a reasonable grasp of Python from coursework, but I had <strong>never built a website from scratch</strong>, <strong>never deployed anything to the public internet</strong>, and <strong>never used Git beyond the occasional <code>git clone</code></strong>. By the end of this module, I had to combine all three to produce this site. That gap — between knowing things in isolation and shipping them together — turned out to be the most valuable part of the learning.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p><strong>Recency-Frequency-Monetary (RFM)</strong> analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies.</p>
+<hr>
 </section>
-<section id="git-and-version-control" class="level2">
-<h2 class="anchored" data-anchor-id="git-and-version-control">Git and version control</h2>
-<p>The thing that surprised me most about Git was how quickly it stopped feeling like a chore. My first commits were cautious — small, nervous pushes with messages like “update” and “fix”. Within a day I was <strong>committing on purpose</strong>, writing messages that actually described <em>why</em> I made a change, not just <em>what</em> I changed. That shift mattered.</p>
-<p><strong>What clicked:</strong></p>
+<section id="rfm-feature-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="rfm-feature-engineering">RFM Feature Engineering</h2>
+<p>Three features were calculated per customer from transaction history:</p>
 <ul>
-<li>Small commits are better than big ones. If something breaks, you can walk back one step.</li>
-<li><code>.gitignore</code> is not optional. I accidentally committed a <code>.DS_Store</code> file early on and it taught me to set that up from the start.</li>
-<li>The GitHub Pages deploy loop is <em>fast</em>. Commit → push → 30 seconds → live.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> That tight feedback loop made me more willing to experiment.</li>
+<li><strong>Recency</strong> — days since the customer’s last purchase (lower = more recent = better)</li>
+<li><strong>Frequency</strong> — number of purchases within the analysis period</li>
+<li><strong>Monetary</strong> — total spend over the period</li>
 </ul>
-<p><strong>What I’d still like to learn:</strong> branching and merge conflicts. I worked on <code>main</code> the whole time because it was a solo project, but I know team workflows require feature branches, pull requests, and reviews.</p>
+<p>Each raw value was then scaled using <code>StandardScaler</code> before clustering to prevent any single dimension from dominating.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>snapshot_date <span class="op">=</span> pd.Timestamp(<span class="st">'2026-04-01'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate RFM features per customer</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>rfm <span class="op">=</span> df.groupby(<span class="st">'customer_id'</span>).agg(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    Recency   <span class="op">=</span> (<span class="st">'order_date'</span>, <span class="kw">lambda</span> x: (snapshot_date <span class="op">-</span> x.<span class="bu">max</span>()).days),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    Frequency <span class="op">=</span> (<span class="st">'order_id'</span>,   <span class="st">'count'</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    Monetary  <span class="op">=</span> (<span class="st">'revenue'</span>,    <span class="st">'sum'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale features</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>rfm_scaled <span class="op">=</span> scaler.fit_transform(rfm[[<span class="st">'Recency'</span>, <span class="st">'Frequency'</span>, <span class="st">'Monetary'</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto was new to me. I picked it because the brief required it, but I ended up genuinely liking it. The idea of writing in Markdown, dropping in live Python code, and getting a polished site out the other end feels like the right abstraction for the kind of data work I want to do.</p>
-<p><strong>What I built comfort with:</strong></p>
+<section id="selecting-the-optimal-k" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-the-optimal-k">Selecting the Optimal K</h2>
+<p>The <strong>Elbow Method</strong> (inertia vs K) and <strong>Silhouette Scores</strong> were both used to select the number of clusters. K=4 was chosen — it produced the clearest elbow and the highest silhouette score, while remaining interpretable for business stakeholders.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>inertias, silhouettes <span class="op">=</span> [], []</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">11</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    km <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>, n_init<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> km.fit_predict(rfm_scaled)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    inertias.append(km.inertia_)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    silhouettes.append(silhouette_score(rfm_scaled, labels))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># K=4 selected based on elbow + silhouette</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>km_final <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_init<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>rfm[<span class="st">'Cluster'</span>] <span class="op">=</span> km_final.fit_predict(rfm_scaled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="segment-profiles" class="level2">
+<h2 class="anchored" data-anchor-id="segment-profiles">Segment Profiles</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Segment</th>
+<th>Avg Recency</th>
+<th>Avg Frequency</th>
+<th>Avg Monetary</th>
+<th>% of Customers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Champions</strong></td>
+<td>15 days</td>
+<td>18 orders</td>
+<td>£820</td>
+<td>22%</td>
+</tr>
+<tr class="even">
+<td><strong>Loyal Customers</strong></td>
+<td>45 days</td>
+<td>9 orders</td>
+<td>£410</td>
+<td>31%</td>
+</tr>
+<tr class="odd">
+<td><strong>At-Risk</strong></td>
+<td>120 days</td>
+<td>4 orders</td>
+<td>£190</td>
+<td>28%</td>
+</tr>
+<tr class="even">
+<td><strong>Lost Customers</strong></td>
+<td>280 days</td>
+<td>1 order</td>
+<td>£55</td>
+<td>19%</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="marketing-strategies-by-segment" class="level2">
+<h2 class="anchored" data-anchor-id="marketing-strategies-by-segment">Marketing Strategies by Segment</h2>
+<p><strong>Champions (22%)</strong> — Recent, frequent, high-spend buyers. These are your best customers.</p>
 <ul>
-<li>YAML frontmatter to control page behaviour (About templates, listing pages, code folding)</li>
-<li>Project-wide configuration through <code>_quarto.yml</code> — navbar, footer, theme, SCSS</li>
-<li>The <code>{python}</code> code chunk and its options (<code>fig-cap</code>, <code>code-fold</code>, <code>echo</code>)</li>
-<li>Callout blocks, grids, and rich Markdown features</li>
+<li>Reward with loyalty programmes or early access to new products</li>
+<li>Ask for reviews and referrals</li>
 </ul>
-<p><strong>What I struggled with:</strong> the first time my <code>_quarto.yml</code> had a tiny indentation error, the whole render broke with a cryptic message. I learned to <strong>render after every significant change</strong> rather than stacking up edits blindly.</p>
-</section>
-<section id="python-for-analytics" class="level2">
-<h2 class="anchored" data-anchor-id="python-for-analytics">Python for analytics</h2>
-<p>I’d used Python before, but mostly in isolated notebooks for class exercises. Building the two project pages — <strong>Customer Segmentation with RFM</strong> and <strong>Sales Forecasting</strong> — pushed me to think about Python as a tool for <em>communicating analysis</em>, not just running it.</p>
-<p>Writing analyses for an audience that isn’t the grader changed how I wrote code:</p>
+<p><strong>Loyal Customers (31%)</strong> — Regular buyers with moderate spend. High potential.</p>
 <ul>
-<li>I started naming variables for readers, not for myself</li>
-<li>I split code into small blocks with narrative between them</li>
-<li>I picked visualisations for <em>what they showed</em>, not for what was easy to plot</li>
-<li>I learned to use Plotly for interactivity, where a static matplotlib chart would have shortened the file but lost the reader</li>
+<li>Upsell to premium products or bundles</li>
+<li>Cross-sell complementary categories</li>
 </ul>
-</section>
-<section id="web-design-as-a-learning-experience" class="level2">
-<h2 class="anchored" data-anchor-id="web-design-as-a-learning-experience">Web design as a learning experience</h2>
-<p>I did not expect to spend as much time thinking about <strong>design</strong> as I did. Choosing a theme, picking fonts, tuning a colour palette — these weren’t decisions I’d ever made consciously before. I came out with a much better appreciation for why designers care about hierarchy, whitespace, and typography.</p>
-<p>The custom <code>styles.scss</code> file was where I learned the most. Bootswatch gives you a competent starting point; Sass variables give you real control. Changing one <code>$primary</code> variable and watching every link, button, and navbar element shift colour was weirdly satisfying.</p>
-</section>
-<section id="biggest-mistakes-and-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="biggest-mistakes-and-lessons">Biggest mistakes (and lessons)</h2>
-<div class="callout callout-style-default callout-warning callout-titled" title="Lessons from mistakes I actually made">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Lessons from mistakes I actually made
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p><strong>At-Risk (28%)</strong> — Previously active customers who haven’t purchased recently.</p>
 <ul>
-<li><strong>404 panic.</strong> Early on my site returned 404 for about 15 minutes and I thought I’d broken something fundamental. It was just GitHub Pages propagation — patience is part of the workflow.</li>
-<li><strong>YAML frontmatter.</strong> I accidentally pasted content without the <code>---</code> frontmatter delimiters and the landing page rendered as plain Markdown. Lesson: <em>always</em> check the top three lines.</li>
-<li><strong>Rendering before pushing.</strong> A few times I pushed without rendering and wondered why the live site hadn’t updated. The <code>docs/</code> folder is what gets served — if you don’t render, you push stale HTML.</li>
+<li>Send targeted re-engagement emails with personalised offers</li>
+<li>Highlight new arrivals relevant to their purchase history</li>
 </ul>
-</div>
-</div>
-</section>
-<section id="skills-im-taking-forward" class="level2">
-<h2 class="anchored" data-anchor-id="skills-im-taking-forward">Skills I’m taking forward</h2>
-<p>Beyond this module, this is the kit I now have:</p>
-<ol type="1">
-<li><strong>I can ship.</strong> I can go from “blank folder” to “live website with interactive analysis” in a day.</li>
-<li><strong>I can version.</strong> Every project I build from now on will live in Git from the first commit.</li>
-<li><strong>I can communicate.</strong> Technical writing, charts-as-argument, and structured narrative are skills I’ll use in every analyst role I apply for.</li>
-<li><strong>I can iterate.</strong> The render → commit → push → refresh loop is a pattern I can apply to any deliverable, not just websites.</li>
-</ol>
-</section>
-<section id="further-watching" class="level2">
-<h2 class="anchored" data-anchor-id="further-watching">Further watching</h2>
-<p>If you’d like to see Quarto in action from one of its creators, this talk by Mine Çetinkaya-Rundel is an excellent introduction:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/yvi5uXQMvu4" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section>
-<section id="whats-next" class="level2">
-<h2 class="anchored" data-anchor-id="whats-next">What’s next</h2>
-<p>Here’s my honest checklist — ticked items are already done, the rest are in progress:</p>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Build a public ePortfolio with live, executable Python analysis</label></li>
-<li><label><input type="checkbox" checked="">Learn Git and version control from scratch</label></li>
-<li><label><input type="checkbox" checked="">Deploy a site to GitHub Pages using the <code>docs/</code> workflow</label></li>
-<li><label><input type="checkbox" checked="">Write a custom <code>styles.scss</code> with a cohesive colour palette</label></li>
-<li><label><input type="checkbox">Replace the two synthetic-data projects with <strong>one real dataset</strong> each (UCI repository or Kaggle)</label></li>
-<li><label><input type="checkbox">Add a <strong>third project</strong> using machine learning (probably classification — customer churn)</label></li>
-<li><label><input type="checkbox">Experiment with <strong>GitHub Actions</strong> to auto-deploy the site instead of committing the rendered output manually</label></li>
-<li><label><input type="checkbox">Start applying for analyst roles with this portfolio as my calling card</label></li>
+<p><strong>Lost Customers (19%)</strong> — Low recency, low frequency, low spend. Mostly churned.</p>
+<ul>
+<li>Win-back campaign with a compelling discount</li>
+<li>If no response after 2 attempts, discontinue spend on this segment</li>
 </ul>
-<p>Thanks for reading. If you have thoughts or feedback, I’d love to hear from you via the <a href="./contact.html">contact page</a>.</p>
+<hr>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>RFM-based K-Means clustering provides a <strong>practical, interpretable framework</strong> for customer segmentation that any marketing team can act on. The four identified segments enable efficient budget allocation — concentrating retention spend on Champions and Loyal Customers while deploying re-engagement tactics for At-Risk customers.</p>
+<p><strong>Key learnings:</strong></p>
+<ul>
+<li>Scaling features before clustering is essential — unscaled RFM produces misleading segments</li>
+<li>Combining Elbow + Silhouette gives more confidence in K selection than either alone</li>
+<li>Always interpret cluster centroids in the original (unscaled) space for business communication</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Tools:</strong> Python, Scikit-learn, Pandas, Matplotlib, Seaborn</p>
+</blockquote>
 
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>GitHub Pages is a free static site hosting service provided by GitHub. It serves files directly from a repository branch — in this case the <code>docs/</code> folder on <code>main</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -704,5 +776,5 @@ Note
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

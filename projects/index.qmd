@@ -1,12 +1,7 @@
 ---
 title: "Projects"
 listing:
-  contents: 
-    - "projects/3xm.qmd"
-    - "projects/powerbi.qmd"
-    - "projects/bert.qmd"
-    - "projects/segmentation.qmd"
-    - "projects/sales-forecasting.qmd"
+  contents: projects  # This tells Quarto to find EVERYTHING in the folder
   type: grid
   sort: "date desc"
   categories: true

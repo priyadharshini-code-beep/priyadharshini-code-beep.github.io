@@ -705,5 +705,152 @@
     "title": "Projects",
     "section": "",
     "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\n\n\n\n\n3XM Data Analytics Project\n\n\n\npython\n\ndata-analytics\n\nmachine-learning\n\n\n\nApplying two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, a company specialising in premium products for professional…\n\n\n\nNov 21, 2025\n\n\n\n\n\n\n\n\n\n\nBERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews\n\n\n\npython\n\nnlp\n\nbert\n\ndeep-learning\n\n\n\nFine-tuning BERT on Rotten Tomatoes reviews and comparing with Llama 3.1 zero-shot and few-shot prompting for binary sentiment classification.\n\n\n\nApr 19, 2025\n\n\n\n\n\n\n\n\n\n\nPower BI Dashboard — Sales Analysis\n\n\n\npower-bi\n\ndata-visualisation\n\nbusiness-analytics\n\n\n\nAn interactive business dashboard built in Power BI analysing sales trends and KPIs for TechNovaInc across regions, categories, and time.\n\n\n\nApr 19, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/segmentation.html",
+    "href": "projects/segmentation.html",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "",
+    "text": "Recency-Frequency-Monetary (RFM) analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies."
+  },
+  {
+    "objectID": "projects/segmentation.html#overview",
+    "href": "projects/segmentation.html#overview",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "",
+    "text": "Recency-Frequency-Monetary (RFM) analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies."
+  },
+  {
+    "objectID": "projects/segmentation.html#rfm-feature-engineering",
+    "href": "projects/segmentation.html#rfm-feature-engineering",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "RFM Feature Engineering",
+    "text": "RFM Feature Engineering\nThree features were calculated per customer from transaction history:\n\nRecency — days since the customer’s last purchase (lower = more recent = better)\nFrequency — number of purchases within the analysis period\nMonetary — total spend over the period\n\nEach raw value was then scaled using StandardScaler before clustering to prevent any single dimension from dominating.\nimport pandas as pd\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\n\nsnapshot_date = pd.Timestamp('2026-04-01')\n\n# Calculate RFM features per customer\nrfm = df.groupby('customer_id').agg(\n    Recency   = ('order_date', lambda x: (snapshot_date - x.max()).days),\n    Frequency = ('order_id',   'count'),\n    Monetary  = ('revenue',    'sum')\n).reset_index()\n\n# Scale features\nscaler = StandardScaler()\nrfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])"
+  },
+  {
+    "objectID": "projects/segmentation.html#selecting-the-optimal-k",
+    "href": "projects/segmentation.html#selecting-the-optimal-k",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Selecting the Optimal K",
+    "text": "Selecting the Optimal K\nThe Elbow Method (inertia vs K) and Silhouette Scores were both used to select the number of clusters. K=4 was chosen — it produced the clearest elbow and the highest silhouette score, while remaining interpretable for business stakeholders.\nfrom sklearn.metrics import silhouette_score\nimport matplotlib.pyplot as plt\n\ninertias, silhouettes = [], []\nfor k in range(2, 11):\n    km = KMeans(n_clusters=k, random_state=42, n_init=10)\n    labels = km.fit_predict(rfm_scaled)\n    inertias.append(km.inertia_)\n    silhouettes.append(silhouette_score(rfm_scaled, labels))\n\n# K=4 selected based on elbow + silhouette\nkm_final = KMeans(n_clusters=4, random_state=42, n_init=10)\nrfm['Cluster'] = km_final.fit_predict(rfm_scaled)"
+  },
+  {
+    "objectID": "projects/segmentation.html#segment-profiles",
+    "href": "projects/segmentation.html#segment-profiles",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Segment Profiles",
+    "text": "Segment Profiles\n\n\n\n\n\n\n\n\n\n\nSegment\nAvg Recency\nAvg Frequency\nAvg Monetary\n% of Customers\n\n\n\n\nChampions\n15 days\n18 orders\n£820\n22%\n\n\nLoyal Customers\n45 days\n9 orders\n£410\n31%\n\n\nAt-Risk\n120 days\n4 orders\n£190\n28%\n\n\nLost Customers\n280 days\n1 order\n£55\n19%"
+  },
+  {
+    "objectID": "projects/segmentation.html#marketing-strategies-by-segment",
+    "href": "projects/segmentation.html#marketing-strategies-by-segment",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Marketing Strategies by Segment",
+    "text": "Marketing Strategies by Segment\nChampions (22%) — Recent, frequent, high-spend buyers. These are your best customers.\n\nReward with loyalty programmes or early access to new products\nAsk for reviews and referrals\n\nLoyal Customers (31%) — Regular buyers with moderate spend. High potential.\n\nUpsell to premium products or bundles\nCross-sell complementary categories\n\nAt-Risk (28%) — Previously active customers who haven’t purchased recently.\n\nSend targeted re-engagement emails with personalised offers\nHighlight new arrivals relevant to their purchase history\n\nLost Customers (19%) — Low recency, low frequency, low spend. Mostly churned.\n\nWin-back campaign with a compelling discount\nIf no response after 2 attempts, discontinue spend on this segment"
+  },
+  {
+    "objectID": "projects/segmentation.html#conclusion",
+    "href": "projects/segmentation.html#conclusion",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Conclusion",
+    "text": "Conclusion\nRFM-based K-Means clustering provides a practical, interpretable framework for customer segmentation that any marketing team can act on. The four identified segments enable efficient budget allocation — concentrating retention spend on Champions and Loyal Customers while deploying re-engagement tactics for At-Risk customers.\nKey learnings:\n\nScaling features before clustering is essential — unscaled RFM produces misleading segments\nCombining Elbow + Silhouette gives more confidence in K selection than either alone\nAlways interpret cluster centroids in the original (unscaled) space for business communication\n\n\nTools: Python, Scikit-learn, Pandas, Matplotlib, Seaborn"
+  },
+  {
+    "objectID": "projects/3xm.html",
+    "href": "projects/3xm.html",
+    "title": "3XM Data Analytics Project",
+    "section": "",
+    "text": "The primary objective of this project is to build a supervised ML model that predicts real revenue based on sales data from 2023-present. The project explores features such as product type, country, and shipping method, and how these features impact real revenue. The goal is to utilise this model to enhance operational decision making and marketing strategies by analysing the impact of features on real revenue."
+  },
+  {
+    "objectID": "projects/3xm.html#overview",
+    "href": "projects/3xm.html#overview",
+    "title": "3XM Data Analytics Project",
+    "section": "",
+    "text": "The primary objective of this project is to build a supervised ML model that predicts real revenue based on sales data from 2023-present. The project explores features such as product type, country, and shipping method, and how these features impact real revenue. The goal is to utilise this model to enhance operational decision making and marketing strategies by analysing the impact of features on real revenue."
+  },
+  {
+    "objectID": "projects/3xm.html#data-preparation-cleaning",
+    "href": "projects/3xm.html#data-preparation-cleaning",
+    "title": "3XM Data Analytics Project",
+    "section": "Data Preparation & Cleaning",
+    "text": "Data Preparation & Cleaning\nThe raw dataset required several preprocessing steps before modelling:\n\nVoucher column converted to a binary indicator (voucher_used: 1 if a voucher was applied, 0 otherwise)\nCountry names standardised — encoding issues corrected (e.g. '√É‚Äìsterreich' → 'Austria', 'Sverige' → 'Sweden') and UK regions unified under 'United Kingdom'\nDate features engineered into order_month, order_quarter, order_dayofweek, and order_year\nIrrelevant columns dropped: order_id, photographer_id, voucher, activation_date, payment_method, payment_date, date\nDummy variable encoding applied to currency and country_clean\n\n# Standardise country names\ncountry_name = {\n    'USA': 'United States',\n    'Nederland': 'Netherlands',\n    'Sverige': 'Sweden',\n    'England': 'United Kingdom',\n    'Scotland': 'United Kingdom',\n    'Wales': 'United Kingdom',\n    'Northern Ireland': 'United Kingdom'\n}\ndf['country_clean'] = df['country'].replace(country_name)\n\n# Engineer date features\ndf['order_month']     = df['date'].dt.month\ndf['order_quarter']   = df['date'].dt.quarter\ndf['order_dayofweek'] = df['date'].dt.dayofweek\ndf['order_year']      = df['date'].dt.year"
+  },
+  {
+    "objectID": "projects/3xm.html#exploratory-data-analysis",
+    "href": "projects/3xm.html#exploratory-data-analysis",
+    "title": "3XM Data Analytics Project",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\nIQR-based outlier detection was applied to the real_revenue target variable to understand its distribution. A correlation check revealed that total (order total before deductions) was extremely highly correlated with real_revenue (~0.999), raising a data leakage concern.\nQ1 = df['real_revenue'].quantile(0.25)\nQ3 = df['real_revenue'].quantile(0.75)\nIQR = Q3 - Q1\n\nlower_bound = Q1 - 1.5 * IQR\nupper_bound = Q3 + 1.5 * IQR\noutliers = df[(df['real_revenue'] &lt; lower_bound) | (df['real_revenue'] &gt; upper_bound)]\nprint(\"Number of outliers:\", len(outliers))\n\n# Correlation check\nnp.corrcoef(df['real_revenue'], df['total'])"
+  },
+  {
+    "objectID": "projects/3xm.html#random-forest-models",
+    "href": "projects/3xm.html#random-forest-models",
+    "title": "3XM Data Analytics Project",
+    "section": "Random Forest Models",
+    "text": "Random Forest Models\nTwo separate Random Forest Regressors were trained to test the effect of data leakage:\n\nModel 1 — includes the total column (high correlation with target)\nModel 2 — excludes total to evaluate the genuine predictive power of remaining features\n\nBoth models used 300 trees, max_features=None, and 5-fold cross-validation.\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.model_selection import cross_val_score\n\nrf = RandomForestRegressor(n_estimators=300, max_features=None, random_state=42)\nrf.fit(train_x, train_y)\ny_pred = rf.predict(test_x)\n\ncv_r2   = cross_val_score(rf, X, y, cv=5, scoring='r2')\ncv_rmse = np.sqrt(-cross_val_score(rf, X, y, cv=5, scoring='neg_mean_squared_error'))\ncv_mae  = -cross_val_score(rf, X, y, cv=5, scoring='neg_mean_absolute_error')"
+  },
+  {
+    "objectID": "projects/3xm.html#results",
+    "href": "projects/3xm.html#results",
+    "title": "3XM Data Analytics Project",
+    "section": "Results",
+    "text": "Results\n\n\n\n\n\n\n\n\n\nModel\nNotes\nR²\nRMSE\n\n\n\n\nWith total column\nData leakage — total is almost identical to target\n~0.999\nVery low\n\n\nWithout total column\nTrue predictive power from remaining features\nRealistic\nModerate\n\n\n\nThe feature importance analysis from Model 2 revealed that order_quarter, order_month, country_clean, and voucher_used were the most informative remaining predictors."
+  },
+  {
+    "objectID": "projects/3xm.html#conclusion",
+    "href": "projects/3xm.html#conclusion",
+    "title": "3XM Data Analytics Project",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis project highlights the critical importance of data leakage prevention in ML pipelines. Including a near-perfectly correlated feature (total) creates an artificially high-performing model that would fail in production. The clean pipeline — without total — provides a realistic and deployable revenue prediction model, exported as clean_dataset.csv for further business use.\nKey takeaways:\n\nAlways inspect feature correlations with the target before modelling\nCross-validation gives a more honest performance estimate than a single train/test split\nFeature engineering from dates (month, quarter) adds genuine predictive signal"
+  },
+  {
+    "objectID": "projects/bert.html",
+    "href": "projects/bert.html",
+    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
+    "section": "",
+    "text": "This project investigates two paradigms of NLP for business sentiment analysis:\n\nFine-tuned BERT — a discriminative transformer model trained on labelled data\nLlama 3.1 — a large generative model evaluated with zero-shot and few-shot prompting\n\nThe Rotten Tomatoes movie review dataset provides a binary classification task (positive / negative), serving as a realistic business proxy for customer feedback analysis."
+  },
+  {
+    "objectID": "projects/bert.html#overview",
+    "href": "projects/bert.html#overview",
+    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
+    "section": "",
+    "text": "This project investigates two paradigms of NLP for business sentiment analysis:\n\nFine-tuned BERT — a discriminative transformer model trained on labelled data\nLlama 3.1 — a large generative model evaluated with zero-shot and few-shot prompting\n\nThe Rotten Tomatoes movie review dataset provides a binary classification task (positive / negative), serving as a realistic business proxy for customer feedback analysis."
+  },
+  {
+    "objectID": "projects/bert.html#motivation",
+    "href": "projects/bert.html#motivation",
+    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
+    "section": "Motivation",
+    "text": "Motivation\nBusinesses increasingly rely on sentiment analysis to understand customer feedback at scale. Two leading approaches have emerged:\n\nFine-tuning a pre-trained model like BERT requires labelled training data but achieves high accuracy on the target domain\nPrompting a generative model like Llama 3.1 requires no labelled data, enabling rapid deployment in low-resource settings\n\nThis project rigorously compares both approaches on identical data."
+  },
+  {
+    "objectID": "projects/bert.html#bert-fine-tuning",
+    "href": "projects/bert.html#bert-fine-tuning",
+    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
+    "section": "BERT Fine-Tuning",
+    "text": "BERT Fine-Tuning\nbert-base-uncased was fine-tuned using Hugging Face Transformers. A classification head was added on top of the [CLS] token representation. Training used AdamW with a cosine learning rate schedule for 3 epochs, batch size 16.\nfrom transformers import BertForSequenceClassification, BertTokenizer\nfrom torch.optim import AdamW\nfrom torch.optim.lr_scheduler import get_cosine_schedule_with_warmup\n\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel = BertForSequenceClassification.from_pretrained(\n    'bert-base-uncased', num_labels=2\n)\n\noptimizer = AdamW(model.parameters(), lr=2e-5)\nscheduler = get_cosine_schedule_with_warmup(\n    optimizer, num_warmup_steps=100, num_training_steps=len(train_loader)*3\n)\n\n# Training loop — 3 epochs, batch size 16\nfor epoch in range(3):\n    model.train()\n    for batch in train_loader:\n        outputs = model(**batch)\n        loss = outputs.loss\n        loss.backward()\n        optimizer.step()\n        scheduler.step()\n        optimizer.zero_grad()"
+  },
+  {
+    "objectID": "projects/bert.html#llama-3.1-prompting",
+    "href": "projects/bert.html#llama-3.1-prompting",
+    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
+    "section": "Llama 3.1 Prompting",
+    "text": "Llama 3.1 Prompting\nLlama 3.1 was evaluated in two settings:\n\nZero-shot — model receives only the review text and is asked to classify\nFew-shot — model receives 3 labelled examples before classifying the target review\n\n# Few-shot prompt template\ndef build_prompt(review, examples):\n    prompt = \"Classify each movie review as positive or negative.\\n\\n\"\n    for ex_review, ex_label in examples:\n        prompt += f\"Review: {ex_review}\\nSentiment: {ex_label}\\n\\n\"\n    prompt += f\"Review: {review}\\nSentiment:\"\n    return prompt"
+  },
+  {
+    "objectID": "projects/bert.html#results",
+    "href": "projects/bert.html#results",
+    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
+    "section": "Results",
+    "text": "Results\n\n\n\nMethod\nAccuracy\nF1-Score\nTraining Data Required\n\n\n\n\nBERT Fine-tuned\n~88%\n~0.88\nYes (labelled)\n\n\nLlama 3.1 Few-shot\n~83%\n~0.83\nNo\n\n\nLlama 3.1 Zero-shot\n~77%\n~0.76\nNo\n\n\n\nFine-tuned BERT achieved the highest accuracy, benefiting from task-specific training. Llama 3.1 few-shot prompting performed competitively with no labelled training data. Zero-shot Llama showed more inconsistency on nuanced or sarcastic reviews."
+  },
+  {
+    "objectID": "projects/bert.html#conclusion",
+    "href": "projects/bert.html#conclusion",
+    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
+    "section": "Conclusion",
+    "text": "Conclusion\nFine-tuned BERT remains the gold standard for classification when labelled data is available. However, generative models like Llama 3.1 offer a compelling alternative for rapid prototyping or low-resource settings where annotation is costly.\nBusiness implications:\n\nIf labelled data exists → fine-tune BERT for maximum accuracy\nIf speed-to-deployment matters → few-shot Llama achieves ~83% with no annotation cost\nZero-shot is viable for quick experiments but not production-grade sentiment pipelines\n\nThe choice ultimately depends on business constraints around labelling budget vs. time-to-deployment vs. accuracy requirements."
   }
 ]
