@@ -67,9 +67,7 @@ Fine-tuned BERT on Rotten Tomatoes reviews and compared with Llama 3.1 zero-shot
 **3XM Data Analytics Project** — *Python, Data Analytics, Machine Learning*
 Applied two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, specialising in premium product analytics.
 
-**ePortfolio Website** — *Quarto, Git, GitHub Pages*
-Designed and deployed a personal portfolio site with custom Sass styling and continuous deployment.
-[priyadharshini-code-beep.github.io](https://priyadharshini-code-beep.github.io)
+
 
 ## Technical Skills
 

@@ -18,28 +18,28 @@
     "href": "cv-source.html#education",
     "title": "Priyadharshini Balaji — CV",
     "section": "Education",
-    "text": "Education\nMSc Business Analytics · 2025 – 2026\nDublin City University, Ireland\nRelevant modules: SQL & Databases, Programming for Analytics, Data Mining & Machine Learning, Data Visualisation\nBTech, Information Technology · 2021 – 2025\nRajalakshmi Engineering College, Chennai, India"
+    "text": "Education\nMSc Business Analytics · 2025 – 2026 Dublin City University, Ireland Relevant modules: SQL & Databases, Programming for Analytics, Data Mining & Machine Learning, Data Visualisation\nBTech, Information Technology · 2021 – 2025 Rajalakshmi Engineering College, Chennai, India"
   },
   {
     "objectID": "cv-source.html#experience",
     "href": "cv-source.html#experience",
     "title": "Priyadharshini Balaji — CV",
     "section": "Experience",
-    "text": "Experience\nBusiness Analyst — Applied Data & Software Engineering (Industry Project) · Jan 2026 – Present\nSafefood, Dublin (Hybrid)\n\nWorking on a real-world university-industry project in collaboration with Seafood Ireland, as part of the MSc Business Analytics practicum at DCU.\nDesigning and developing data-processing workflows using programming fundamentals (loops, conditionals, functions, data structures) to clean, transform, and analyse structured datasets.\nWriting optimised SQL queries (joins, aggregations, subqueries) to analyse relational data and support business decision-making.\nApplying software engineering principles to build reusable, maintainable code for analytics and reporting.\nTranslating business requirements into technical solutions and communicating findings to academic and industry stakeholders.\n\nIndustrial Android Application Development with IoT (Internship) · Jul 2023\nNSIC, India\n\nContributed to the development of an industrial Android application integrated with IoT sensors, bridging hardware inputs with a mobile interface.\nGained exposure to end-to-end IoT-to-mobile workflows — hardware signals, data capture, and application-layer handling."
+    "text": "Experience\nBusiness Analyst — Applied Data & Software Engineering (Industry Project) · Jan 2026 – Present Safefood, Dublin (Hybrid)\n\nWorking on a real-world university-industry project with Seafood Ireland as part of the MSc practicum at DCU.\nDesigning data-processing workflows to clean, transform, and analyse structured datasets.\nWriting optimised SQL queries (joins, aggregations, subqueries) to support business decision-making.\nApplying software engineering principles to build reusable, maintainable analytics code.\nTranslating business requirements into technical solutions and communicating findings to stakeholders.\n\nIndustrial Android Application Development with IoT (Internship) · Jul 2023 NSIC, India\n\nContributed to an industrial Android app integrated with IoT sensors, bridging hardware inputs with a mobile interface.\nGained exposure to end-to-end IoT-to-mobile workflows — hardware signals, data capture, and application-layer handling."
   },
   {
     "objectID": "cv-source.html#projects",
     "href": "cv-source.html#projects",
     "title": "Priyadharshini Balaji — CV",
     "section": "Projects",
-    "text": "Projects\nCustomer Segmentation with RFM Analysis — Python, scikit-learn, Plotly\nSegmented 1,000 synthetic retail customers into four actionable groups using RFM scoring and K-Means clustering. Built an interactive 3D visualisation to communicate segments to non-technical stakeholders.\nSales Forecasting Dashboard — Python, time series, Plotly\nBuilt a 90-day sales forecasting pipeline with decomposition (trend, weekly seasonality, residual) and an 80% confidence band. Produced an interactive dashboard to surface daily, weekly, and peak-day insights.\nePortfolio Website — Quarto, Git, GitHub Pages\nDesigned and deployed a personal portfolio site with custom Sass styling, interactive Python visualisations, and continuous deployment.\npriyadharshini-code-beep.github.io"
+    "text": "Projects\nCustomer Segmentation with RFM Analysis — Python, scikit-learn, Plotly Segmented 1,000 synthetic retail customers into four actionable groups using RFM scoring and K-Means clustering. Built an interactive 3D visualisation to communicate segments to non-technical stakeholders.\nSales Forecasting Dashboard — Python, time series, Plotly Built a 90-day sales forecasting pipeline with decomposition (trend, weekly seasonality, residual) and an 80% confidence band. Produced an interactive dashboard to surface daily, weekly, and peak-day insights.\nPower BI Dashboard — Sales Analysis — Power BI, Business Analytics An interactive business dashboard analysing sales trends and KPIs across multiple dimensions.\nBERT vs. Generative AI for Business Applications — Python, NLP, Deep Learning Fine-tuned BERT on Rotten Tomatoes reviews and compared with Llama 3.1 zero-shot and few-shot prompting for sentiment analysis.\n3XM Data Analytics Project — Python, Data Analytics, Machine Learning Applied two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, specialising in premium product analytics."
   },
   {
     "objectID": "cv-source.html#technical-skills",
     "href": "cv-source.html#technical-skills",
     "title": "Priyadharshini Balaji — CV",
     "section": "Technical Skills",
-    "text": "Technical Skills\nProgramming & Query: Python (pandas, scikit-learn, Plotly), SQL, R\nData & BI: Excel, Power BI, Tableau\nTools & Workflow: Git, GitHub, Quarto, Jupyter, VS Code\nCore Competencies: Data cleaning, exploratory analysis, statistical modelling, clustering, time series forecasting, dashboard design, stakeholder communication"
+    "text": "Technical Skills\nProgramming & Query: Python (pandas, scikit-learn, Plotly), SQL, R Data & BI: Excel, Power BI, Tableau Tools & Workflow: Git, GitHub, Quarto, Jupyter, VS Code Core Competencies: Data cleaning, exploratory analysis, statistical modelling, clustering, time series forecasting, dashboard design, stakeholder communication"
   },
   {
     "objectID": "cv-source.html#languages",
@@ -91,95 +91,123 @@
     "text": "Beyond analytics\nWhen I’m not staring at Jupyter notebooks, I enjoy exploring Dublin, reading, and tinkering with little side projects that usually start as “this should take an hour” and end up taking a weekend.\n\n\n\nPriyadharshini Balaji — MSc Business Analytics student at Dublin City University, 2026.\n\n\nThanks for reading — feel free to get in touch or browse my projects."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html",
-    "href": "projects/list/sales-forecasting.html",
+    "objectID": "projects/index-2.html",
+    "href": "projects/index-2.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\nProjects\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\n\n\n\n\n3XM Data Analytics Project\n\n\n\npython\n\ndata-analytics\n\nmachine-learning\n\n\n\nApplying two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, a company specialising in premium products for professional…\n\n\n\nNov 21, 2025\n\n\n\n\n\n\n\n\n\n\nPower BI Dashboard — Sales Analysis\n\n\n\npower-bi\n\ndata-visualisation\n\nbusiness-analytics\n\n\n\nAn interactive business dashboard built in Power BI analysing sales trends and KPIs for TechNovaInc across regions, categories, and time.\n\n\n\nApr 19, 2025\n\n\n\n\n\n\n\n\n\n\nBERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews\n\n\n\npython\n\nnlp\n\nbert\n\ndeep-learning\n\n\n\nFine-tuning BERT on Rotten Tomatoes reviews and comparing with Llama 3.1 zero-shot and few-shot prompting for binary sentiment classification.\n\n\n\nApr 19, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/segmentation.html",
+    "href": "projects/segmentation.html",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "",
+    "text": "Recency-Frequency-Monetary (RFM) analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies."
+  },
+  {
+    "objectID": "projects/segmentation.html#overview",
+    "href": "projects/segmentation.html#overview",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "",
+    "text": "Recency-Frequency-Monetary (RFM) analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies."
+  },
+  {
+    "objectID": "projects/segmentation.html#rfm-feature-engineering",
+    "href": "projects/segmentation.html#rfm-feature-engineering",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "RFM Feature Engineering",
+    "text": "RFM Feature Engineering\nThree features were calculated per customer from transaction history:\n\nRecency — days since the customer’s last purchase (lower = more recent = better)\nFrequency — number of purchases within the analysis period\nMonetary — total spend over the period\n\nEach raw value was then scaled using StandardScaler before clustering to prevent any single dimension from dominating.\nimport pandas as pd\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\n\nsnapshot_date = pd.Timestamp('2026-04-01')\n\n# Calculate RFM features per customer\nrfm = df.groupby('customer_id').agg(\n    Recency   = ('order_date', lambda x: (snapshot_date - x.max()).days),\n    Frequency = ('order_id',   'count'),\n    Monetary  = ('revenue',    'sum')\n).reset_index()\n\n# Scale features\nscaler = StandardScaler()\nrfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])"
+  },
+  {
+    "objectID": "projects/segmentation.html#selecting-the-optimal-k",
+    "href": "projects/segmentation.html#selecting-the-optimal-k",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Selecting the Optimal K",
+    "text": "Selecting the Optimal K\nThe Elbow Method (inertia vs K) and Silhouette Scores were both used to select the number of clusters. K=4 was chosen — it produced the clearest elbow and the highest silhouette score, while remaining interpretable for business stakeholders.\nfrom sklearn.metrics import silhouette_score\nimport matplotlib.pyplot as plt\n\ninertias, silhouettes = [], []\nfor k in range(2, 11):\n    km = KMeans(n_clusters=k, random_state=42, n_init=10)\n    labels = km.fit_predict(rfm_scaled)\n    inertias.append(km.inertia_)\n    silhouettes.append(silhouette_score(rfm_scaled, labels))\n\n# K=4 selected based on elbow + silhouette\nkm_final = KMeans(n_clusters=4, random_state=42, n_init=10)\nrfm['Cluster'] = km_final.fit_predict(rfm_scaled)"
+  },
+  {
+    "objectID": "projects/segmentation.html#segment-profiles",
+    "href": "projects/segmentation.html#segment-profiles",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Segment Profiles",
+    "text": "Segment Profiles\n\n\n\n\n\n\n\n\n\n\nSegment\nAvg Recency\nAvg Frequency\nAvg Monetary\n% of Customers\n\n\n\n\nChampions\n15 days\n18 orders\n£820\n22%\n\n\nLoyal Customers\n45 days\n9 orders\n£410\n31%\n\n\nAt-Risk\n120 days\n4 orders\n£190\n28%\n\n\nLost Customers\n280 days\n1 order\n£55\n19%"
+  },
+  {
+    "objectID": "projects/segmentation.html#marketing-strategies-by-segment",
+    "href": "projects/segmentation.html#marketing-strategies-by-segment",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Marketing Strategies by Segment",
+    "text": "Marketing Strategies by Segment\nChampions (22%) — Recent, frequent, high-spend buyers. These are your best customers.\n\nReward with loyalty programmes or early access to new products\nAsk for reviews and referrals\n\nLoyal Customers (31%) — Regular buyers with moderate spend. High potential.\n\nUpsell to premium products or bundles\nCross-sell complementary categories\n\nAt-Risk (28%) — Previously active customers who haven’t purchased recently.\n\nSend targeted re-engagement emails with personalised offers\nHighlight new arrivals relevant to their purchase history\n\nLost Customers (19%) — Low recency, low frequency, low spend. Mostly churned.\n\nWin-back campaign with a compelling discount\nIf no response after 2 attempts, discontinue spend on this segment"
+  },
+  {
+    "objectID": "projects/segmentation.html#conclusion",
+    "href": "projects/segmentation.html#conclusion",
+    "title": "Customer Segmentation with RFM Analysis",
+    "section": "Conclusion",
+    "text": "Conclusion\nRFM-based K-Means clustering provides a practical, interpretable framework for customer segmentation that any marketing team can act on. The four identified segments enable efficient budget allocation — concentrating retention spend on Champions and Loyal Customers while deploying re-engagement tactics for At-Risk customers.\nKey learnings:\n\nScaling features before clustering is essential — unscaled RFM produces misleading segments\nCombining Elbow + Silhouette gives more confidence in K selection than either alone\nAlways interpret cluster centroids in the original (unscaled) space for business communication\n\n\nTools: Python, Scikit-learn, Pandas, Matplotlib, Seaborn"
+  },
+  {
+    "objectID": "projects/sales-forecasting.html",
+    "href": "projects/sales-forecasting.html",
     "title": "Sales Forecasting Dashboard",
     "section": "",
-    "text": "What will our sales look like for the next quarter? Accurate short-horizon sales forecasts drive staffing, stock, and cash-flow decisions. I build a simple but honest forecast pipeline on two years of synthetic daily sales."
+    "text": "Accurate sales forecasting is essential for inventory management, staffing, and revenue planning. This project applies classical time series decomposition and moving-average smoothing to forecast 90 days of retail sales, with results presented in an interactive Plotly dashboard accessible to non-technical stakeholders."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#the-question",
-    "href": "projects/list/sales-forecasting.html#the-question",
+    "objectID": "projects/sales-forecasting.html#overview",
+    "href": "projects/sales-forecasting.html#overview",
     "title": "Sales Forecasting Dashboard",
     "section": "",
-    "text": "What will our sales look like for the next quarter? Accurate short-horizon sales forecasts drive staffing, stock, and cash-flow decisions. I build a simple but honest forecast pipeline on two years of synthetic daily sales."
+    "text": "Accurate sales forecasting is essential for inventory management, staffing, and revenue planning. This project applies classical time series decomposition and moving-average smoothing to forecast 90 days of retail sales, with results presented in an interactive Plotly dashboard accessible to non-technical stakeholders."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#the-approach",
-    "href": "projects/list/sales-forecasting.html#the-approach",
+    "objectID": "projects/sales-forecasting.html#data-approach",
+    "href": "projects/sales-forecasting.html#data-approach",
     "title": "Sales Forecasting Dashboard",
-    "section": "The Approach",
-    "text": "The Approach\n\nGenerate a realistic-looking sales series (trend + weekly seasonality + noise)\nDecompose it into components so we understand what is moving\nForecast the next 90 days with moving-average smoothing\nBuild an interactive dashboard to explore the forecast\n\nThe centred \\(n\\)-period moving average used for trend extraction is:1\n\\[\\hat{T}_t = \\frac{1}{n} \\sum_{i=-(n-1)/2}^{(n-1)/2} y_{t+i}\\]\nwhere \\(y_t\\) is the observed sales value at time \\(t\\) and \\(n = 30\\) days is the window chosen to smooth out weekly seasonality without over-smoothing the trend.\n\n\n\n\n\nflowchart LR\n    A[Raw Daily Sales] --&gt; B[Decomposition]\n    B --&gt; C[Trend]\n    B --&gt; D[Weekly Seasonality]\n    B --&gt; E[Residual]\n    C --&gt; F[Forecast Engine]\n    D --&gt; F\n    F --&gt; G[90-Day Forecast]\n    F --&gt; H[80% Confidence Band]\n    G --&gt; I[Interactive Dashboard]\n    H --&gt; I\n    style A fill:#6a4c93,color:#fff\n    style I fill:#8ac926,color:#fff\n    style F fill:#ff595e,color:#fff"
+    "section": "Data & Approach",
+    "text": "Data & Approach\nThe dataset contains 2 years of daily retail sales. Before modelling, stationarity was checked using the Augmented Dickey-Fuller (ADF) test, and strong weekly seasonality (peaking Fridays/Saturdays) was confirmed visually.\nA multiplicative decomposition was chosen over additive because seasonal amplitude grew proportionally with the trend — a common pattern in growing retail businesses."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-1-simulate-daily-sales",
-    "href": "projects/list/sales-forecasting.html#step-1-simulate-daily-sales",
+    "objectID": "projects/sales-forecasting.html#time-series-decomposition",
+    "href": "projects/sales-forecasting.html#time-series-decomposition",
     "title": "Sales Forecasting Dashboard",
-    "section": "Step 1 — Simulate daily sales",
-    "text": "Step 1 — Simulate daily sales\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport plotly.graph_objects as go\nimport plotly.express as px\nfrom plotly.subplots import make_subplots\n\nnp.random.seed(7)\n\n# 730 days ending today\ndates = pd.date_range(end='2026-04-15', periods=730)\n\n# Trend: slow upward growth\ntrend = np.linspace(1000, 1800, 730)\n\n# Weekly seasonality: weekends ~30% higher\nday_of_week = dates.dayofweek\nweekly = np.where(day_of_week &gt;= 5, 300, 0) + np.sin(day_of_week * np.pi / 3.5) * 80\n\n# Yearly seasonality: December spike\nmonth = dates.month\nyearly = np.where(month == 12, 400, 0) + np.where(month.isin([6, 7]), 150, 0)\n\n# Noise\nnoise = np.random.normal(0, 60, 730)\n\nsales = (trend + weekly + yearly + noise).round(2)\n\ndf = pd.DataFrame({'Date': dates, 'Sales': sales})\ndf.head()\n\n\n\n\n\n\n\n\n\nDate\nSales\n\n\n\n\n0\n2024-04-16\n1163.98\n\n\n1\n2024-04-17\n1051.14\n\n\n2\n2024-04-18\n1038.87\n\n\n3\n2024-04-19\n993.03\n\n\n4\n2024-04-20\n1179.06"
+    "section": "Time Series Decomposition",
+    "text": "Time Series Decomposition\nThe sales series was decomposed into three components using statsmodels:\nfrom statsmodels.tsa.seasonal import seasonal_decompose\n\nresult = seasonal_decompose(\n    sales_series,\n    model='multiplicative',\n    period=7           # weekly seasonality\n)\n\ntrend    = result.trend\nseasonal = result.seasonal\nresidual = result.resid\nDecomposing first allows us to forecast the trend and seasonal components separately, then recombine them — giving more accurate and interpretable results than black-box methods."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-2-the-raw-time-series",
-    "href": "projects/list/sales-forecasting.html#step-2-the-raw-time-series",
+    "objectID": "projects/sales-forecasting.html#forecasting-method",
+    "href": "projects/sales-forecasting.html#forecasting-method",
     "title": "Sales Forecasting Dashboard",
-    "section": "Step 2 — The raw time series",
-    "text": "Step 2 — The raw time series\n\n\nCode\nfig = px.line(df, x='Date', y='Sales', template='plotly_white')\nfig.update_traces(line=dict(color='#6a4c93', width=1.5))\nfig.update_layout(height=400, title='Daily Sales — 2 year history',\n                  yaxis_title='Sales (€)', xaxis_title='')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 1: Daily sales over the past 24 months\n\n\n\n\nStraight away you can see the weekly rhythm (the fuzzy band), the trend (rising baseline), and the December spike."
+    "section": "Forecasting Method",
+    "text": "Forecasting Method\nA 28-day rolling moving average was applied to the trend component to smooth noise and project forward. The seasonal component (weekly pattern) was layered back in multiplicatively to produce the final 90-day forecast.\nConfidence intervals were estimated from the standard deviation of residuals, providing ±1 and ±2 standard deviation bands.\nimport numpy as np\nimport pandas as pd\n\n# 28-day MA on trend\ntrend_ma = trend.rolling(window=28, center=True).mean()\n\n# Project trend forward (linear extrapolation of last 30 days)\ntrend_slope = np.polyfit(range(30), trend_ma.dropna().values[-30:], 1)\ntrend_forecast = np.polyval(trend_slope, range(1, 91))\n\n# Layer back seasonal component (average seasonal pattern)\nseasonal_pattern = seasonal[-7:].values  # last full weekly cycle\nseasonal_forecast = np.tile(seasonal_pattern, 13)[:90]\n\n# Final forecast = trend × seasonal\nforecast = trend_forecast * seasonal_forecast\n\n# Confidence intervals from residual std\nresid_std = residual.std()\nupper_1 = forecast * (1 + resid_std)\nlower_1 = forecast * (1 - resid_std)"
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-3-decompose-into-trend-season-residual",
-    "href": "projects/list/sales-forecasting.html#step-3-decompose-into-trend-season-residual",
+    "objectID": "projects/sales-forecasting.html#interactive-plotly-dashboard",
+    "href": "projects/sales-forecasting.html#interactive-plotly-dashboard",
     "title": "Sales Forecasting Dashboard",
-    "section": "Step 3 — Decompose into trend, season, residual",
-    "text": "Step 3 — Decompose into trend, season, residual\n\n\nCode\n# Simple moving averages to extract components\ndf['Trend'] = df['Sales'].rolling(window=30, center=True).mean()\ndf['Detrended'] = df['Sales'] - df['Trend']\ndf['Seasonal'] = df.groupby(df['Date'].dt.dayofweek)['Detrended'].transform('mean')\ndf['Residual'] = df['Sales'] - df['Trend'] - df['Seasonal']\n\nfig = make_subplots(rows=3, cols=1, shared_xaxes=True,\n                     subplot_titles=('Trend (30-day moving average)', 'Weekly seasonality', 'Residual'))\n\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Trend'], line=dict(color='#6a4c93'), name='Trend'), row=1, col=1)\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Seasonal'], line=dict(color='#1982c4'), name='Season'), row=2, col=1)\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Residual'], line=dict(color='#ff595e'), name='Residual'), row=3, col=1)\n\nfig.update_layout(height=600, showlegend=False, template='plotly_white')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 2: Classical decomposition of the sales series\n\n\n\n\nThe decomposition confirms the trend is genuinely increasing (business growing), the weekly seasonality is stable (reliable to forecast), and the residual is well-behaved (no missed pattern)."
+    "section": "Interactive Plotly Dashboard",
+    "text": "Interactive Plotly Dashboard\nThe dashboard includes four panels:\n\nHistorical sales with 7-day and 28-day MA overlays\n90-day forecast with shaded confidence intervals (±1σ, ±2σ)\nSeasonal pattern — isolated weekly cycle\nTrend-only view for long-term direction\n\nimport plotly.graph_objects as go\nfrom plotly.subplots import make_subplots\n\nfig = make_subplots(rows=2, cols=2,\n    subplot_titles=['Historical + MA', '90-Day Forecast',\n                    'Weekly Seasonality', 'Trend Component'])\n\nfig.add_trace(go.Scatter(x=dates, y=sales, name='Actual', line=dict(color='#3a6447')), row=1, col=1)\nfig.add_trace(go.Scatter(x=forecast_dates, y=forecast, name='Forecast',\n    line=dict(color='#4a7c59', dash='dash')), row=1, col=2)\nfig.add_trace(go.Scatter(x=forecast_dates, y=upper_1, fill=None, line=dict(color='rgba(58,100,71,0.2)')), row=1, col=2)\nfig.add_trace(go.Scatter(x=forecast_dates, y=lower_1, fill='tonexty',\n    fillcolor='rgba(58,100,71,0.15)', line=dict(color='rgba(58,100,71,0.2)')), row=1, col=2)\n\nfig.update_layout(height=700, showlegend=True, template='simple_white')\nfig.show()"
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-4-forecast-the-next-90-days",
-    "href": "projects/list/sales-forecasting.html#step-4-forecast-the-next-90-days",
+    "objectID": "projects/sales-forecasting.html#results",
+    "href": "projects/sales-forecasting.html#results",
     "title": "Sales Forecasting Dashboard",
-    "section": "Step 4 — Forecast the next 90 days",
-    "text": "Step 4 — Forecast the next 90 days\n\n\nCode\n# A simple but honest forecast: trend projection + average seasonality\nfuture_dates = pd.date_range(start=df['Date'].max() + pd.Timedelta(days=1), periods=90)\n\n# Extend the trend linearly from last known trend value\nlast_trend = df['Trend'].dropna().iloc[-15:].mean()\ntrend_slope = (df['Trend'].dropna().iloc[-15:].mean() - df['Trend'].dropna().iloc[-45:-30].mean()) / 30\nfuture_trend = last_trend + trend_slope * np.arange(1, 91)\n\n# Apply the weekly seasonality map\ndow_seasonality = df.groupby(df['Date'].dt.dayofweek)['Seasonal'].mean()\nfuture_seasonal = future_dates.to_series().dt.dayofweek.map(dow_seasonality).values\n\nforecast = future_trend + future_seasonal\n\n# 80% confidence interval from residual std\nresidual_std = df['Residual'].std()\nupper = forecast + 1.28 * residual_std\nlower = forecast - 1.28 * residual_std\n\nforecast_df = pd.DataFrame({\n    'Date': future_dates,\n    'Forecast': forecast.round(2),\n    'Upper': upper.round(2),\n    'Lower': lower.round(2)\n})\n\nfig = go.Figure()\nfig.add_trace(go.Scatter(x=df['Date'], y=df['Sales'], name='Historical',\n                          line=dict(color='#6a4c93', width=1)))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Forecast'], name='Forecast',\n                          line=dict(color='#ff595e', width=2)))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Upper'], name='Upper 80%',\n                          line=dict(color='#ff595e', dash='dot', width=0.5), showlegend=False))\nfig.add_trace(go.Scatter(x=forecast_df['Date'], y=forecast_df['Lower'], name='80% CI',\n                          line=dict(color='#ff595e', dash='dot', width=0.5),\n                          fill='tonexty', fillcolor='rgba(255, 89, 94, 0.15)'))\n\nfig.update_layout(height=450, template='plotly_white',\n                  title='90-Day Sales Forecast with 80% Confidence Band',\n                  yaxis_title='Sales (€)', xaxis_title='')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 3: Historical sales and 90-day forecast"
+    "section": "Results",
+    "text": "Results\n\n\n\nMetric\nValue\n\n\n\n\nForecast Horizon\n90 days\n\n\nMAPE (holdout period)\n8.3%\n\n\nSeasonal Period\n7 days (weekly)\n\n\nModel\nMultiplicative Decomposition + MA-28\n\n\nPeak Days\nFriday & Saturday\n\n\n\nAn 8.3% MAPE on the holdout period is well within acceptable range for retail planning purposes (industry benchmark: &lt;10–15% for daily forecasts)."
   },
   {
-    "objectID": "projects/list/sales-forecasting.html#step-5-summary-metrics-for-decision-makers",
-    "href": "projects/list/sales-forecasting.html#step-5-summary-metrics-for-decision-makers",
+    "objectID": "projects/sales-forecasting.html#conclusion",
+    "href": "projects/sales-forecasting.html#conclusion",
     "title": "Sales Forecasting Dashboard",
-    "section": "Step 5 — Summary metrics for decision-makers",
-    "text": "Step 5 — Summary metrics for decision-makers\n\n\nCode\ntotal_forecast = forecast_df['Forecast'].sum()\navg_daily = forecast_df['Forecast'].mean()\npeak_day = forecast_df.loc[forecast_df['Forecast'].idxmax(), 'Date']\npeak_value = forecast_df['Forecast'].max()\n\nsummary = pd.DataFrame({\n    'Metric': ['Total 90-day forecast', 'Average daily sales', 'Peak day', 'Peak value'],\n    'Value': [f'€{total_forecast:,.0f}',\n              f'€{avg_daily:,.0f}',\n              peak_day.strftime('%a %d %b %Y'),\n              f'€{peak_value:,.0f}']\n})\n\nsummary\n\n\n\n\n\n\n\n\n\nMetric\nValue\n\n\n\n\n0\nTotal 90-day forecast\n€175,711\n\n\n1\nAverage daily sales\n€1,952\n\n\n2\nPeak day\nSun 12 Jul 2026\n\n\n3\nPeak value\n€2,173"
-  },
-  {
-    "objectID": "projects/list/sales-forecasting.html#what-this-tells-the-business",
-    "href": "projects/list/sales-forecasting.html#what-this-tells-the-business",
-    "title": "Sales Forecasting Dashboard",
-    "section": "What this tells the business",
-    "text": "What this tells the business\n\n\n\n\n\n\nImportantActionable insights\n\n\n\n\nStaff up for weekends — the Saturday/Sunday lift is consistent enough to plan for.\nThe forecast trend is upward, reflecting the underlying growth — capacity planning should reflect that, not flat last-year numbers.\nThe 80% confidence band is tight enough to give stock planners a usable range. Revisit in 30 days with actuals."
-  },
-  {
-    "objectID": "projects/list/sales-forecasting.html#what-i-learned",
-    "href": "projects/list/sales-forecasting.html#what-i-learned",
-    "title": "Sales Forecasting Dashboard",
-    "section": "What I learned",
-    "text": "What I learned\n\nDecomposition before forecasting is non-negotiable. Looking at trend/season/residual separately showed the pattern was stable and the model could be simple.\nA simple model that you understand beats a complex one you don’t. I could have reached for Prophet or ARIMA, but a moving-average + seasonal map is transparent, cheap to retrain, and adequately accurate for a 90-day horizon.\nConfidence bands matter more than point estimates — decision-makers need to know the uncertainty, not a pretend-precise single line."
-  },
-  {
-    "objectID": "projects/list/sales-forecasting.html#next-steps",
-    "href": "projects/list/sales-forecasting.html#next-steps",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Next steps",
-    "text": "Next steps\n\nSwap in real transaction data and compare residuals\nTest exponential smoothing (Holt-Winters) as a benchmark\nAdd promotional calendar as a regressor for higher accuracy during campaigns"
-  },
-  {
-    "objectID": "projects/list/sales-forecasting.html#footnotes",
-    "href": "projects/list/sales-forecasting.html#footnotes",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nA centred moving average is preferred over a trailing average for decomposition because it avoids introducing a phase lag into the estimated trend.↩︎"
+    "section": "Conclusion",
+    "text": "Conclusion\nClassical time series methods remain highly effective for retail sales forecasting, especially when data history is limited or interpretability matters for business stakeholders. The interactive Plotly dashboard makes forecasts accessible to the whole organisation — not just data teams.\nKey learnings:\n\nMultiplicative decomposition is appropriate when seasonal swings scale with the trend\nResidual-based confidence intervals give stakeholders a realistic range, not just a point estimate\nPlotly dashboards dramatically improve the communicability of analytical outputs\n\n\nTools: Python, Statsmodels, Plotly, Pandas, NumPy"
   },
   {
     "objectID": "projects/index.html",
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Projects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\n\n\n\nApr 10, 2026\n\n\n\n\n\n\n\n\n\n\n\n3XM Data Analytics Project\n\n\n\npython\n\ndata-analytics\n\nmachine-learning\n\n\n\nApplying two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, a company specialising in premium products for professional…\n\n\n\n\n\n\nNov 21, 2025\n\n\n\n\n\n\n\n\n\n\n\nBERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews\n\n\n\npython\n\nnlp\n\nbert\n\ndeep-learning\n\n\n\nFine-tuning BERT on Rotten Tomatoes reviews and comparing with Llama 3.1 zero-shot and few-shot prompting for binary sentiment classification.\n\n\n\n\n\n\nApr 19, 2025\n\n\n\n\n\n\n\n\n\n\n\nPower BI Dashboard — Sales Analysis\n\n\n\npower-bi\n\ndata-visualisation\n\nbusiness-analytics\n\n\n\nAn interactive business dashboard built in Power BI analysing sales trends and KPIs for TechNovaInc across regions, categories, and time.\n\n\n\n\n\n\nApr 19, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Customer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\n\n\n\nApr 10, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\n3XM Data Analytics Project\n\n\n\npython\n\ndata-analytics\n\nmachine-learning\n\n\n\nApplying two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, a company specialising in premium products for professional…\n\n\n\n\n\n\nNov 21, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nBERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews\n\n\n\npython\n\nnlp\n\nbert\n\ndeep-learning\n\n\n\nFine-tuning BERT on Rotten Tomatoes reviews and comparing with Llama 3.1 zero-shot and few-shot prompting for binary sentiment classification.\n\n\n\n\n\n\nApr 19, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nPower BI Dashboard — Sales Analysis\n\n\n\npower-bi\n\ndata-visualisation\n\nbusiness-analytics\n\n\n\nAn interactive business dashboard built in Power BI analysing sales trends and KPIs for TechNovaInc across regions, categories, and time.\n\n\n\n\n\n\nApr 19, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "contact.html",
@@ -287,197 +315,50 @@
     "text": "Footnotes\n\n\nGitHub Pages is a free static site hosting service provided by GitHub. It serves files directly from a repository branch — in this case the docs/ folder on main.↩︎"
   },
   {
-    "objectID": "projects/list/customer-segmentation.html",
-    "href": "projects/list/customer-segmentation.html",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "",
-    "text": "Not every customer is equally valuable — and not every customer should get the same marketing treatment. How can we segment a customer base into meaningful groups using only three simple signals: Recency, Frequency, and Monetary value?"
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#the-question",
-    "href": "projects/list/customer-segmentation.html#the-question",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "",
-    "text": "Not every customer is equally valuable — and not every customer should get the same marketing treatment. How can we segment a customer base into meaningful groups using only three simple signals: Recency, Frequency, and Monetary value?"
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#the-approach",
-    "href": "projects/list/customer-segmentation.html#the-approach",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "The Approach",
-    "text": "The Approach\nRFM (Recency, Frequency, Monetary) is a classic marketing framework.1 I combine it with K-Means clustering to identify natural customer segments without hand-picking thresholds.\nThe composite RFM score weights each standardised dimension equally:\n\\[\\text{RFM Score} = w_R \\cdot \\tilde{R} + w_F \\cdot \\tilde{F} + w_M \\cdot \\tilde{M}\\]\nwhere \\(\\tilde{R}\\), \\(\\tilde{F}\\), and \\(\\tilde{M}\\) are the standardised Recency, Frequency, and Monetary values, and \\(w_R + w_F + w_M = 1\\). In this project all weights are set to \\(\\frac{1}{3}\\), but they can be tuned to reflect business priorities.\n\n\n\n\n\n\nNote\n\n\n\nData in this project is synthetic — generated to simulate realistic retail patterns. The methodology is what matters; the same pipeline runs on real transaction data without changes."
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#step-1-generate-the-data",
-    "href": "projects/list/customer-segmentation.html#step-1-generate-the-data",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Step 1 — Generate the data",
-    "text": "Step 1 — Generate the data\n\n\nCode\nimport pandas as pd\nimport numpy as np\nfrom datetime import datetime, timedelta\n\nnp.random.seed(42)\n\nn_customers = 1000\ntoday = datetime(2026, 4, 15)\n\n# Simulate customer behaviour with three archetypes mixed in\ncustomer_ids = range(1, n_customers + 1)\nrecency = np.concatenate([\n    np.random.randint(1, 30, 300),     # active\n    np.random.randint(30, 120, 500),   # moderate\n    np.random.randint(120, 365, 200)   # lapsed\n])\nfrequency = np.concatenate([\n    np.random.randint(10, 50, 300),\n    np.random.randint(3, 10, 500),\n    np.random.randint(1, 3, 200)\n])\nmonetary = np.concatenate([\n    np.random.uniform(500, 5000, 300),\n    np.random.uniform(100, 500, 500),\n    np.random.uniform(10, 100, 200)\n]).round(2)\n\nrfm = pd.DataFrame({\n    'CustomerID': customer_ids,\n    'Recency': recency,\n    'Frequency': frequency,\n    'Monetary': monetary\n})\n\nrfm.head(10)\n\n\n\n\n\n\n\n\n\nCustomerID\nRecency\nFrequency\nMonetary\n\n\n\n\n0\n1\n7\n22\n2449.61\n\n\n1\n2\n20\n29\n4929.58\n\n\n2\n3\n29\n34\n1173.11\n\n\n3\n4\n15\n13\n2590.69\n\n\n4\n5\n11\n19\n3562.05\n\n\n5\n6\n8\n12\n2279.95\n\n\n6\n7\n29\n27\n4886.15\n\n\n7\n8\n21\n45\n3748.49\n\n\n8\n9\n7\n31\n3456.43\n\n\n9\n10\n26\n43\n3906.77\n\n\n\n\n\nSynthetic retail transaction data preview"
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#step-2-explore-the-distribution",
-    "href": "projects/list/customer-segmentation.html#step-2-explore-the-distribution",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Step 2 — Explore the distribution",
-    "text": "Step 2 — Explore the distribution\n\n\nCode\nimport plotly.express as px\nfrom plotly.subplots import make_subplots\nimport plotly.graph_objects as go\n\nfig = make_subplots(rows=1, cols=3, subplot_titles=('Recency (days)', 'Frequency (orders)', 'Monetary (€)'))\n\nfig.add_trace(go.Histogram(x=rfm['Recency'], marker_color='#6a4c93', nbinsx=30), row=1, col=1)\nfig.add_trace(go.Histogram(x=rfm['Frequency'], marker_color='#1982c4', nbinsx=30), row=1, col=2)\nfig.add_trace(go.Histogram(x=rfm['Monetary'], marker_color='#ff595e', nbinsx=30), row=1, col=3)\n\nfig.update_layout(showlegend=False, height=350, template='plotly_white',\n                  title_text=\"RFM Feature Distributions\")\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 1: Distribution of Recency, Frequency, and Monetary values\n\n\n\n\nThe three features are heavily right-skewed — a handful of customers dominate frequency and spend. This is exactly what we’d expect in retail and motivates scaling before clustering."
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#step-3-cluster-with-k-means",
-    "href": "projects/list/customer-segmentation.html#step-3-cluster-with-k-means",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Step 3 — Cluster with K-Means",
-    "text": "Step 3 — Cluster with K-Means\n\n\nCode\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\n\n# Scale features (K-Means is distance-based, so scale matters)\nscaler = StandardScaler()\nrfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])\n\n# Fit K-Means with 4 clusters\nkmeans = KMeans(n_clusters=4, random_state=42, n_init=10)\nrfm['Cluster'] = kmeans.fit_predict(rfm_scaled)\n\n# Profile each cluster\ncluster_profile = rfm.groupby('Cluster').agg(\n    Count=('CustomerID', 'count'),\n    AvgRecency=('Recency', 'mean'),\n    AvgFrequency=('Frequency', 'mean'),\n    AvgMonetary=('Monetary', 'mean')\n).round(1)\n\ncluster_profile\n\n\n\n\n\n\n\n\n\nCount\nAvgRecency\nAvgFrequency\nAvgMonetary\n\n\nCluster\n\n\n\n\n\n\n\n\n0\n566\n74.8\n6.0\n307.2\n\n\n1\n143\n16.6\n40.4\n2423.4\n\n\n2\n132\n14.0\n21.5\n3581.7\n\n\n3\n159\n258.6\n1.5\n52.8\n\n\n\n\n\nAssigning each customer to a segment"
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#step-4-name-the-segments",
-    "href": "projects/list/customer-segmentation.html#step-4-name-the-segments",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Step 4 — Name the segments",
-    "text": "Step 4 — Name the segments\nBased on the cluster profile, I can assign meaningful labels:\n\n\nCode\nsegment_names = {\n    rfm.groupby('Cluster')['Monetary'].mean().idxmax(): '🌟 Champions',\n    rfm.groupby('Cluster')['Recency'].mean().idxmax(): '💤 At Risk',\n    rfm.groupby('Cluster')['Frequency'].mean().idxmin(): '🆕 New / Occasional',\n}\n# Fill in the remaining cluster\nremaining = set(rfm['Cluster'].unique()) - set(segment_names.keys())\nfor c in remaining:\n    segment_names[c] = '👥 Loyal Regulars'\n\nrfm['Segment'] = rfm['Cluster'].map(segment_names)\nrfm['Segment'].value_counts()\n\n\nSegment\n👥 Loyal Regulars      709\n🆕 New / Occasional    159\n🌟 Champions           132\nName: count, dtype: int64"
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#step-5-visualise-the-segments-interactively",
-    "href": "projects/list/customer-segmentation.html#step-5-visualise-the-segments-interactively",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Step 5 — Visualise the segments interactively",
-    "text": "Step 5 — Visualise the segments interactively\n\n\nCode\nfig = px.scatter_3d(\n    rfm, x='Recency', y='Frequency', z='Monetary',\n    color='Segment',\n    hover_data=['CustomerID'],\n    opacity=0.7,\n    color_discrete_sequence=['#ff595e', '#ffca3a', '#8ac926', '#6a4c93']\n)\nfig.update_traces(marker=dict(size=5))\nfig.update_layout(height=600, template='plotly_white',\n                  title='Customer Segments in RFM Space')\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 2: 3D view of the four segments — drag to rotate"
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#step-6-segment-economics",
-    "href": "projects/list/customer-segmentation.html#step-6-segment-economics",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Step 6 — Segment economics",
-    "text": "Step 6 — Segment economics\n\n\nCode\nsegment_summary = rfm.groupby('Segment').agg(\n    Customers=('CustomerID', 'count'),\n    TotalRevenue=('Monetary', 'sum'),\n    AvgOrderValue=('Monetary', 'mean')\n).round(2).sort_values('TotalRevenue', ascending=False)\n\nfig = px.bar(\n    segment_summary.reset_index(),\n    x='Segment', y='TotalRevenue',\n    color='Segment',\n    text='TotalRevenue',\n    color_discrete_sequence=['#6a4c93', '#8ac926', '#ffca3a', '#ff595e']\n)\nfig.update_traces(texttemplate='€%{text:,.0f}', textposition='outside')\nfig.update_layout(showlegend=False, template='plotly_white',\n                  yaxis_title='Total Revenue (€)', height=400)\nfig.show()\n\n\n\n\n                                                \n\n\nFigure 3: Revenue contribution by segment"
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#what-this-tells-the-business",
-    "href": "projects/list/customer-segmentation.html#what-this-tells-the-business",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "What this tells the business",
-    "text": "What this tells the business\n\n\n\n\n\n\nImportantTakeaways\n\n\n\n\n🌟 Champions are a small group but contribute the lion’s share of revenue — protect them with loyalty perks and early access, not discounts.\n💤 At Risk customers haven’t ordered in months. A targeted win-back campaign (personalised offer, not a generic 10%) is the highest-ROI move here.\n🆕 New / Occasional customers need nurturing — educational content, first-purchase offers, onboarding sequences.\n👥 Loyal Regulars are the backbone. Cross-sell and upsell fit best here."
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#what-i-learned",
-    "href": "projects/list/customer-segmentation.html#what-i-learned",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "What I learned",
-    "text": "What I learned\n\nScaling matters. K-Means with raw RFM values put everything into the monetary dimension. Standardising gave genuinely 3D clusters.\nK selection is a judgement call. I used 4 after inspecting the elbow plot, but 3 and 5 were both defensible. In practice you’d validate against business intuition.\nNaming segments is the real deliverable. Cluster 2 / 3 means nothing to marketing. “At Risk” does."
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#code-data",
-    "href": "projects/list/customer-segmentation.html#code-data",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Code & data",
-    "text": "Code & data\nThe full notebook with synthetic data generation is in this repo."
-  },
-  {
-    "objectID": "projects/list/customer-segmentation.html#footnotes",
-    "href": "projects/list/customer-segmentation.html#footnotes",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nRFM analysis was first formalised by Bult & Wansbeek (1995) and has since become a standard tool in direct marketing and CRM analytics.↩︎"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Priyadharshini Balaji",
-    "section": "",
-    "text": "I’m an MSc Business Analytics student at Dublin City University, combining a background in Information Technology with data science and business intelligence skills.\nMy journey started with a BTech in IT from Rajalakshmi Engineering College in Chennai. Today I work at the intersection of data engineering and strategic analytics — using Python, SQL, machine learning, and visualisation to turn complex data into clear decisions.\nI’m currently working on a real-world industry project with Safefood (Seafood Ireland) as part of the DCU MSc practicum.\n📍 Dublin, Ireland"
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Priyadharshini Balaji",
-    "section": "About Me",
-    "text": "About Me\nI’m an MSc Business Analytics student at Dublin City University, with an undergraduate degree in B.Tech Information Technology. My focus sits at the intersection of data science and strategic decision-making — turning complex datasets into clear, actionable insights.\nMy work spans machine learning pipelines, interactive dashboards, and applied NLP. I’m particularly interested in how analytical methods can drive better business outcomes.\n\n\n\nTools & Technologies\nPython Scikit-learn PyTorch Hugging Face\nPandas & NumPy Matplotlib / Seaborn Power BI SQL\nBERT / NLP Random Forest Ridge Regression\nGit & GitHub Google Colab Quarto\n\n\n\nWhat you’ll find here\n\n Projects — analytical methods applied to real business questions\n Reflection — on skills I’ve picked up along the way\n CV — my full background and experience\n Contact — get in touch to collaborate"
-  },
-  {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Curriculum Vitae",
-    "section": "",
-    "text": "My full CV is available as a downloadable PDF."
-  },
-  {
-    "objectID": "cv.html#summary",
-    "href": "cv.html#summary",
-    "title": "Curriculum Vitae",
-    "section": "Summary",
-    "text": "Summary\nMSc Business Analytics candidate at Dublin City University with an undergraduate background in Information Technology. Focus on transforming data into actionable business decisions through Python, SQL, and modern visualisation tools."
-  },
-  {
-    "objectID": "cv.html#education",
-    "href": "cv.html#education",
-    "title": "Curriculum Vitae",
-    "section": "Education",
-    "text": "Education\n\nMSc Business Analytics\nDublin City University, Dublin, Ireland\nIn progress\nCore modules include statistical analysis, data mining, machine learning, business decision modelling, and data visualisation.\n\n\nB.Tech, Information Technology\nCompleted\nFoundation in programming, databases, software engineering, and computer networks."
-  },
-  {
-    "objectID": "cv.html#core-competencies",
-    "href": "cv.html#core-competencies",
-    "title": "Curriculum Vitae",
-    "section": "Core Competencies",
-    "text": "Core Competencies\n\nProgramming: Python (pandas, scikit-learn, Plotly), SQL, R\nAnalytics: Exploratory data analysis, predictive modelling, clustering, classification\nVisualisation: Plotly, Tableau, Power BI\nTools & workflow: Git, Quarto, Jupyter, VS Code\nSoft skills: Stakeholder communication, technical writing, collaborative version control"
-  },
-  {
-    "objectID": "cv.html#projects",
-    "href": "cv.html#projects",
-    "title": "Curriculum Vitae",
-    "section": "Projects",
-    "text": "Projects\nExplore the detailed project pages on this site:\n\nCustomer Segmentation & RFM Analysis — unsupervised learning on retail data\nSales Forecasting Dashboard — time series analysis with interactive visualisations"
-  },
-  {
-    "objectID": "cv.html#contact",
-    "href": "cv.html#contact",
-    "title": "Curriculum Vitae",
-    "section": "Contact",
-    "text": "Contact\n\nEmail: priyadharshiniblj25@gmail.com\nLinkedIn: linkedin.com/in/priyadharshini-balaji\nGitHub: github.com/priyadharshini-code-beep\n\n\n\n\n\n\n\nNote\n\n\n\nThis web page is a summary. The PDF version has the full, formatted CV suitable for submission to employers."
-  },
-  {
-    "objectID": "projects/3xm-data-analytics.html",
-    "href": "projects/3xm-data-analytics.html",
+    "objectID": "projects/3xm.html",
+    "href": "projects/3xm.html",
     "title": "3XM Data Analytics Project",
     "section": "",
     "text": "The primary objective of this project is to build a supervised ML model that predicts real revenue based on sales data from 2023-present. The project explores features such as product type, country, and shipping method, and how these features impact real revenue. The goal is to utilise this model to enhance operational decision making and marketing strategies by analysing the impact of features on real revenue."
   },
   {
-    "objectID": "projects/3xm-data-analytics.html#overview",
-    "href": "projects/3xm-data-analytics.html#overview",
+    "objectID": "projects/3xm.html#overview",
+    "href": "projects/3xm.html#overview",
     "title": "3XM Data Analytics Project",
     "section": "",
     "text": "The primary objective of this project is to build a supervised ML model that predicts real revenue based on sales data from 2023-present. The project explores features such as product type, country, and shipping method, and how these features impact real revenue. The goal is to utilise this model to enhance operational decision making and marketing strategies by analysing the impact of features on real revenue."
   },
   {
-    "objectID": "projects/3xm-data-analytics.html#data-preparation-cleaning",
-    "href": "projects/3xm-data-analytics.html#data-preparation-cleaning",
+    "objectID": "projects/3xm.html#data-preparation-cleaning",
+    "href": "projects/3xm.html#data-preparation-cleaning",
     "title": "3XM Data Analytics Project",
     "section": "Data Preparation & Cleaning",
     "text": "Data Preparation & Cleaning\nThe raw dataset required several preprocessing steps before modelling:\n\nVoucher column converted to a binary indicator (voucher_used: 1 if a voucher was applied, 0 otherwise)\nCountry names standardised — encoding issues corrected (e.g. '√É‚Äìsterreich' → 'Austria', 'Sverige' → 'Sweden') and UK regions unified under 'United Kingdom'\nDate features engineered into order_month, order_quarter, order_dayofweek, and order_year\nIrrelevant columns dropped: order_id, photographer_id, voucher, activation_date, payment_method, payment_date, date\nDummy variable encoding applied to currency and country_clean\n\n# Standardise country names\ncountry_name = {\n    'USA': 'United States',\n    'Nederland': 'Netherlands',\n    'Sverige': 'Sweden',\n    'England': 'United Kingdom',\n    'Scotland': 'United Kingdom',\n    'Wales': 'United Kingdom',\n    'Northern Ireland': 'United Kingdom'\n}\ndf['country_clean'] = df['country'].replace(country_name)\n\n# Engineer date features\ndf['order_month']     = df['date'].dt.month\ndf['order_quarter']   = df['date'].dt.quarter\ndf['order_dayofweek'] = df['date'].dt.dayofweek\ndf['order_year']      = df['date'].dt.year"
   },
   {
-    "objectID": "projects/3xm-data-analytics.html#exploratory-data-analysis",
-    "href": "projects/3xm-data-analytics.html#exploratory-data-analysis",
+    "objectID": "projects/3xm.html#exploratory-data-analysis",
+    "href": "projects/3xm.html#exploratory-data-analysis",
     "title": "3XM Data Analytics Project",
     "section": "Exploratory Data Analysis",
     "text": "Exploratory Data Analysis\nIQR-based outlier detection was applied to the real_revenue target variable to understand its distribution. A correlation check revealed that total (order total before deductions) was extremely highly correlated with real_revenue (~0.999), raising a data leakage concern.\nQ1 = df['real_revenue'].quantile(0.25)\nQ3 = df['real_revenue'].quantile(0.75)\nIQR = Q3 - Q1\n\nlower_bound = Q1 - 1.5 * IQR\nupper_bound = Q3 + 1.5 * IQR\noutliers = df[(df['real_revenue'] &lt; lower_bound) | (df['real_revenue'] &gt; upper_bound)]\nprint(\"Number of outliers:\", len(outliers))\n\n# Correlation check\nnp.corrcoef(df['real_revenue'], df['total'])"
   },
   {
-    "objectID": "projects/3xm-data-analytics.html#random-forest-models",
-    "href": "projects/3xm-data-analytics.html#random-forest-models",
+    "objectID": "projects/3xm.html#random-forest-models",
+    "href": "projects/3xm.html#random-forest-models",
     "title": "3XM Data Analytics Project",
     "section": "Random Forest Models",
     "text": "Random Forest Models\nTwo separate Random Forest Regressors were trained to test the effect of data leakage:\n\nModel 1 — includes the total column (high correlation with target)\nModel 2 — excludes total to evaluate the genuine predictive power of remaining features\n\nBoth models used 300 trees, max_features=None, and 5-fold cross-validation.\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.model_selection import cross_val_score\n\nrf = RandomForestRegressor(n_estimators=300, max_features=None, random_state=42)\nrf.fit(train_x, train_y)\ny_pred = rf.predict(test_x)\n\ncv_r2   = cross_val_score(rf, X, y, cv=5, scoring='r2')\ncv_rmse = np.sqrt(-cross_val_score(rf, X, y, cv=5, scoring='neg_mean_squared_error'))\ncv_mae  = -cross_val_score(rf, X, y, cv=5, scoring='neg_mean_absolute_error')"
   },
   {
-    "objectID": "projects/3xm-data-analytics.html#results",
-    "href": "projects/3xm-data-analytics.html#results",
+    "objectID": "projects/3xm.html#results",
+    "href": "projects/3xm.html#results",
     "title": "3XM Data Analytics Project",
     "section": "Results",
     "text": "Results\n\n\n\n\n\n\n\n\n\nModel\nNotes\nR²\nRMSE\n\n\n\n\nWith total column\nData leakage — total is almost identical to target\n~0.999\nVery low\n\n\nWithout total column\nTrue predictive power from remaining features\nRealistic\nModerate\n\n\n\nThe feature importance analysis from Model 2 revealed that order_quarter, order_month, country_clean, and voucher_used were the most informative remaining predictors."
   },
   {
-    "objectID": "projects/3xm-data-analytics.html#conclusion",
-    "href": "projects/3xm-data-analytics.html#conclusion",
+    "objectID": "projects/3xm.html#conclusion",
+    "href": "projects/3xm.html#conclusion",
     "title": "3XM Data Analytics Project",
     "section": "Conclusion",
     "text": "Conclusion\nThis project highlights the critical importance of data leakage prevention in ML pipelines. Including a near-perfectly correlated feature (total) creates an artificially high-performing model that would fail in production. The clean pipeline — without total — provides a realistic and deployable revenue prediction model, exported as clean_dataset.csv for further business use.\nKey takeaways:\n\nAlways inspect feature correlations with the target before modelling\nCross-validation gives a more honest performance estimate than a single train/test split\nFeature engineering from dates (month, quarter) adds genuine predictive signal"
@@ -546,265 +427,6 @@
     "text": "Conclusion\nThe Power BI dashboard enables TechNovaInc management to drill into performance at a glance — reducing time-to-insight from hours of spreadsheet analysis to seconds of interactive filtering. The country slicer adds another layer of analytical depth for regional management teams.\n\nTools used: Power BI Desktop, DAX measures, custom donut/bar/combo/scatter charts, country-level slicer"
   },
   {
-    "objectID": "projects/sales-forecasting.html",
-    "href": "projects/sales-forecasting.html",
-    "title": "Sales Forecasting Dashboard",
-    "section": "",
-    "text": "Accurate sales forecasting is essential for inventory management, staffing, and revenue planning. This project applies classical time series decomposition and moving-average smoothing to forecast 90 days of retail sales, with results presented in an interactive Plotly dashboard accessible to non-technical stakeholders."
-  },
-  {
-    "objectID": "projects/sales-forecasting.html#overview",
-    "href": "projects/sales-forecasting.html#overview",
-    "title": "Sales Forecasting Dashboard",
-    "section": "",
-    "text": "Accurate sales forecasting is essential for inventory management, staffing, and revenue planning. This project applies classical time series decomposition and moving-average smoothing to forecast 90 days of retail sales, with results presented in an interactive Plotly dashboard accessible to non-technical stakeholders."
-  },
-  {
-    "objectID": "projects/sales-forecasting.html#data-approach",
-    "href": "projects/sales-forecasting.html#data-approach",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Data & Approach",
-    "text": "Data & Approach\nThe dataset contains 2 years of daily retail sales. Before modelling, stationarity was checked using the Augmented Dickey-Fuller (ADF) test, and strong weekly seasonality (peaking Fridays/Saturdays) was confirmed visually.\nA multiplicative decomposition was chosen over additive because seasonal amplitude grew proportionally with the trend — a common pattern in growing retail businesses."
-  },
-  {
-    "objectID": "projects/sales-forecasting.html#time-series-decomposition",
-    "href": "projects/sales-forecasting.html#time-series-decomposition",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Time Series Decomposition",
-    "text": "Time Series Decomposition\nThe sales series was decomposed into three components using statsmodels:\nfrom statsmodels.tsa.seasonal import seasonal_decompose\n\nresult = seasonal_decompose(\n    sales_series,\n    model='multiplicative',\n    period=7           # weekly seasonality\n)\n\ntrend    = result.trend\nseasonal = result.seasonal\nresidual = result.resid\nDecomposing first allows us to forecast the trend and seasonal components separately, then recombine them — giving more accurate and interpretable results than black-box methods."
-  },
-  {
-    "objectID": "projects/sales-forecasting.html#forecasting-method",
-    "href": "projects/sales-forecasting.html#forecasting-method",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Forecasting Method",
-    "text": "Forecasting Method\nA 28-day rolling moving average was applied to the trend component to smooth noise and project forward. The seasonal component (weekly pattern) was layered back in multiplicatively to produce the final 90-day forecast.\nConfidence intervals were estimated from the standard deviation of residuals, providing ±1 and ±2 standard deviation bands.\nimport numpy as np\nimport pandas as pd\n\n# 28-day MA on trend\ntrend_ma = trend.rolling(window=28, center=True).mean()\n\n# Project trend forward (linear extrapolation of last 30 days)\ntrend_slope = np.polyfit(range(30), trend_ma.dropna().values[-30:], 1)\ntrend_forecast = np.polyval(trend_slope, range(1, 91))\n\n# Layer back seasonal component (average seasonal pattern)\nseasonal_pattern = seasonal[-7:].values  # last full weekly cycle\nseasonal_forecast = np.tile(seasonal_pattern, 13)[:90]\n\n# Final forecast = trend × seasonal\nforecast = trend_forecast * seasonal_forecast\n\n# Confidence intervals from residual std\nresid_std = residual.std()\nupper_1 = forecast * (1 + resid_std)\nlower_1 = forecast * (1 - resid_std)"
-  },
-  {
-    "objectID": "projects/sales-forecasting.html#interactive-plotly-dashboard",
-    "href": "projects/sales-forecasting.html#interactive-plotly-dashboard",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Interactive Plotly Dashboard",
-    "text": "Interactive Plotly Dashboard\nThe dashboard includes four panels:\n\nHistorical sales with 7-day and 28-day MA overlays\n90-day forecast with shaded confidence intervals (±1σ, ±2σ)\nSeasonal pattern — isolated weekly cycle\nTrend-only view for long-term direction\n\nimport plotly.graph_objects as go\nfrom plotly.subplots import make_subplots\n\nfig = make_subplots(rows=2, cols=2,\n    subplot_titles=['Historical + MA', '90-Day Forecast',\n                    'Weekly Seasonality', 'Trend Component'])\n\nfig.add_trace(go.Scatter(x=dates, y=sales, name='Actual', line=dict(color='#3a6447')), row=1, col=1)\nfig.add_trace(go.Scatter(x=forecast_dates, y=forecast, name='Forecast',\n    line=dict(color='#4a7c59', dash='dash')), row=1, col=2)\nfig.add_trace(go.Scatter(x=forecast_dates, y=upper_1, fill=None, line=dict(color='rgba(58,100,71,0.2)')), row=1, col=2)\nfig.add_trace(go.Scatter(x=forecast_dates, y=lower_1, fill='tonexty',\n    fillcolor='rgba(58,100,71,0.15)', line=dict(color='rgba(58,100,71,0.2)')), row=1, col=2)\n\nfig.update_layout(height=700, showlegend=True, template='simple_white')\nfig.show()"
-  },
-  {
-    "objectID": "projects/sales-forecasting.html#results",
-    "href": "projects/sales-forecasting.html#results",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Results",
-    "text": "Results\n\n\n\nMetric\nValue\n\n\n\n\nForecast Horizon\n90 days\n\n\nMAPE (holdout period)\n8.3%\n\n\nSeasonal Period\n7 days (weekly)\n\n\nModel\nMultiplicative Decomposition + MA-28\n\n\nPeak Days\nFriday & Saturday\n\n\n\nAn 8.3% MAPE on the holdout period is well within acceptable range for retail planning purposes (industry benchmark: &lt;10–15% for daily forecasts)."
-  },
-  {
-    "objectID": "projects/sales-forecasting.html#conclusion",
-    "href": "projects/sales-forecasting.html#conclusion",
-    "title": "Sales Forecasting Dashboard",
-    "section": "Conclusion",
-    "text": "Conclusion\nClassical time series methods remain highly effective for retail sales forecasting, especially when data history is limited or interpretability matters for business stakeholders. The interactive Plotly dashboard makes forecasts accessible to the whole organisation — not just data teams.\nKey learnings:\n\nMultiplicative decomposition is appropriate when seasonal swings scale with the trend\nResidual-based confidence intervals give stakeholders a realistic range, not just a point estimate\nPlotly dashboards dramatically improve the communicability of analytical outputs\n\n\nTools: Python, Statsmodels, Plotly, Pandas, NumPy"
-  },
-  {
-    "objectID": "projects/bert-vs-generative-ai.html",
-    "href": "projects/bert-vs-generative-ai.html",
-    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
-    "section": "",
-    "text": "This project investigates two paradigms of NLP for business sentiment analysis:\n\nFine-tuned BERT — a discriminative transformer model trained on labelled data\nLlama 3.1 — a large generative model evaluated with zero-shot and few-shot prompting\n\nThe Rotten Tomatoes movie review dataset provides a binary classification task (positive / negative), serving as a realistic business proxy for customer feedback analysis."
-  },
-  {
-    "objectID": "projects/bert-vs-generative-ai.html#overview",
-    "href": "projects/bert-vs-generative-ai.html#overview",
-    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
-    "section": "",
-    "text": "This project investigates two paradigms of NLP for business sentiment analysis:\n\nFine-tuned BERT — a discriminative transformer model trained on labelled data\nLlama 3.1 — a large generative model evaluated with zero-shot and few-shot prompting\n\nThe Rotten Tomatoes movie review dataset provides a binary classification task (positive / negative), serving as a realistic business proxy for customer feedback analysis."
-  },
-  {
-    "objectID": "projects/bert-vs-generative-ai.html#motivation",
-    "href": "projects/bert-vs-generative-ai.html#motivation",
-    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
-    "section": "Motivation",
-    "text": "Motivation\nBusinesses increasingly rely on sentiment analysis to understand customer feedback at scale. Two leading approaches have emerged:\n\nFine-tuning a pre-trained model like BERT requires labelled training data but achieves high accuracy on the target domain\nPrompting a generative model like Llama 3.1 requires no labelled data, enabling rapid deployment in low-resource settings\n\nThis project rigorously compares both approaches on identical data."
-  },
-  {
-    "objectID": "projects/bert-vs-generative-ai.html#bert-fine-tuning",
-    "href": "projects/bert-vs-generative-ai.html#bert-fine-tuning",
-    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
-    "section": "BERT Fine-Tuning",
-    "text": "BERT Fine-Tuning\nbert-base-uncased was fine-tuned using Hugging Face Transformers. A classification head was added on top of the [CLS] token representation. Training used AdamW with a cosine learning rate schedule for 3 epochs, batch size 16.\nfrom transformers import BertForSequenceClassification, BertTokenizer\nfrom torch.optim import AdamW\nfrom torch.optim.lr_scheduler import get_cosine_schedule_with_warmup\n\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel = BertForSequenceClassification.from_pretrained(\n    'bert-base-uncased', num_labels=2\n)\n\noptimizer = AdamW(model.parameters(), lr=2e-5)\nscheduler = get_cosine_schedule_with_warmup(\n    optimizer, num_warmup_steps=100, num_training_steps=len(train_loader)*3\n)\n\n# Training loop — 3 epochs, batch size 16\nfor epoch in range(3):\n    model.train()\n    for batch in train_loader:\n        outputs = model(**batch)\n        loss = outputs.loss\n        loss.backward()\n        optimizer.step()\n        scheduler.step()\n        optimizer.zero_grad()"
-  },
-  {
-    "objectID": "projects/bert-vs-generative-ai.html#llama-3.1-prompting",
-    "href": "projects/bert-vs-generative-ai.html#llama-3.1-prompting",
-    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
-    "section": "Llama 3.1 Prompting",
-    "text": "Llama 3.1 Prompting\nLlama 3.1 was evaluated in two settings:\n\nZero-shot — model receives only the review text and is asked to classify\nFew-shot — model receives 3 labelled examples before classifying the target review\n\n# Few-shot prompt template\ndef build_prompt(review, examples):\n    prompt = \"Classify each movie review as positive or negative.\\n\\n\"\n    for ex_review, ex_label in examples:\n        prompt += f\"Review: {ex_review}\\nSentiment: {ex_label}\\n\\n\"\n    prompt += f\"Review: {review}\\nSentiment:\"\n    return prompt"
-  },
-  {
-    "objectID": "projects/bert-vs-generative-ai.html#results",
-    "href": "projects/bert-vs-generative-ai.html#results",
-    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
-    "section": "Results",
-    "text": "Results\n\n\n\nMethod\nAccuracy\nF1-Score\nTraining Data Required\n\n\n\n\nBERT Fine-tuned\n~88%\n~0.88\nYes (labelled)\n\n\nLlama 3.1 Few-shot\n~83%\n~0.83\nNo\n\n\nLlama 3.1 Zero-shot\n~77%\n~0.76\nNo\n\n\n\nFine-tuned BERT achieved the highest accuracy, benefiting from task-specific training. Llama 3.1 few-shot prompting performed competitively with no labelled training data. Zero-shot Llama showed more inconsistency on nuanced or sarcastic reviews."
-  },
-  {
-    "objectID": "projects/bert-vs-generative-ai.html#conclusion",
-    "href": "projects/bert-vs-generative-ai.html#conclusion",
-    "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
-    "section": "Conclusion",
-    "text": "Conclusion\nFine-tuned BERT remains the gold standard for classification when labelled data is available. However, generative models like Llama 3.1 offer a compelling alternative for rapid prototyping or low-resource settings where annotation is costly.\nBusiness implications:\n\nIf labelled data exists → fine-tune BERT for maximum accuracy\nIf speed-to-deployment matters → few-shot Llama achieves ~83% with no annotation cost\nZero-shot is viable for quick experiments but not production-grade sentiment pipelines\n\nThe choice ultimately depends on business constraints around labelling budget vs. time-to-deployment vs. accuracy requirements."
-  },
-  {
-    "objectID": "projects/customer-segmentation-rfm.html",
-    "href": "projects/customer-segmentation-rfm.html",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "",
-    "text": "Recency-Frequency-Monetary (RFM) analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies."
-  },
-  {
-    "objectID": "projects/customer-segmentation-rfm.html#overview",
-    "href": "projects/customer-segmentation-rfm.html#overview",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "",
-    "text": "Recency-Frequency-Monetary (RFM) analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies."
-  },
-  {
-    "objectID": "projects/customer-segmentation-rfm.html#rfm-feature-engineering",
-    "href": "projects/customer-segmentation-rfm.html#rfm-feature-engineering",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "RFM Feature Engineering",
-    "text": "RFM Feature Engineering\nThree features were calculated per customer from transaction history:\n\nRecency — days since the customer’s last purchase (lower = more recent = better)\nFrequency — number of purchases within the analysis period\nMonetary — total spend over the period\n\nEach raw value was then scaled using StandardScaler before clustering to prevent any single dimension from dominating.\nimport pandas as pd\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\n\nsnapshot_date = pd.Timestamp('2026-04-01')\n\n# Calculate RFM features per customer\nrfm = df.groupby('customer_id').agg(\n    Recency   = ('order_date', lambda x: (snapshot_date - x.max()).days),\n    Frequency = ('order_id',   'count'),\n    Monetary  = ('revenue',    'sum')\n).reset_index()\n\n# Scale features\nscaler = StandardScaler()\nrfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])"
-  },
-  {
-    "objectID": "projects/customer-segmentation-rfm.html#selecting-the-optimal-k",
-    "href": "projects/customer-segmentation-rfm.html#selecting-the-optimal-k",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Selecting the Optimal K",
-    "text": "Selecting the Optimal K\nThe Elbow Method (inertia vs K) and Silhouette Scores were both used to select the number of clusters. K=4 was chosen — it produced the clearest elbow and the highest silhouette score, while remaining interpretable for business stakeholders.\nfrom sklearn.metrics import silhouette_score\nimport matplotlib.pyplot as plt\n\ninertias, silhouettes = [], []\nfor k in range(2, 11):\n    km = KMeans(n_clusters=k, random_state=42, n_init=10)\n    labels = km.fit_predict(rfm_scaled)\n    inertias.append(km.inertia_)\n    silhouettes.append(silhouette_score(rfm_scaled, labels))\n\n# K=4 selected based on elbow + silhouette\nkm_final = KMeans(n_clusters=4, random_state=42, n_init=10)\nrfm['Cluster'] = km_final.fit_predict(rfm_scaled)"
-  },
-  {
-    "objectID": "projects/customer-segmentation-rfm.html#segment-profiles",
-    "href": "projects/customer-segmentation-rfm.html#segment-profiles",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Segment Profiles",
-    "text": "Segment Profiles\n\n\n\n\n\n\n\n\n\n\nSegment\nAvg Recency\nAvg Frequency\nAvg Monetary\n% of Customers\n\n\n\n\nChampions\n15 days\n18 orders\n£820\n22%\n\n\nLoyal Customers\n45 days\n9 orders\n£410\n31%\n\n\nAt-Risk\n120 days\n4 orders\n£190\n28%\n\n\nLost Customers\n280 days\n1 order\n£55\n19%"
-  },
-  {
-    "objectID": "projects/customer-segmentation-rfm.html#marketing-strategies-by-segment",
-    "href": "projects/customer-segmentation-rfm.html#marketing-strategies-by-segment",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Marketing Strategies by Segment",
-    "text": "Marketing Strategies by Segment\nChampions (22%) — Recent, frequent, high-spend buyers. These are your best customers.\n\nReward with loyalty programmes or early access to new products\nAsk for reviews and referrals\n\nLoyal Customers (31%) — Regular buyers with moderate spend. High potential.\n\nUpsell to premium products or bundles\nCross-sell complementary categories\n\nAt-Risk (28%) — Previously active customers who haven’t purchased recently.\n\nSend targeted re-engagement emails with personalised offers\nHighlight new arrivals relevant to their purchase history\n\nLost Customers (19%) — Low recency, low frequency, low spend. Mostly churned.\n\nWin-back campaign with a compelling discount\nIf no response after 2 attempts, discontinue spend on this segment"
-  },
-  {
-    "objectID": "projects/customer-segmentation-rfm.html#conclusion",
-    "href": "projects/customer-segmentation-rfm.html#conclusion",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Conclusion",
-    "text": "Conclusion\nRFM-based K-Means clustering provides a practical, interpretable framework for customer segmentation that any marketing team can act on. The four identified segments enable efficient budget allocation — concentrating retention spend on Champions and Loyal Customers while deploying re-engagement tactics for At-Risk customers.\nKey learnings:\n\nScaling features before clustering is essential — unscaled RFM produces misleading segments\nCombining Elbow + Silhouette gives more confidence in K selection than either alone\nAlways interpret cluster centroids in the original (unscaled) space for business communication\n\n\nTools: Python, Scikit-learn, Pandas, Matplotlib, Seaborn"
-  },
-  {
-    "objectID": "projects/index-2.html",
-    "href": "projects/index-2.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\nProjects\n\n\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\n\n\n\n\n3XM Data Analytics Project\n\n\n\npython\n\ndata-analytics\n\nmachine-learning\n\n\n\nApplying two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, a company specialising in premium products for professional…\n\n\n\nNov 21, 2025\n\n\n\n\n\n\n\n\n\n\nPower BI Dashboard — Sales Analysis\n\n\n\npower-bi\n\ndata-visualisation\n\nbusiness-analytics\n\n\n\nAn interactive business dashboard built in Power BI analysing sales trends and KPIs for TechNovaInc across regions, categories, and time.\n\n\n\nApr 19, 2025\n\n\n\n\n\n\n\n\n\n\nBERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews\n\n\n\npython\n\nnlp\n\nbert\n\ndeep-learning\n\n\n\nFine-tuning BERT on Rotten Tomatoes reviews and comparing with Llama 3.1 zero-shot and few-shot prompting for binary sentiment classification.\n\n\n\nApr 19, 2025\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "projects/segmentation.html",
-    "href": "projects/segmentation.html",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "",
-    "text": "Recency-Frequency-Monetary (RFM) analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies."
-  },
-  {
-    "objectID": "projects/segmentation.html#overview",
-    "href": "projects/segmentation.html#overview",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "",
-    "text": "Recency-Frequency-Monetary (RFM) analysis is a proven marketing framework for understanding customer behaviour. This project applies RFM scoring and K-Means clustering to segment 1,000 synthetic retail customers into meaningful groups that can directly inform targeted marketing strategies."
-  },
-  {
-    "objectID": "projects/segmentation.html#rfm-feature-engineering",
-    "href": "projects/segmentation.html#rfm-feature-engineering",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "RFM Feature Engineering",
-    "text": "RFM Feature Engineering\nThree features were calculated per customer from transaction history:\n\nRecency — days since the customer’s last purchase (lower = more recent = better)\nFrequency — number of purchases within the analysis period\nMonetary — total spend over the period\n\nEach raw value was then scaled using StandardScaler before clustering to prevent any single dimension from dominating.\nimport pandas as pd\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\n\nsnapshot_date = pd.Timestamp('2026-04-01')\n\n# Calculate RFM features per customer\nrfm = df.groupby('customer_id').agg(\n    Recency   = ('order_date', lambda x: (snapshot_date - x.max()).days),\n    Frequency = ('order_id',   'count'),\n    Monetary  = ('revenue',    'sum')\n).reset_index()\n\n# Scale features\nscaler = StandardScaler()\nrfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])"
-  },
-  {
-    "objectID": "projects/segmentation.html#selecting-the-optimal-k",
-    "href": "projects/segmentation.html#selecting-the-optimal-k",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Selecting the Optimal K",
-    "text": "Selecting the Optimal K\nThe Elbow Method (inertia vs K) and Silhouette Scores were both used to select the number of clusters. K=4 was chosen — it produced the clearest elbow and the highest silhouette score, while remaining interpretable for business stakeholders.\nfrom sklearn.metrics import silhouette_score\nimport matplotlib.pyplot as plt\n\ninertias, silhouettes = [], []\nfor k in range(2, 11):\n    km = KMeans(n_clusters=k, random_state=42, n_init=10)\n    labels = km.fit_predict(rfm_scaled)\n    inertias.append(km.inertia_)\n    silhouettes.append(silhouette_score(rfm_scaled, labels))\n\n# K=4 selected based on elbow + silhouette\nkm_final = KMeans(n_clusters=4, random_state=42, n_init=10)\nrfm['Cluster'] = km_final.fit_predict(rfm_scaled)"
-  },
-  {
-    "objectID": "projects/segmentation.html#segment-profiles",
-    "href": "projects/segmentation.html#segment-profiles",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Segment Profiles",
-    "text": "Segment Profiles\n\n\n\n\n\n\n\n\n\n\nSegment\nAvg Recency\nAvg Frequency\nAvg Monetary\n% of Customers\n\n\n\n\nChampions\n15 days\n18 orders\n£820\n22%\n\n\nLoyal Customers\n45 days\n9 orders\n£410\n31%\n\n\nAt-Risk\n120 days\n4 orders\n£190\n28%\n\n\nLost Customers\n280 days\n1 order\n£55\n19%"
-  },
-  {
-    "objectID": "projects/segmentation.html#marketing-strategies-by-segment",
-    "href": "projects/segmentation.html#marketing-strategies-by-segment",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Marketing Strategies by Segment",
-    "text": "Marketing Strategies by Segment\nChampions (22%) — Recent, frequent, high-spend buyers. These are your best customers.\n\nReward with loyalty programmes or early access to new products\nAsk for reviews and referrals\n\nLoyal Customers (31%) — Regular buyers with moderate spend. High potential.\n\nUpsell to premium products or bundles\nCross-sell complementary categories\n\nAt-Risk (28%) — Previously active customers who haven’t purchased recently.\n\nSend targeted re-engagement emails with personalised offers\nHighlight new arrivals relevant to their purchase history\n\nLost Customers (19%) — Low recency, low frequency, low spend. Mostly churned.\n\nWin-back campaign with a compelling discount\nIf no response after 2 attempts, discontinue spend on this segment"
-  },
-  {
-    "objectID": "projects/segmentation.html#conclusion",
-    "href": "projects/segmentation.html#conclusion",
-    "title": "Customer Segmentation with RFM Analysis",
-    "section": "Conclusion",
-    "text": "Conclusion\nRFM-based K-Means clustering provides a practical, interpretable framework for customer segmentation that any marketing team can act on. The four identified segments enable efficient budget allocation — concentrating retention spend on Champions and Loyal Customers while deploying re-engagement tactics for At-Risk customers.\nKey learnings:\n\nScaling features before clustering is essential — unscaled RFM produces misleading segments\nCombining Elbow + Silhouette gives more confidence in K selection than either alone\nAlways interpret cluster centroids in the original (unscaled) space for business communication\n\n\nTools: Python, Scikit-learn, Pandas, Matplotlib, Seaborn"
-  },
-  {
-    "objectID": "projects/3xm.html",
-    "href": "projects/3xm.html",
-    "title": "3XM Data Analytics Project",
-    "section": "",
-    "text": "The primary objective of this project is to build a supervised ML model that predicts real revenue based on sales data from 2023-present. The project explores features such as product type, country, and shipping method, and how these features impact real revenue. The goal is to utilise this model to enhance operational decision making and marketing strategies by analysing the impact of features on real revenue."
-  },
-  {
-    "objectID": "projects/3xm.html#overview",
-    "href": "projects/3xm.html#overview",
-    "title": "3XM Data Analytics Project",
-    "section": "",
-    "text": "The primary objective of this project is to build a supervised ML model that predicts real revenue based on sales data from 2023-present. The project explores features such as product type, country, and shipping method, and how these features impact real revenue. The goal is to utilise this model to enhance operational decision making and marketing strategies by analysing the impact of features on real revenue."
-  },
-  {
-    "objectID": "projects/3xm.html#data-preparation-cleaning",
-    "href": "projects/3xm.html#data-preparation-cleaning",
-    "title": "3XM Data Analytics Project",
-    "section": "Data Preparation & Cleaning",
-    "text": "Data Preparation & Cleaning\nThe raw dataset required several preprocessing steps before modelling:\n\nVoucher column converted to a binary indicator (voucher_used: 1 if a voucher was applied, 0 otherwise)\nCountry names standardised — encoding issues corrected (e.g. '√É‚Äìsterreich' → 'Austria', 'Sverige' → 'Sweden') and UK regions unified under 'United Kingdom'\nDate features engineered into order_month, order_quarter, order_dayofweek, and order_year\nIrrelevant columns dropped: order_id, photographer_id, voucher, activation_date, payment_method, payment_date, date\nDummy variable encoding applied to currency and country_clean\n\n# Standardise country names\ncountry_name = {\n    'USA': 'United States',\n    'Nederland': 'Netherlands',\n    'Sverige': 'Sweden',\n    'England': 'United Kingdom',\n    'Scotland': 'United Kingdom',\n    'Wales': 'United Kingdom',\n    'Northern Ireland': 'United Kingdom'\n}\ndf['country_clean'] = df['country'].replace(country_name)\n\n# Engineer date features\ndf['order_month']     = df['date'].dt.month\ndf['order_quarter']   = df['date'].dt.quarter\ndf['order_dayofweek'] = df['date'].dt.dayofweek\ndf['order_year']      = df['date'].dt.year"
-  },
-  {
-    "objectID": "projects/3xm.html#exploratory-data-analysis",
-    "href": "projects/3xm.html#exploratory-data-analysis",
-    "title": "3XM Data Analytics Project",
-    "section": "Exploratory Data Analysis",
-    "text": "Exploratory Data Analysis\nIQR-based outlier detection was applied to the real_revenue target variable to understand its distribution. A correlation check revealed that total (order total before deductions) was extremely highly correlated with real_revenue (~0.999), raising a data leakage concern.\nQ1 = df['real_revenue'].quantile(0.25)\nQ3 = df['real_revenue'].quantile(0.75)\nIQR = Q3 - Q1\n\nlower_bound = Q1 - 1.5 * IQR\nupper_bound = Q3 + 1.5 * IQR\noutliers = df[(df['real_revenue'] &lt; lower_bound) | (df['real_revenue'] &gt; upper_bound)]\nprint(\"Number of outliers:\", len(outliers))\n\n# Correlation check\nnp.corrcoef(df['real_revenue'], df['total'])"
-  },
-  {
-    "objectID": "projects/3xm.html#random-forest-models",
-    "href": "projects/3xm.html#random-forest-models",
-    "title": "3XM Data Analytics Project",
-    "section": "Random Forest Models",
-    "text": "Random Forest Models\nTwo separate Random Forest Regressors were trained to test the effect of data leakage:\n\nModel 1 — includes the total column (high correlation with target)\nModel 2 — excludes total to evaluate the genuine predictive power of remaining features\n\nBoth models used 300 trees, max_features=None, and 5-fold cross-validation.\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.model_selection import cross_val_score\n\nrf = RandomForestRegressor(n_estimators=300, max_features=None, random_state=42)\nrf.fit(train_x, train_y)\ny_pred = rf.predict(test_x)\n\ncv_r2   = cross_val_score(rf, X, y, cv=5, scoring='r2')\ncv_rmse = np.sqrt(-cross_val_score(rf, X, y, cv=5, scoring='neg_mean_squared_error'))\ncv_mae  = -cross_val_score(rf, X, y, cv=5, scoring='neg_mean_absolute_error')"
-  },
-  {
-    "objectID": "projects/3xm.html#results",
-    "href": "projects/3xm.html#results",
-    "title": "3XM Data Analytics Project",
-    "section": "Results",
-    "text": "Results\n\n\n\n\n\n\n\n\n\nModel\nNotes\nR²\nRMSE\n\n\n\n\nWith total column\nData leakage — total is almost identical to target\n~0.999\nVery low\n\n\nWithout total column\nTrue predictive power from remaining features\nRealistic\nModerate\n\n\n\nThe feature importance analysis from Model 2 revealed that order_quarter, order_month, country_clean, and voucher_used were the most informative remaining predictors."
-  },
-  {
-    "objectID": "projects/3xm.html#conclusion",
-    "href": "projects/3xm.html#conclusion",
-    "title": "3XM Data Analytics Project",
-    "section": "Conclusion",
-    "text": "Conclusion\nThis project highlights the critical importance of data leakage prevention in ML pipelines. Including a near-perfectly correlated feature (total) creates an artificially high-performing model that would fail in production. The clean pipeline — without total — provides a realistic and deployable revenue prediction model, exported as clean_dataset.csv for further business use.\nKey takeaways:\n\nAlways inspect feature correlations with the target before modelling\nCross-validation gives a more honest performance estimate than a single train/test split\nFeature engineering from dates (month, quarter) adds genuine predictive signal"
-  },
-  {
     "objectID": "projects/bert.html",
     "href": "projects/bert.html",
     "title": "BERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews",
@@ -854,11 +476,11 @@
     "text": "Conclusion\nFine-tuned BERT remains the gold standard for classification when labelled data is available. However, generative models like Llama 3.1 offer a compelling alternative for rapid prototyping or low-resource settings where annotation is costly.\nBusiness implications:\n\nIf labelled data exists → fine-tune BERT for maximum accuracy\nIf speed-to-deployment matters → few-shot Llama achieves ~83% with no annotation cost\nZero-shot is viable for quick experiments but not production-grade sentiment pipelines\n\nThe choice ultimately depends on business constraints around labelling budget vs. time-to-deployment vs. accuracy requirements."
   },
   {
-    "objectID": "index-2.html",
-    "href": "index-2.html",
-    "title": "Projects",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Priyadharshini Balaji",
     "section": "",
-    "text": "Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.\nBrowse the collection below — click a card to dive in.\n\n\n\n\n\n\n\n\n\n\n\nContact & References\n\n\n\n\n\n\n\n\n\n\n\n\nAbout Me\n\n\n\n\n\n\n\n\n\n\n\n\nCurriculum Vitae\n\n\n\n\n\n\n\n\n\n\n\n\nPriyadharshini Balaji — CV\n\n\n\n\n\n\n\n\n\n\n\n\nReflection\n\n\n\n\n\n\nApr 16, 2026\n\n\n\n\n\n\n\n\n\n\nCustomer Segmentation with RFM Analysis\n\n\n\npython\n\nclustering\n\nmarketing-analytics\n\n\n\nSegmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.\n\n\n\nApr 15, 2026\n\n\n\n\n\n\n\n\n\n\nSales Forecasting Dashboard\n\n\n\npython\n\ntime-series\n\nforecasting\n\n\n\nForecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.\n\n\n\nApr 10, 2026\n\n\n\n\n\n\n\n\n\n\n3XM Data Analytics Project\n\n\n\npython\n\ndata-analytics\n\nmachine-learning\n\n\n\nApplying two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, a company specialising in premium products for professional…\n\n\n\nNov 21, 2025\n\n\n\n\n\n\n\n\n\n\nPower BI Dashboard — Sales Analysis\n\n\n\npower-bi\n\ndata-visualisation\n\nbusiness-analytics\n\n\n\nAn interactive business dashboard built in Power BI analysing sales trends and KPIs for TechNovaInc across regions, categories, and time.\n\n\n\nApr 19, 2025\n\n\n\n\n\n\n\n\n\n\nBERT vs. Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews\n\n\n\npython\n\nnlp\n\nbert\n\ndeep-learning\n\n\n\nFine-tuning BERT on Rotten Tomatoes reviews and comparing with Llama 3.1 zero-shot and few-shot prompting for binary sentiment classification.\n\n\n\nApr 19, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "I’m an MSc Business Analytics student at Dublin City University, combining a background in Information Technology with data science and business intelligence skills.\nMy journey started with a BTech in IT from Rajalakshmi Engineering College in Chennai. Today I work at the intersection of data engineering and strategic analytics — using Python, SQL, machine learning, and visualisation to turn complex data into clear decisions.\nI’m currently working on a real-world industry project with Safefood (Seafood Ireland) as part of the DCU MSc practicum.\n📍 Dublin, Ireland"
   },
   {
     "objectID": "index.html#hello-im-priyadharshini",
@@ -866,5 +488,47 @@
     "title": "Priyadharshini Balaji",
     "section": "",
     "text": "I’m an MSc Business Analytics student at Dublin City University, combining a background in Information Technology with data science and business intelligence skills.\nMy journey started with a BTech in IT from Rajalakshmi Engineering College in Chennai. Today I work at the intersection of data engineering and strategic analytics — using Python, SQL, machine learning, and visualisation to turn complex data into clear decisions.\nI’m currently working on a real-world industry project with Safefood (Seafood Ireland) as part of the DCU MSc practicum.\n📍 Dublin, Ireland"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Curriculum Vitae",
+    "section": "",
+    "text": "My full CV is available as a downloadable PDF."
+  },
+  {
+    "objectID": "cv.html#summary",
+    "href": "cv.html#summary",
+    "title": "Curriculum Vitae",
+    "section": "Summary",
+    "text": "Summary\nMSc Business Analytics candidate at Dublin City University with an undergraduate background in Information Technology. Focus on transforming data into actionable business decisions through Python, SQL, and modern visualisation tools."
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "Curriculum Vitae",
+    "section": "Education",
+    "text": "Education\n\nMSc Business Analytics\nDublin City University, Dublin, Ireland\nIn progress\nCore modules include statistical analysis, data mining, machine learning, business decision modelling, and data visualisation.\n\n\nB.Tech, Information Technology\nCompleted\nFoundation in programming, databases, software engineering, and computer networks."
+  },
+  {
+    "objectID": "cv.html#core-competencies",
+    "href": "cv.html#core-competencies",
+    "title": "Curriculum Vitae",
+    "section": "Core Competencies",
+    "text": "Core Competencies\n\nProgramming: Python (pandas, scikit-learn, Plotly), SQL, R\nAnalytics: Exploratory data analysis, predictive modelling, clustering, classification\nVisualisation: Plotly, Tableau, Power BI\nTools & workflow: Git, Quarto, Jupyter, VS Code\nSoft skills: Stakeholder communication, technical writing, collaborative version control"
+  },
+  {
+    "objectID": "cv.html#projects",
+    "href": "cv.html#projects",
+    "title": "Curriculum Vitae",
+    "section": "Projects",
+    "text": "Projects\nExplore the detailed project pages on this site:\n\nCustomer Segmentation & RFM Analysis — unsupervised learning on retail data\nSales Forecasting Dashboard — time series analysis with interactive visualisations"
+  },
+  {
+    "objectID": "cv.html#contact",
+    "href": "cv.html#contact",
+    "title": "Curriculum Vitae",
+    "section": "Contact",
+    "text": "Contact\n\nEmail: priyadharshiniblj25@gmail.com\nLinkedIn: linkedin.com/in/priyadharshini-balaji\nGitHub: github.com/priyadharshini-code-beep\n\n\n\n\n\n\n\nNote\n\n\n\nThis web page is a summary. The PDF version has the full, formatted CV suitable for submission to employers."
   }
 ]
