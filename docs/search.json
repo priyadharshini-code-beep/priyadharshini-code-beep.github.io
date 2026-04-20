@@ -18,28 +18,28 @@
     "href": "cv-source.html#education",
     "title": "Priyadharshini Balaji — CV",
     "section": "Education",
-    "text": "Education\nMSc Business Analytics · 2025 – 2026 Dublin City University, Ireland Relevant modules: SQL & Databases, Programming for Analytics, Data Mining & Machine Learning, Data Visualisation\nBTech, Information Technology · 2021 – 2025 Rajalakshmi Engineering College, Chennai, India"
+    "text": "Education\nMSc Business Analytics · 2025 – 2026\nDublin City University, Ireland\nRelevant modules: SQL & Databases, Programming for Analytics, Data Mining & Machine Learning, Data Visualisation\nBTech, Information Technology · 2021 – 2025\nRajalakshmi Engineering College, Chennai, India"
   },
   {
     "objectID": "cv-source.html#experience",
     "href": "cv-source.html#experience",
     "title": "Priyadharshini Balaji — CV",
     "section": "Experience",
-    "text": "Experience\nBusiness Analyst — Applied Data & Software Engineering (Industry Project) · Jan 2026 – Present Safefood, Dublin (Hybrid)\n\nWorking on a real-world university-industry project with Seafood Ireland as part of the MSc practicum at DCU.\nDesigning data-processing workflows to clean, transform, and analyse structured datasets.\nWriting optimised SQL queries (joins, aggregations, subqueries) to support business decision-making.\nApplying software engineering principles to build reusable, maintainable analytics code.\nTranslating business requirements into technical solutions and communicating findings to stakeholders.\n\nIndustrial Android Application Development with IoT (Internship) · Jul 2023 NSIC, India\n\nContributed to an industrial Android app integrated with IoT sensors, bridging hardware inputs with a mobile interface.\nGained exposure to end-to-end IoT-to-mobile workflows — hardware signals, data capture, and application-layer handling."
+    "text": "Experience\nBusiness Analyst — Applied Data & Software Engineering (Industry Project) · Jan 2026 – Present\nSafefood, Dublin (Hybrid)\n\nWorking on a real-world university-industry project with Seafood Ireland as part of the MSc practicum at DCU.\nDesigning data-processing workflows to clean, transform, and analyse structured datasets.\nWriting optimised SQL queries (joins, aggregations, subqueries) to support business decision-making.\nApplying software engineering principles to build reusable, maintainable analytics code.\nTranslating business requirements into technical solutions and communicating findings to stakeholders.\n\nIndustrial Android Application Development with IoT (Internship) · Jul 2023\nNSIC, India\n\nContributed to an industrial Android application integrated with IoT sensors, bridging hardware inputs with a mobile interface.\nGained exposure to end-to-end IoT-to-mobile workflows — hardware signals, data capture, and application-layer handling."
   },
   {
     "objectID": "cv-source.html#projects",
     "href": "cv-source.html#projects",
     "title": "Priyadharshini Balaji — CV",
     "section": "Projects",
-    "text": "Projects\nCustomer Segmentation with RFM Analysis — Python, scikit-learn, Plotly Segmented 1,000 synthetic retail customers into four actionable groups using RFM scoring and K-Means clustering. Built an interactive 3D visualisation to communicate segments to non-technical stakeholders.\nSales Forecasting Dashboard — Python, time series, Plotly Built a 90-day sales forecasting pipeline with decomposition (trend, weekly seasonality, residual) and an 80% confidence band. Produced an interactive dashboard to surface daily, weekly, and peak-day insights.\nPower BI Dashboard — Sales Analysis — Power BI, Business Analytics An interactive business dashboard analysing sales trends and KPIs across multiple dimensions.\nBERT vs. Generative AI for Business Applications — Python, NLP, Deep Learning Fine-tuned BERT on Rotten Tomatoes reviews and compared with Llama 3.1 zero-shot and few-shot prompting for sentiment analysis.\n3XM Data Analytics Project — Python, Data Analytics, Machine Learning Applied two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, specialising in premium product analytics."
+    "text": "Projects\nCustomer Segmentation with RFM Analysis — Python, scikit-learn, Plotly\nSegmented 1,000 synthetic retail customers into four actionable groups using RFM scoring and K-Means clustering. Built an interactive 3D visualisation to communicate segments to non-technical stakeholders.\nSales Forecasting Dashboard — Python, time series, Plotly\nBuilt a 90-day sales forecasting pipeline with decomposition (trend, weekly seasonality, residual) and an 80% confidence band. Produced an interactive dashboard to surface daily, weekly, and peak-day insights.\nPower BI Dashboard — Sales Analysis — Power BI, Data Visualisation\nAn interactive business dashboard built in Power BI analysing sales trends and KPIs across multiple dimensions.\nBERT vs. Generative AI for Business Applications — Python, NLP, Deep Learning\nFine-tuned BERT on Rotten Tomatoes reviews and compared with Llama 3.1 zero-shot and few-shot prompting for sentiment analysis.\n3XM Data Analytics Project — Python, Machine Learning\nApplied two machine learning algorithms to build a complete business analytics pipeline for 3XM Solutions, specialising in premium product analytics.\nePortfolio Website — Quarto, Git, GitHub Pages\nDesigned and deployed a personal portfolio site with custom Sass styling, interactive Python visualisations, and continuous deployment. priyadharshini-code-beep.github.io"
   },
   {
     "objectID": "cv-source.html#technical-skills",
     "href": "cv-source.html#technical-skills",
     "title": "Priyadharshini Balaji — CV",
     "section": "Technical Skills",
-    "text": "Technical Skills\nProgramming & Query: Python (pandas, scikit-learn, Plotly), SQL, R Data & BI: Excel, Power BI, Tableau Tools & Workflow: Git, GitHub, Quarto, Jupyter, VS Code Core Competencies: Data cleaning, exploratory analysis, statistical modelling, clustering, time series forecasting, dashboard design, stakeholder communication"
+    "text": "Technical Skills\nProgramming & Query: Python (pandas, scikit-learn, Plotly), SQL, R\nData & BI: Excel, Power BI, Tableau\nTools & Workflow: Git, GitHub, Quarto, Jupyter, VS Code\nCore Competencies: Data cleaning, exploratory analysis, statistical modelling, clustering, time series forecasting, dashboard design, stakeholder communication"
   },
   {
     "objectID": "cv-source.html#languages",
