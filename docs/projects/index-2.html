@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-16">
 
-<title>Reflection – PB</title>
+<title>Projects – PB</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,23 +26,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ce9af5621250e8d6d0230c3c37461b05.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-de6a83ccecd31c7966992802689c718e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ce9af5621250e8d6d0230c3c37461b05.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-de6a83ccecd31c7966992802689c718e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,20 +72,78 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PB</span>
     </a>
   </div>
@@ -95,23 +154,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects/index.qmd"> 
+    <a class="nav-link" href="../projects/index.qmd"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./reflection.html" aria-current="page"> 
+    <a class="nav-link" href="../reflection.html"> 
 <span class="menu-text">Reflection</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -124,30 +183,24 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="YmVydA==">bert <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YnVzaW5lc3MtYW5hbHl0aWNz">business-analytics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2x1c3RlcmluZw==">clustering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YS1hbmFseXRpY3M=">data-analytics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YS12aXN1YWxpc2F0aW9u">data-visualisation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVlcC1sZWFybmluZw==">deep-learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zm9yZWNhc3Rpbmc=">forecasting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjaGluZS1sZWFybmluZw==">machine-learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFya2V0aW5nLWFuYWx5dGljcw==">marketing-analytics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmxw">nlp <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cG93ZXItYmk=">power-bi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(4)</span></div><div class="category" data-category="dGltZS1zZXJpZXM=">time-series <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reflection</h1>
-<p class="subtitle lead">On building this portfolio and what I’ve learned along the way</p>
+<h1 class="title">Projects</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 16, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -157,122 +210,154 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This page is my honest reflection on the skills I picked up building this ePortfolio and what I want to carry forward.</p>
-</div>
-</div>
-<section id="starting-point" class="level2">
-<h2 class="anchored" data-anchor-id="starting-point">Starting point</h2>
-<p>When I started this module I had a clear undergraduate foundation in IT and a reasonable grasp of Python from coursework, but I had <strong>never built a website from scratch</strong>, <strong>never deployed anything to the public internet</strong>, and <strong>never used Git beyond the occasional <code>git clone</code></strong>. By the end of this module, I had to combine all three to produce this site. That gap — between knowing things in isolation and shipping them together — turned out to be the most valuable part of the learning.</p>
-</section>
-<section id="git-and-version-control" class="level2">
-<h2 class="anchored" data-anchor-id="git-and-version-control">Git and version control</h2>
-<p>The thing that surprised me most about Git was how quickly it stopped feeling like a chore. My first commits were cautious — small, nervous pushes with messages like “update” and “fix”. Within a day I was <strong>committing on purpose</strong>, writing messages that actually described <em>why</em> I made a change, not just <em>what</em> I changed. That shift mattered.</p>
-<p><strong>What clicked:</strong></p>
-<ul>
-<li>Small commits are better than big ones. If something breaks, you can walk back one step.</li>
-<li><code>.gitignore</code> is not optional. I accidentally committed a <code>.DS_Store</code> file early on and it taught me to set that up from the start.</li>
-<li>The GitHub Pages deploy loop is <em>fast</em>. Commit → push → 30 seconds → live.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> That tight feedback loop made me more willing to experiment.</li>
-</ul>
-<p><strong>What I’d still like to learn:</strong> branching and merge conflicts. I worked on <code>main</code> the whole time because it was a solo project, but I know team workflows require feature branches, pull requests, and reviews.</p>
-</section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto was new to me. I picked it because the brief required it, but I ended up genuinely liking it. The idea of writing in Markdown, dropping in live Python code, and getting a polished site out the other end feels like the right abstraction for the kind of data work I want to do.</p>
-<p><strong>What I built comfort with:</strong></p>
-<ul>
-<li>YAML frontmatter to control page behaviour (About templates, listing pages, code folding)</li>
-<li>Project-wide configuration through <code>_quarto.yml</code> — navbar, footer, theme, SCSS</li>
-<li>The <code>{python}</code> code chunk and its options (<code>fig-cap</code>, <code>code-fold</code>, <code>echo</code>)</li>
-<li>Callout blocks, grids, and rich Markdown features</li>
-</ul>
-<p><strong>What I struggled with:</strong> the first time my <code>_quarto.yml</code> had a tiny indentation error, the whole render broke with a cryptic message. I learned to <strong>render after every significant change</strong> rather than stacking up edits blindly.</p>
-</section>
-<section id="python-for-analytics" class="level2">
-<h2 class="anchored" data-anchor-id="python-for-analytics">Python for analytics</h2>
-<p>I’d used Python before, but mostly in isolated notebooks for class exercises. Building the two project pages — <strong>Customer Segmentation with RFM</strong> and <strong>Sales Forecasting</strong> — pushed me to think about Python as a tool for <em>communicating analysis</em>, not just running it.</p>
-<p>Writing analyses for an audience that isn’t the grader changed how I wrote code:</p>
-<ul>
-<li>I started naming variables for readers, not for myself</li>
-<li>I split code into small blocks with narrative between them</li>
-<li>I picked visualisations for <em>what they showed</em>, not for what was easy to plot</li>
-<li>I learned to use Plotly for interactivity, where a static matplotlib chart would have shortened the file but lost the reader</li>
-</ul>
-</section>
-<section id="web-design-as-a-learning-experience" class="level2">
-<h2 class="anchored" data-anchor-id="web-design-as-a-learning-experience">Web design as a learning experience</h2>
-<p>I did not expect to spend as much time thinking about <strong>design</strong> as I did. Choosing a theme, picking fonts, tuning a colour palette — these weren’t decisions I’d ever made consciously before. I came out with a much better appreciation for why designers care about hierarchy, whitespace, and typography.</p>
-<p>The custom <code>styles.scss</code> file was where I learned the most. Bootswatch gives you a competent starting point; Sass variables give you real control. Changing one <code>$primary</code> variable and watching every link, button, and navbar element shift colour was weirdly satisfying.</p>
-</section>
-<section id="biggest-mistakes-and-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="biggest-mistakes-and-lessons">Biggest mistakes (and lessons)</h2>
-<div class="callout callout-style-default callout-warning callout-titled" title="Lessons from mistakes I actually made">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Lessons from mistakes I actually made
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>404 panic.</strong> Early on my site returned 404 for about 15 minutes and I thought I’d broken something fundamental. It was just GitHub Pages propagation — patience is part of the workflow.</li>
-<li><strong>YAML frontmatter.</strong> I accidentally pasted content without the <code>---</code> frontmatter delimiters and the landing page rendered as plain Markdown. Lesson: <em>always</em> check the top three lines.</li>
-<li><strong>Rendering before pushing.</strong> A few times I pushed without rendering and wondered why the live site hadn’t updated. The <code>docs/</code> folder is what gets served — if you don’t render, you push stale HTML.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="skills-im-taking-forward" class="level2">
-<h2 class="anchored" data-anchor-id="skills-im-taking-forward">Skills I’m taking forward</h2>
-<p>Beyond this module, this is the kit I now have:</p>
-<ol type="1">
-<li><strong>I can ship.</strong> I can go from “blank folder” to “live website with interactive analysis” in a day.</li>
-<li><strong>I can version.</strong> Every project I build from now on will live in Git from the first commit.</li>
-<li><strong>I can communicate.</strong> Technical writing, charts-as-argument, and structured narrative are skills I’ll use in every analyst role I apply for.</li>
-<li><strong>I can iterate.</strong> The render → commit → push → refresh loop is a pattern I can apply to any deliverable, not just websites.</li>
-</ol>
-</section>
-<section id="further-watching" class="level2">
-<h2 class="anchored" data-anchor-id="further-watching">Further watching</h2>
-<p>If you’d like to see Quarto in action from one of its creators, this talk by Mine Çetinkaya-Rundel is an excellent introduction:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/yvi5uXQMvu4" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section>
-<section id="whats-next" class="level2">
-<h2 class="anchored" data-anchor-id="whats-next">What’s next</h2>
-<p>Here’s my honest checklist — ticked items are already done, the rest are in progress:</p>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Build a public ePortfolio with live, executable Python analysis</label></li>
-<li><label><input type="checkbox" checked="">Learn Git and version control from scratch</label></li>
-<li><label><input type="checkbox" checked="">Deploy a site to GitHub Pages using the <code>docs/</code> workflow</label></li>
-<li><label><input type="checkbox" checked="">Write a custom <code>styles.scss</code> with a cohesive colour palette</label></li>
-<li><label><input type="checkbox">Replace the two synthetic-data projects with <strong>one real dataset</strong> each (UCI repository or Kaggle)</label></li>
-<li><label><input type="checkbox">Add a <strong>third project</strong> using machine learning (probably classification — customer churn)</label></li>
-<li><label><input type="checkbox">Experiment with <strong>GitHub Actions</strong> to auto-deploy the site instead of committing the rendered output manually</label></li>
-<li><label><input type="checkbox">Start applying for analyst roles with this portfolio as my calling card</label></li>
-</ul>
-<p>Thanks for reading. If you have thoughts or feedback, I’d love to hear from you via the <a href="./contact.html">contact page</a>.</p>
+<p>Hands-on projects applying analytical methods to business questions. Each project page includes executable Python code, interactive visualisations, and a narrative of the decisions behind the analysis.</p>
+<p>Browse the collection below — click a card to dive in.</p>
 
 
-</section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-categories="cHl0aG9uJTJDY2x1c3RlcmluZyUyQ21hcmtldGluZy1hbmFseXRpY3M=" data-listing-date-sort="1776207600000" data-listing-file-modified-sort="1776721845513" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="497">
+<a href="../projects/customer-segmentation-rfm.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Customer Segmentation with RFM Analysis
+</h5>
+<div class="listing-categories">
 
-<ol>
-<li id="fn1"><p>GitHub Pages is a free static site hosting service provided by GitHub. It serves files directly from a repository branch — in this case the <code>docs/</code> folder on <code>main</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2x1c3RlcmluZw=='); return false;">clustering</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFya2V0aW5nLWFuYWx5dGljcw=='); return false;">marketing-analytics</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Segmenting 1,000 synthetic retail customers into actionable groups using RFM scoring and K-Means clustering.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Apr 15, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="cHl0aG9uJTJDdGltZS1zZXJpZXMlMkNmb3JlY2FzdGluZw==" data-listing-date-sort="1775775600000" data-listing-file-modified-sort="1776721846330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="538">
+<a href="../projects/sales-forecasting.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sales Forecasting Dashboard
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGltZS1zZXJpZXM='); return false;">time-series</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Zm9yZWNhc3Rpbmc='); return false;">forecasting</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Forecasting 90 days of retail sales using time series decomposition and moving-average models, with interactive Plotly visualisations.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Apr 10, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="cHl0aG9uJTJDZGF0YS1hbmFseXRpY3MlMkNtYWNoaW5lLWxlYXJuaW5n" data-listing-date-sort="1763683200000" data-listing-file-modified-sort="1776721840811" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="512">
+<a href="../projects/3xm-data-analytics.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+3XM Data Analytics Project
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YS1hbmFseXRpY3M='); return false;">data-analytics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZS1sZWFybmluZw=='); return false;">machine-learning</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Applying two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, a company specialising in premium products for professional…</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Nov 21, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="cHl0aG9uJTJDbmxwJTJDYmVydCUyQ2RlZXAtbGVhcm5pbmc=" data-listing-date-sort="1745017200000" data-listing-file-modified-sort="1776721842672" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="493">
+<a href="../projects/bert-vs-generative-ai.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+BERT vs.&nbsp;Generative AI for Business Applications: A Sentiment Analysis Comparison Using Rotten Tomatoes Reviews
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmVydA=='); return false;">bert</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Fine-tuning BERT on Rotten Tomatoes reviews and comparing with Llama 3.1 zero-shot and few-shot prompting for binary sentiment classification.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Apr 19, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="cG93ZXItYmklMkNkYXRhLXZpc3VhbGlzYXRpb24lMkNidXNpbmVzcy1hbmFseXRpY3M=" data-listing-date-sort="1745017200000" data-listing-file-modified-sort="1776721843677" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="391">
+<a href="../projects/powerbi-sales-dashboard.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Power BI Dashboard — Sales Analysis
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cG93ZXItYmk='); return false;">power-bi</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YS12aXN1YWxpc2F0aW9u'); return false;">data-visualisation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YnVzaW5lc3MtYW5hbHl0aWNz'); return false;">business-analytics</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>An interactive business dashboard built in Power BI analysing sales trends and KPIs for TechNovaInc across regions, categories, and time.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Apr 19, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -704,5 +789,5 @@ Note
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

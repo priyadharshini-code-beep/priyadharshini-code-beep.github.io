@@ -2,8 +2,17 @@
   {
     "listing": "/projects/index.html",
     "items": [
-      "/projects/list/customer-segmentation.html",
-      "/projects/list/sales-forecasting.html"
+      "/projects/sales-forecasting.html"
+    ]
+  },
+  {
+    "listing": "/projects/index-2.html",
+    "items": [
+      "/projects/customer-segmentation-rfm.html",
+      "/projects/sales-forecasting.html",
+      "/projects/3xm-data-analytics.html",
+      "/projects/bert-vs-generative-ai.html",
+      "/projects/powerbi-sales-dashboard.html"
     ]
   }
 ]

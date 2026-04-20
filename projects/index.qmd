@@ -1,33 +1,16 @@
-# Projects
+---
+title: "Projects"
+listing:
+  contents: 
+    - "3xm.qmd"
+    - "powerbi.qmd"
+    - "bert.qmd"
+    - "segmentation.qmd"
+    - "sales-forecasting.qmd"
+  type: grid
+  sort: "date desc"
+  categories: true
+page-layout: full
+---
 
 Explore my work in data analytics, machine learning, and visualisation.
-
-<br>
-
-::: {.grid}
-
-::: {.card}
-### 📊 3XM Data Analytics
-
-Machine learning pipeline to predict revenue using real-world data.
-
-[View Project](3xm.qmd)
-:::
-
-::: {.card}
-### 📈 Power BI Dashboard
-
-Interactive dashboard analysing sales and KPIs.
-
-[View Project](powerbi.qmd)
-:::
-
-::: {.card}
-### 🤖 BERT vs Gemini
-
-Comparison of NLP models for sentiment analysis.
-
-[View Project](bert.qmd)
-:::
-
-:::
