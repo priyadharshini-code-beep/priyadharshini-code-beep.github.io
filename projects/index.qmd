@@ -2,15 +2,13 @@
 title: "Projects"
 listing:
   contents: 
-    - "3xm.qmd"
-    - "powerbi.qmd"
-    - "bert.qmd"
-    - "segmentation.qmd"
-    - "sales-forecasting.qmd"
+    - "projects/3xm.qmd"
+    - "projects/powerbi.qmd"
+    - "projects/bert.qmd"
+    - "projects/segmentation.qmd"
+    - "projects/sales-forecasting.qmd"
   type: grid
   sort: "date desc"
   categories: true
 page-layout: full
 ---
-
-Explore my work in data analytics, machine learning, and visualisation.
