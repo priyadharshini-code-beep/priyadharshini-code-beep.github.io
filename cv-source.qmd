@@ -26,47 +26,56 @@ Full-time MSc Business Analytics student at Dublin City University with a BTech 
 
 ## Education
 
-**MSc Business Analytics** · *2025 – 2026*  
-Dublin City University, Ireland  
+**MSc Business Analytics** · *2025 – 2026*
+Dublin City University, Ireland
 *Relevant modules:* SQL & Databases, Programming for Analytics, Data Mining & Machine Learning, Data Visualisation
 
-**BTech, Information Technology** · *2021 – 2025*  
+**BTech, Information Technology** · *2021 – 2025*
 Rajalakshmi Engineering College, Chennai, India
 
 ## Experience
 
-**Business Analyst — Applied Data & Software Engineering (Industry Project)** · *Jan 2026 – Present*  
+**Business Analyst — Applied Data & Software Engineering (Industry Project)** · *Jan 2026 – Present*
 *Safefood, Dublin (Hybrid)*
 
-- Working on a real-world university-industry project in collaboration with Seafood Ireland, as part of the MSc Business Analytics practicum at DCU.
-- Designing and developing data-processing workflows using programming fundamentals (loops, conditionals, functions, data structures) to clean, transform, and analyse structured datasets.
-- Writing optimised SQL queries (joins, aggregations, subqueries) to analyse relational data and support business decision-making.
-- Applying software engineering principles to build reusable, maintainable code for analytics and reporting.
-- Translating business requirements into technical solutions and communicating findings to academic and industry stakeholders.
+- Working on a real-world university-industry project with Seafood Ireland as part of the MSc practicum at DCU.
+- Designing data-processing workflows to clean, transform, and analyse structured datasets.
+- Writing optimised SQL queries (joins, aggregations, subqueries) to support business decision-making.
+- Applying software engineering principles to build reusable, maintainable analytics code.
+- Translating business requirements into technical solutions and communicating findings to stakeholders.
 
-**Industrial Android Application Development with IoT (Internship)** · *Jul 2023*  
+**Industrial Android Application Development with IoT (Internship)** · *Jul 2023*
 *NSIC, India*
 
-- Contributed to the development of an industrial Android application integrated with IoT sensors, bridging hardware inputs with a mobile interface.
+- Contributed to an industrial Android app integrated with IoT sensors, bridging hardware inputs with a mobile interface.
 - Gained exposure to end-to-end IoT-to-mobile workflows — hardware signals, data capture, and application-layer handling.
 
 ## Projects
 
-**Customer Segmentation with RFM Analysis** — *Python, scikit-learn, Plotly*  
+**Customer Segmentation with RFM Analysis** — *Python, scikit-learn, Plotly*
 Segmented 1,000 synthetic retail customers into four actionable groups using RFM scoring and K-Means clustering. Built an interactive 3D visualisation to communicate segments to non-technical stakeholders.
 
-**Sales Forecasting Dashboard** — *Python, time series, Plotly*  
+**Sales Forecasting Dashboard** — *Python, time series, Plotly*
 Built a 90-day sales forecasting pipeline with decomposition (trend, weekly seasonality, residual) and an 80% confidence band. Produced an interactive dashboard to surface daily, weekly, and peak-day insights.
 
-**ePortfolio Website** — *Quarto, Git, GitHub Pages*  
-Designed and deployed a personal portfolio site with custom Sass styling, interactive Python visualisations, and continuous deployment.  
+**Power BI Dashboard — Sales Analysis** — *Power BI, Business Analytics*
+An interactive business dashboard analysing sales trends and KPIs across multiple dimensions.
+
+**BERT vs. Generative AI for Business Applications** — *Python, NLP, Deep Learning*
+Fine-tuned BERT on Rotten Tomatoes reviews and compared with Llama 3.1 zero-shot and few-shot prompting for sentiment analysis.
+
+**3XM Data Analytics Project** — *Python, Data Analytics, Machine Learning*
+Applied two machine learning algorithms to develop a complete business analytics pipeline for 3XM Solutions, specialising in premium product analytics.
+
+**ePortfolio Website** — *Quarto, Git, GitHub Pages*
+Designed and deployed a personal portfolio site with custom Sass styling and continuous deployment.
 [priyadharshini-code-beep.github.io](https://priyadharshini-code-beep.github.io)
 
 ## Technical Skills
 
-**Programming & Query:** Python (pandas, scikit-learn, Plotly), SQL, R  
-**Data & BI:** Excel, Power BI, Tableau  
-**Tools & Workflow:** Git, GitHub, Quarto, Jupyter, VS Code  
+**Programming & Query:** Python (pandas, scikit-learn, Plotly), SQL, R
+**Data & BI:** Excel, Power BI, Tableau
+**Tools & Workflow:** Git, GitHub, Quarto, Jupyter, VS Code
 **Core Competencies:** Data cleaning, exploratory analysis, statistical modelling, clustering, time series forecasting, dashboard design, stakeholder communication
 
 ## Languages

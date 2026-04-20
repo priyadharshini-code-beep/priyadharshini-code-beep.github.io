@@ -1,7 +1,9 @@
 ---
 title: "Projects"
 listing:
-  contents: projects  # This tells Quarto to find EVERYTHING in the folder
+  contents:
+    - "!index.qmd"
+    - "*.qmd"  # This tells Quarto to find EVERYTHING in the folder
   type: grid
   sort: "date desc"
   categories: true

@@ -1,11 +1,19 @@
 [
   {
     "listing": "/projects/index.html",
-    "items": []
+    "items": [
+      "/projects/index-2.html",
+      "/projects/segmentation.html",
+      "/projects/sales-forecasting.html",
+      "/projects/3xm.html",
+      "/projects/bert.html",
+      "/projects/powerbi-sales-dashboard.html"
+    ]
   },
   {
     "listing": "/projects/index-2.html",
     "items": [
+      "/projects/index.html",
       "/projects/segmentation.html",
       "/projects/sales-forecasting.html",
       "/projects/3xm.html",
